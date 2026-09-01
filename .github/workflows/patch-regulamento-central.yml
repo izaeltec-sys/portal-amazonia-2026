@@ -1,0 +1,59 @@
+name: Patch Regulamento - Central do Atleta
+
+on:
+  push:
+    branches:
+      - feat/regulamento-central-link
+    paths:
+      - '.github/workflows/patch-regulamento-central.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: feat/regulamento-central-link
+
+      - name: Adicionar acesso à Central do Atleta
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+
+          if 'href="./central/"' in text:
+              print('Acesso à Central já existe; nenhuma alteração necessária.')
+          else:
+              target = '''      <button class="ghost sumario-btn" id="sumarioBtn" aria-controls="sumario" aria-expanded="false" onclick="toggleSumario()">☰ Sumário</button>\n      <button class="primary" onclick="window.print()">Imprimir / Gerar PDF</button>'''
+              replacement = '''      <button class="ghost sumario-btn" id="sumarioBtn" aria-controls="sumario" aria-expanded="false" onclick="toggleSumario()">☰ Sumário</button>\n      <a class="button-link goldbtn central-atleta-btn" href="./central/" title="Abrir Central do Atleta">Central do Atleta</a>\n      <button class="primary" onclick="window.print()">Imprimir / Gerar PDF</button>'''
+
+              if target not in text:
+                  raise SystemExit('Bloco do cabeçalho não encontrado; abortando sem modificar o Regulamento.')
+
+              text = text.replace(target, replacement, 1)
+              path.write_text(text, encoding='utf-8')
+
+          # Workflow temporário: remove a si mesmo; o PR final fica apenas com a alteração de navegação.
+          workflow = Path('.github/workflows/patch-regulamento-central.yml')
+          if workflow.exists():
+              workflow.unlink()
+
+      - name: Confirmar diff mínimo
+        run: |
+          git diff -- index.html
+          test "$(git diff --numstat -- index.html | awk '{print $1}')" = "1"
+          test "$(git diff --numstat -- index.html | awk '{print $2}')" = "0"
+
+      - name: Commit da alteração
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html .github/workflows/patch-regulamento-central.yml
+          git commit -m "feat: adicionar acesso à Central no Regulamento"
+          git push origin HEAD:feat/regulamento-central-link
