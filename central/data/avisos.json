@@ -1,5 +1,15 @@
 [
   {
+    "id": "2026-09-01-inscricoes-link-direto",
+    "data": "2026-09-01",
+    "tipo": "informacao",
+    "titulo": "Link direto das inscrições disponível",
+    "resumo": "O acesso à página oficial do evento na Agito Esportes já está disponível por um endereço curto da Organização.",
+    "link": "../inscrever/",
+    "rotuloLink": "Acessar inscrições",
+    "destaque": true
+  },
+  {
     "id": "2026-08-28-adendo-01",
     "data": "2026-08-28",
     "tipo": "alteracao",
