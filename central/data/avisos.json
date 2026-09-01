@@ -1,0 +1,32 @@
+[
+  {
+    "id": "2026-08-28-adendo-01",
+    "data": "2026-08-28",
+    "tipo": "alteracao",
+    "titulo": "Campanha Solidária incluída no regulamento",
+    "resumo": "Cada participante inscrito deverá entregar 1 kg de alimento não perecível por inscrição no ato da retirada do kit. A entrega é requisito para a retirada.",
+    "link": "../index.html#kit",
+    "rotuloLink": "Ver regra no regulamento",
+    "destaque": true
+  },
+  {
+    "id": "2026-08-28-versao-1-1",
+    "data": "2026-08-28",
+    "tipo": "alteracao",
+    "titulo": "Regulamento atualizado para a versão 1.1",
+    "resumo": "O Adendo nº 01/2026 foi incorporado ao regulamento e registrado no Histórico de Alterações.",
+    "link": "../index.html#historico",
+    "rotuloLink": "Ver histórico",
+    "destaque": false
+  },
+  {
+    "id": "2026-08-26-publicacao-regulamento",
+    "data": "2026-08-26",
+    "tipo": "informacao",
+    "titulo": "Regulamento oficial publicado",
+    "resumo": "Publicada a primeira versão oficial do Regulamento da 3ª Corrida de Rua Portal da Amazônia — 2026.",
+    "link": "../index.html",
+    "rotuloLink": "Abrir regulamento",
+    "destaque": false
+  }
+]
