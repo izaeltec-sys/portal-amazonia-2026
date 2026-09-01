@@ -4,16 +4,16 @@ A pasta `central/` contém a Central do Atleta da 3ª Corrida de Rua Portal da A
 
 ## Objetivo
 
-A Central deve se comportar como uma interface de aplicativo, especialmente no celular. A tela inicial não deve repetir o Regulamento inteiro nem exibir grandes blocos de texto.
+A Central deve se comportar como uma interface de aplicativo, especialmente no celular, sem repetir o Regulamento inteiro na tela inicial.
 
 Princípios:
 
 - mobile-first;
 - uma informação por tela;
 - navegação curta por botões e menu inferior;
-- destaque apenas para o aviso mais importante;
 - Regulamento como fonte normativa;
-- Central como camada de consulta rápida e comunicação operacional.
+- Central como camada de consulta rápida e comunicação operacional;
+- evitar funcionalidades ou blocos que não entreguem benefício claro ao atleta.
 
 ## Navegação
 
@@ -23,29 +23,38 @@ A página inicial apresenta:
 
 - logotipo oficial do evento integrado ao cabeçalho;
 - dados básicos da prova;
-- acesso à inscrição;
-- um aviso em destaque;
-- atalhos para assuntos específicos;
-- opção discreta para adicionar a Central à tela inicial do celular.
+- acessos rápidos para Avisos, Inscrição, Programação, Kit, Kids e Percurso;
+- acesso direto ao Regulamento oficial.
 
-## Acesso pela tela inicial / PWA
+## Ícones
 
-A Central possui `manifest.webmanifest` e `service-worker.js` para permitir experiência em modo standalone quando o navegador/dispositivo oferecer suporte.
+A interface utiliza uma seleção local de **Tabler Icons** em um sprite SVG:
 
-A comunicação com o atleta deve usar **“Adicionar à tela inicial”**, e não “Instalar aplicativo”, para evitar a impressão de que existe download pela Play Store ou App Store.
+`central/assets/icons/tabler/sprite.svg`
 
-Antes de qualquer prompt nativo, a Central explica que:
+Os ícones são usados somente como elementos funcionais da interface. A identidade visual do evento e o logotipo oficial permanecem independentes e não são alterados pelos ícones.
 
-- não é necessário procurar o evento novamente pelo navegador;
-- não há redirecionamento para a Play Store;
-- o acesso é criado diretamente a partir da Central;
-- no iPhone, o fluxo pode exigir Safari → Compartilhar → Adicionar à Tela de Início.
+A seleção atual inclui representações específicas para:
 
-O navegador Android ainda pode usar a palavra “Instalar” no diálogo nativo; por isso a explicação aparece antes desse diálogo.
+- Avisos;
+- Inscrição;
+- Programação;
+- Kit;
+- Kids;
+- Percurso;
+- Regulamento;
+- navegação inferior;
+- voltar e compartilhar.
 
-## Cache
+Tabler Icons é distribuído sob licença MIT. A licença aplicável está preservada em:
 
-O Service Worker mantém em cache apenas a estrutura essencial da Central e seus assets principais. O arquivo `data/avisos.json` usa estratégia network-first para priorizar comunicados novos e utilizar cache somente como contingência.
+`central/assets/icons/tabler/LICENSE`
+
+## Cache / PWA
+
+A Central mantém `manifest.webmanifest` e `service-worker.js` como suporte técnico para navegadores compatíveis, mas a interface não promete instalação de aplicativo nem força uma experiência que o navegador do atleta não ofereça.
+
+O Service Worker mantém em cache a estrutura essencial da Central, o sprite de ícones e os assets principais. O arquivo `data/avisos.json` usa estratégia network-first para priorizar comunicados novos e utilizar cache somente como contingência.
 
 ## Avisos
 
@@ -108,13 +117,11 @@ Base64 aumenta o tamanho do arquivo em aproximadamente 33%. Por isso, antes de c
 - tentar manter a imagem original abaixo de aproximadamente 150–250 KB;
 - evitar guardar várias imagens pesadas no mesmo `avisos.json`.
 
-Para poucas artes otimizadas, Base64 funciona bem e simplifica a publicação. Se o volume crescer muito, arquivos separados passam a ser mais eficientes porque o navegador consegue armazená-los em cache individualmente.
+Para poucas artes otimizadas, Base64 funciona bem. Se o volume crescer, arquivos separados passam a ser mais eficientes porque o navegador consegue armazená-los em cache individualmente.
 
 ## Logotipo oficial
 
-A Central mantém uma cópia otimizada do arquivo oficial em `central/assets/logo-horizontal.jpg`, usada apenas para carregamento e encaixe do cabeçalho. A arte do logotipo não deve ser redesenhada, reconstruída ou reinterpretada.
-
-Os ícones da experiência instalada também são derivados exclusivamente dos arquivos oficiais do evento, com redimensionamento/composição técnica para os formatos exigidos pelo navegador.
+O logotipo exibido no cabeçalho é reutilizado a partir do mesmo arquivo oficial já incorporado ao Regulamento, sem redesenho, reconstrução ou interpretação por IA.
 
 ## Regra editorial
 
