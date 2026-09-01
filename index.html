@@ -211,7 +211,7 @@ body.print-term #termoPrintDetached{display:block!important}
   }
   .brand-mini{font-size:11px;line-height:1.25;max-width:125px}
   .actions{gap:6px;justify-content:flex-end;flex-wrap:nowrap}
-  .toolbar button{padding:9px 12px;font-size:12px;white-space:nowrap}
+  .toolbar button,.toolbar .button-link{padding:9px 12px;font-size:12px;white-space:nowrap}
   .toc{
     display:block;
     position:fixed;
@@ -281,7 +281,8 @@ body.print-term #termoPrintDetached{display:block!important}
   .toolbar-inner{grid-template-columns:1fr;gap:5px;padding:6px 0 8px}
   .brand-mini{max-width:none;text-align:center;font-size:10.5px;white-space:nowrap}
   .actions{width:100%;display:grid;grid-template-columns:1fr 1.35fr;gap:7px}
-  .toolbar button{width:100%;min-height:42px;padding:8px 9px;font-size:11.5px}
+  .toolbar button,.toolbar .button-link{width:100%;min-height:42px;padding:8px 9px;font-size:11.5px}
+  .central-atleta-btn{grid-column:1/-1}
   .layout{margin-top:10px}
   .cover{min-height:auto;padding:34px 20px 30px}
   .status{font-size:9px;padding:6px 9px;letter-spacing:.07em}
@@ -398,8 +399,8 @@ body.print-term #termoPrintDetached{display:block!important}
     <div class="brand-mini">Regulamento • Portal da Amazônia 2026</div>
     <div class="actions">
       <button class="ghost sumario-btn" id="sumarioBtn" aria-controls="sumario" aria-expanded="false" onclick="toggleSumario()">☰ Sumário</button>
-      <a class="button-link goldbtn central-atleta-btn" href="./central/" title="Abrir Central do Atleta">Central do Atleta</a>
       <button class="primary" onclick="window.print()">Imprimir / Gerar PDF</button>
+      <a class="button-link goldbtn central-atleta-btn" href="./central/" title="Abrir Central do Atleta">Central do Atleta</a>
     </div>
   </div>
 </div>
