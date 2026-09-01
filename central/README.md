@@ -21,12 +21,31 @@ A Central usa telas internas controladas por hash (`#inicio`, `#avisos`, `#event
 
 A página inicial apresenta:
 
-- logotipo oficial do evento;
+- logotipo oficial do evento integrado ao cabeçalho;
 - dados básicos da prova;
-- botão de inscrição;
-- botão do Regulamento;
+- acesso à inscrição;
 - um aviso em destaque;
-- atalhos para assuntos específicos.
+- atalhos para assuntos específicos;
+- opção discreta para adicionar a Central à tela inicial do celular.
+
+## Acesso pela tela inicial / PWA
+
+A Central possui `manifest.webmanifest` e `service-worker.js` para permitir experiência em modo standalone quando o navegador/dispositivo oferecer suporte.
+
+A comunicação com o atleta deve usar **“Adicionar à tela inicial”**, e não “Instalar aplicativo”, para evitar a impressão de que existe download pela Play Store ou App Store.
+
+Antes de qualquer prompt nativo, a Central explica que:
+
+- não é necessário procurar o evento novamente pelo navegador;
+- não há redirecionamento para a Play Store;
+- o acesso é criado diretamente a partir da Central;
+- no iPhone, o fluxo pode exigir Safari → Compartilhar → Adicionar à Tela de Início.
+
+O navegador Android ainda pode usar a palavra “Instalar” no diálogo nativo; por isso a explicação aparece antes desse diálogo.
+
+## Cache
+
+O Service Worker mantém em cache apenas a estrutura essencial da Central e seus assets principais. O arquivo `data/avisos.json` usa estratégia network-first para priorizar comunicados novos e utilizar cache somente como contingência.
 
 ## Avisos
 
@@ -93,7 +112,9 @@ Para poucas artes otimizadas, Base64 funciona bem e simplifica a publicação. S
 
 ## Logotipo oficial
 
-O logotipo exibido pela Central é o mesmo arquivo oficial já incorporado ao Regulamento. A Central o reutiliza sem redesenho, reconstrução ou alteração de identidade.
+A Central mantém uma cópia otimizada do arquivo oficial em `central/assets/logo-horizontal.jpg`, usada apenas para carregamento e encaixe do cabeçalho. A arte do logotipo não deve ser redesenhada, reconstruída ou reinterpretada.
+
+Os ícones da experiência instalada também são derivados exclusivamente dos arquivos oficiais do evento, com redimensionamento/composição técnica para os formatos exigidos pelo navegador.
 
 ## Regra editorial
 

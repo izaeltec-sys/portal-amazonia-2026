@@ -1,0 +1,20 @@
+{
+  "id": "./",
+  "name": "Central do Atleta — Portal da Amazônia 2026",
+  "short_name": "Central do Atleta",
+  "description": "Informações oficiais da 3ª Corrida de Rua Portal da Amazônia — 2026.",
+  "lang": "pt-BR",
+  "start_url": "./#inicio",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f1e8",
+  "theme_color": "#063f2a",
+  "icons": [
+    {"src":"./assets/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"./assets/icon-512.svg","sizes":"512x512","type":"image/svg+xml","purpose":"any"}
+  ],
+  "shortcuts": [
+    {"name":"Avisos","short_name":"Avisos","url":"./#avisos","icons":[{"src":"./assets/icon-192.png","sizes":"192x192","type":"image/png"}]},
+    {"name":"Informações do evento","short_name":"Evento","url":"./#evento","icons":[{"src":"./assets/icon-192.png","sizes":"192x192","type":"image/png"}]}
+  ]
+}
