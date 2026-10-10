@@ -15,6 +15,19 @@ Princípios:
 - Central como camada de consulta rápida e comunicação operacional;
 - evitar funcionalidades ou blocos que não entreguem benefício claro ao atleta.
 
+## Estado vigente
+
+A Central está alinhada ao **Regulamento oficial versão 1.2**, atualizado em **10/10/2026** pela Alteração nº 01/2026.
+
+Informações operacionais destacadas atualmente:
+
+- local do evento: **SEST SENAT — Rua Mato Grosso, Vilhena/RO**;
+- percurso oficial dos 5 km disponível em Strava, Google Maps e Garmin Connect;
+- Garmin Connect incorporado na tela de percurso quando suportado pelo navegador;
+- retirada de kits na King Tênis em 13 e 14/11;
+- atleta de outra cidade sem pessoa para retirar o kit deve contatar a Organização até **14h de 13/11/2026**;
+- Regulamento integral continua sendo a fonte normativa.
+
 ## Navegação
 
 A Central usa telas internas controladas por hash (`#inicio`, `#avisos`, `#evento`, `#duvidas`, etc.). Apenas a tela ativa fica visível.

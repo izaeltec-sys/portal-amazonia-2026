@@ -1,5 +1,16 @@
 [
   {
+    "id": "2026-10-10-alteracao-01",
+    "data": "2026-10-10",
+    "tipo": "alteracao",
+    "titulo": "Local e percurso oficial definidos",
+    "resumo": "A versão 1.2 do Regulamento define o SEST SENAT como local do evento e publica o percurso oficial dos 5 km.",
+    "conteudo": "A Alteração nº 01/2026 atualizou o Regulamento para a versão 1.2. A concentração, largada e chegada serão no SEST SENAT — Rua Mato Grosso, Vilhena/RO. O percurso oficial dos 5 km está disponível no Strava, Google Maps e Garmin Connect. Também foram atualizados o link direto das inscrições e o prazo para atletas de outras cidades sem pessoa disponível para retirar o kit: contato com a Organização até às 14h de sexta-feira, 13/11/2026.",
+    "link": "../index.html#historico",
+    "rotuloLink": "Ver Alteração nº 01/2026",
+    "destaque": true
+  },
+  {
     "id": "2026-09-01-inscricoes-link-direto",
     "data": "2026-09-01",
     "tipo": "informacao",
