@@ -1,6 +1,6 @@
 # RETOMADA — 3ª Corrida de Rua Portal da Amazônia 2026
 
-**Atualizado em:** 10/10/2026  
+**Atualizado em:** 11/10/2026  
 **Repositório oficial:** `izaeltec-sys/portal-amazonia-2026`  
 **Branch de referência:** `main`
 
@@ -288,6 +288,30 @@ Ao retomar, conferir estes commits e depois verificar se existem commits mais no
 
 No momento deste handoff, `c13620a` era o último commit funcional conhecido.
 **Não assumir que continuará sendo o HEAD em chats futuros.**
+
+---
+
+### Atualização de usabilidade da Central — 11/10/2026
+
+Sem alteração normativa do Regulamento 1.2:
+
+- textos e ícones aumentados para melhorar a leitura em dispositivos móveis;
+- atalho **Dúvidas** substitui **Inscrição** na grade de seis acessos rápidos;
+- inscrições acessíveis em cartão inferior, ao lado da consulta ao Regulamento, mantendo o caminho `/inscrever/`;
+- lembrete de **1 kg de alimento não perecível por inscrição** na tela inicial, com acesso à FAQ;
+- FAQ reorganizada, começando pela entrega obrigatória do alimento na retirada do kit (norma já vigente desde o Adendo nº 01/2026);
+- service worker atualizado para o cache `portal-central-v8`.
+
+Commits posteriores ao último estado funcional do handoff:
+
+- `cfbacec` — registra `RETOMADA.md`;
+- `db653e1` — adiciona `PROMPT_NOVO_CHAT.md`;
+- `e47ed2e` — atualiza o README de retomada;
+- `0d2ed98` — melhora legibilidade, reorganiza os atalhos e destaca a FAQ;
+- `eb143db` — atualiza o cache do service worker;
+- `1eb837c` — atualiza `central/README.md` com as mudanças.
+
+A lista é histórica e **não substitui a conferência do HEAD real de `main`** na próxima retomada.
 
 ---
 
