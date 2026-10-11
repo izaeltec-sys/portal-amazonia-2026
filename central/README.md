@@ -39,6 +39,21 @@ A página inicial apresenta:
 - acessos rápidos para Avisos, Inscrição, Programação, Kit, Kids e Percurso;
 - acesso direto ao Regulamento oficial.
 
+## Legibilidade e acesso rápido — 11/10/2026
+
+A Central recebeu uma atualização de acessibilidade visual voltada especialmente à leitura em celulares:
+
+- fontes maiores nos cards, subtítulos, textos informativos, avisos, FAQ e navegação;
+- ícones maiores nos atalhos e no menu inferior, preservando os Tabler Icons existentes;
+- o atalho **Dúvidas** ocupa agora o lugar de **Inscrição** no acesso rápido da página inicial;
+- **Inscrições oficiais** ganhou acesso próprio abaixo do **Regulamento oficial**, mantendo o endereço estável `../inscrever/`;
+- há um lembrete na página inicial sobre a entrega de **1 kg de alimento não perecível por inscrição**, que abre as dúvidas;
+- a pergunta do alimento é a primeira da FAQ, seguida das dúvidas operacionais mais recorrentes.
+
+A obrigação do alimento não é uma norma nova: foi estabelecida pelo **Adendo nº 01/2026**, incorporado ao Regulamento 1.1 e mantido na versão 1.2. A Central apenas melhora a visibilidade e a consulta à regra.
+
+O cache da Central passa a ser `portal-central-v8` para atualizar os assets em dispositivos que já usaram o aplicativo/site.
+
 ## Ícones
 
 A interface utiliza uma seleção local de **Tabler Icons** em um sprite SVG:
