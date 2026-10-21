@@ -1,5 +1,16 @@
 [
   {
+    "id": "2026-10-21-transferencia-inscricao",
+    "data": "2026-10-21",
+    "tipo": "informacao",
+    "titulo": "Como solicitar a transferência de inscrição",
+    "resumo": "Somente o titular original pode solicitar à Agito Esportes, até 12/11/2026 às 12h. Há taxa operacional.",
+    "conteudo": "Conforme o capítulo 10.2 do Regulamento oficial 1.2, somente o titular original pode solicitar a transferência de inscrição diretamente ao responsável pela cronometragem da Agito Esportes, pelo WhatsApp (65) 99665-8832. A transferência será operacionalizada após o encerramento das inscrições em 31/10/2026. O prazo máximo para solicitação é quinta-feira, 12/11/2026, às 12h. Será cobrada uma taxa operacional, com valor informado no atendimento; essa taxa não integra o valor da inscrição nem é destinada à Organização do evento. Não entregue seu número de peito ou chip a outra pessoa fora do procedimento oficial.",
+    "link": "../index.html#cancelamento",
+    "rotuloLink": "Consultar regra oficial de transferência",
+    "destaque": true
+  },
+  {
     "id": "2026-10-10-alteracao-01",
     "data": "2026-10-10",
     "tipo": "alteracao",
