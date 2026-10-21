@@ -1,6 +1,6 @@
 # RETOMADA — 3ª Corrida de Rua Portal da Amazônia 2026
 
-**Atualizado em:** 11/10/2026  
+**Atualizado em:** 21/10/2026  
 **Repositório oficial:** `izaeltec-sys/portal-amazonia-2026`  
 **Branch de referência:** `main`
 
@@ -312,6 +312,19 @@ Commits posteriores ao último estado funcional do handoff:
 - `1eb837c` — atualiza `central/README.md` com as mudanças.
 
 A lista é histórica e **não substitui a conferência do HEAD real de `main`** na próxima retomada.
+
+---
+
+### Esclarecimento de transferência de inscrição — 21/10/2026
+
+Foi incorporado à FAQ da Central e aos avisos (`informacao`) esclarecimento fiel à regra vigente do **capítulo 10.2 do Regulamento 1.2**. Não houve alteração normativa.
+
+- apenas o titular original solicita à cronometragem **Agito Esportes — (65) 99665-8832**;
+- operacionalização após encerramento das inscrições em **31/10/2026**;
+- pedido até **12/11/2026 às 12h**;
+- taxa operacional com valor informado no atendimento, sem repasse à Organização;
+- novo aviso em `central/data/avisos.json`, link para `../index.html#cancelamento`;
+- cache elevado de `portal-central-v8` para `portal-central-v9`.
 
 ---
 
