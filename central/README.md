@@ -54,6 +54,19 @@ A obrigação do alimento não é uma norma nova: foi estabelecida pelo **Adendo
 
 O cache da Central passa a ser `portal-central-v8` para atualizar os assets em dispositivos que já usaram o aplicativo/site.
 
+## Esclarecimento sobre transferência de inscrição — 21/10/2026
+
+A Central passou a esclarecer em **Dúvidas frequentes** e no aviso tipo `informacao` de 21/10/2026 as regras já publicadas no **capítulo 10.2 do Regulamento oficial 1.2**, sem mudança normativa:
+
+- somente o titular original pode solicitar a transferência;
+- o pedido é direcionado ao responsável pela cronometragem da **Agito Esportes**, WhatsApp **(65) 99665-8832**;
+- a transferência será operacionalizada após o encerramento das inscrições em **31/10/2026**;
+- limite para solicitar: **12/11/2026, às 12h**;
+- há taxa operacional, informada no atendimento, que não integra o valor da inscrição nem é destinada à Organização do evento.
+
+O comunicado aponta para `../index.html#cancelamento`, preservando o Regulamento como referência normativa.
+O cache de recursos essenciais foi elevado para `portal-central-v9`.
+
 ## Ícones
 
 A interface utiliza uma seleção local de **Tabler Icons** em um sprite SVG:
