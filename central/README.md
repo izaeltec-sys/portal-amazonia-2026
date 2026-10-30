@@ -32,7 +32,7 @@ Informações operacionais destacadas atualmente:
 
 - Alteração nº 02/2026: pequeno ajuste no percurso para melhorar a segurança e reduzir possibilidade de erro, preservando os 5 km.
 - Google Maps atualizado: `https://maps.app.goo.gl/vWJ9BCkSqAP2H5159`.
-- Strava e Garmin Connect mantêm os links anteriores; não foi verificada equivalência visual entre as três plataformas.
+- Strava e Garmin Connect mantêm os links anteriores. Segundo a Organização, o Google Maps pode representar visualmente alguns pontos de maneira ligeiramente diferente por limitações da plataforma; o percurso é único e a orientação operacional no dia da prova é a sinalização da Organização.
 - Aviso oficial destacado em `central/data/avisos.json`, Regulamento 1.3 em `/index.html#provas`.
 - Cache atualizado para `portal-central-v10`.
 
