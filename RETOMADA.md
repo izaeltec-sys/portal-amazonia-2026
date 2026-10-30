@@ -69,7 +69,7 @@ O controle de versão aparece **dentro do próprio regulamento**, na capa, rodap
 - pequena modificação no percurso dos 5 km para melhorar a segurança e reduzir erros de trajeto;
 - distância oficial de 5 km mantida;
 - novo link do Google Maps; Strava e Garmin Connect mantidos;
-- Central e avisos atualizados. O novo link foi fornecido pela Organização; a equivalência visual entre as três plataformas não foi confirmada neste atendimento.
+- Central e avisos atualizados. O novo link foi fornecido pela Organização; a Organização esclareceu que pequenas diferenças visuais no Google Maps decorrem das limitações da plataforma; o percurso operacional é único e será indicado pela sinalização no dia da prova.
 
 ---
 
