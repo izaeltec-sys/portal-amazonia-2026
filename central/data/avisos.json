@@ -1,5 +1,16 @@
 [
   {
+    "id": "2026-10-30-alteracao-02-percurso",
+    "data": "2026-10-30",
+    "tipo": "alteracao",
+    "titulo": "Ajuste no percurso oficial dos 5 km",
+    "resumo": "Pequeno ajuste no trajeto para melhorar a segurança e reduzir erros. Distância de 5 km mantida; novo mapa no Google Maps.",
+    "conteudo": "A Organização realizou uma pequena modificação no percurso oficial dos 5 km para proporcionar mais segurança aos participantes e reduzir a possibilidade de erros de trajeto. A distância permanece em 5 km. O mapa atualizado pode ser consultado pelo novo link do Google Maps: https://maps.app.goo.gl/vWJ9BCkSqAP2H5159. Os links do Strava e Garmin Connect não foram alterados. A atualização foi formalizada pela Alteração nº 02/2026, de 30/10/2026, incorporada ao Regulamento oficial versão 1.3. Em caso de diferenças entre plataformas, confira o ajuste publicado no Google Maps e siga a sinalização e as orientações oficiais no dia da prova.",
+    "link": "../index.html#provas",
+    "rotuloLink": "Consultar Regulamento atualizado",
+    "destaque": true
+  },
+  {
     "id": "2026-10-21-transferencia-inscricao",
     "data": "2026-10-21",
     "tipo": "informacao",
