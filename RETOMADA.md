@@ -1,6 +1,6 @@
 # RETOMADA — 3ª Corrida de Rua Portal da Amazônia 2026
 
-**Atualizado em:** 21/10/2026  
+**Atualizado em:** 30/10/2026  
 **Repositório oficial:** `izaeltec-sys/portal-amazonia-2026`  
 **Branch de referência:** `main`
 
@@ -35,10 +35,10 @@ O nome publicado deve continuar sendo `index.html`.
 
 Estado confirmado em 10/10/2026:
 
-- **Versão oficial vigente: 1.2**
+- **Versão oficial vigente: 1.3**
 - publicação inicial: **26/08/2026**
-- última atualização normativa: **10/10/2026**
-- instrumento vigente mais recente: **Alteração nº 01/2026**
+- última atualização normativa: **30/10/2026**
+- instrumento vigente mais recente: **Alteração nº 02/2026**
 
 O controle de versão aparece **dentro do próprio regulamento**, na capa, rodapé e Histórico de Alterações.
 
@@ -61,6 +61,15 @@ O controle de versão aparece **dentro do próprio regulamento**, na capa, rodap
 - atualização do acesso direto às inscrições;
 - atualização do procedimento/prazo para atleta de outra cidade que não tenha pessoa disponível para retirar o kit;
 - atualização da Central do Atleta para refletir o novo estado normativo.
+
+---
+
+**Versão 1.3 — 30/10/2026**
+- **Alteração nº 02/2026**;
+- pequena modificação no percurso dos 5 km para melhorar a segurança e reduzir erros de trajeto;
+- distância oficial de 5 km mantida;
+- novo link do Google Maps; Strava e Garmin Connect mantidos;
+- Central e avisos atualizados. O novo link foi fornecido pela Organização; a equivalência visual entre as três plataformas não foi confirmada neste atendimento.
 
 ---
 
@@ -190,7 +199,7 @@ O `index.html` contém gerador local do termo, impressão preenchida, termo em b
 ### Percurso oficial dos 5 km
 
 - Strava: `https://www.strava.com/routes/3543613222716777324`
-- Google Maps: `https://maps.app.goo.gl/aUVzgD4Tn5YR8m439`
+- Google Maps: `https://maps.app.goo.gl/vWJ9BCkSqAP2H5159`
 - Garmin Connect: `https://connect.garmin.com/app/course/523157690`
 - Garmin embed: `https://connect.garmin.com/embed/course/523157690`
 
@@ -221,7 +230,7 @@ A Central é uma camada de consulta rápida. **Não substitui o Regulamento**, q
 
 Estado vigente:
 
-- alinhada ao **Regulamento 1.2**;
+- alinhada ao **Regulamento 1.3**;
 - mobile-first;
 - aparência de interface de aplicativo;
 - navegação interna por telas/hash;
@@ -325,6 +334,12 @@ Foi incorporado à FAQ da Central e aos avisos (`informacao`) esclarecimento fie
 - taxa operacional com valor informado no atendimento, sem repasse à Organização;
 - novo aviso em `central/data/avisos.json`, link para `../index.html#cancelamento`;
 - cache elevado de `portal-central-v8` para `portal-central-v9`.
+
+---
+
+### Atualização do percurso — 30/10/2026
+
+Alteração nº 02/2026 formalizada no `index.html`, versão 1.3. O Google Maps do percurso passou a `https://maps.app.goo.gl/vWJ9BCkSqAP2H5159`, com motivo de segurança e redução de erros e mesma distância de 5 km. Strava e Garmin seguem com os links anteriores. Um aviso `alteracao` foi publicado na Central e o cache passou para `portal-central-v10`. O PDF publicado na plataforma de inscrições poderá continuar desatualizado até que seu responsável o substitua; encaminhar solicitação de atualização.
 
 ---
 
