@@ -17,7 +17,7 @@ Princípios:
 
 ## Estado vigente
 
-A Central está alinhada ao **Regulamento oficial versão 1.2**, atualizado em **10/10/2026** pela Alteração nº 01/2026.
+A Central está alinhada ao **Regulamento oficial versão 1.3**, atualizado em **30/10/2026** pela Alteração nº 02/2026.
 
 Informações operacionais destacadas atualmente:
 
@@ -27,6 +27,14 @@ Informações operacionais destacadas atualmente:
 - retirada de kits na King Tênis em 13 e 14/11;
 - atleta de outra cidade sem pessoa para retirar o kit deve contatar a Organização até **14h de 13/11/2026**;
 - Regulamento integral continua sendo a fonte normativa.
+
+## Ajuste de percurso — 30/10/2026
+
+- Alteração nº 02/2026: pequeno ajuste no percurso para melhorar a segurança e reduzir possibilidade de erro, preservando os 5 km.
+- Google Maps atualizado: `https://maps.app.goo.gl/vWJ9BCkSqAP2H5159`.
+- Strava e Garmin Connect mantêm os links anteriores; não foi verificada equivalência visual entre as três plataformas.
+- Aviso oficial destacado em `central/data/avisos.json`, Regulamento 1.3 em `/index.html#provas`.
+- Cache atualizado para `portal-central-v10`.
 
 ## Navegação
 
