@@ -70,6 +70,7 @@ O mapa incorporado por iframe não oferece API de overlays geográficos animados
 - Acesse \`?gravar=1\` ou toque em **Gravar tela**: oculta botões e detalhes de navegação para gravação vertical. A gravação em si é feita pela ferramenta do iPhone/Android. Não há exportação automática de vídeo no site.
 - A interação interrompe a animação e oferece **Repetir animação**.
 - Com \`prefers-reduced-motion\`, a animação é substituída por indicação estática das linhas verificadas.
+- O modo gravação reserva uma faixa inferior limpa para inserção posterior do **rodapé institucional oficial `Rodapé.pdf`**, sem reconstruí-lo ou alterar qualquer um de seus logos. **A captura bruta ainda não é mídia final para divulgação**: adicionar a camada oficial íntegra no editor de vídeo antes de publicar, conforme `DIRETRIZES_MIDIA_PORTAL_AMAZONIA_2026_FINAL(1).md`.
 - Nunca ocultar a atribuição do Google ou de outros provedores no vídeo.
 - **Direitos de uso:** o Google geralmente permite gravações de caráter informativo/instrucional com atribuição; se o material for classificado como vídeo promocional/propaganda, as diretrizes Geo do Google podem exigir aprovação prévia. Verificar antes de divulgar como publicidade. Preferir mapa padrão (não satélite) e manter créditos visíveis.
 - https://about.google/brand-resource-center/products-and-services/geo-guidelines/
@@ -92,6 +93,7 @@ O mapa incorporado por iframe não oferece API de overlays geográficos animados
 - [ ] Criar chave API web restrita ao domínio e somente Maps JavaScript API.
 - [ ] Configurar orçamento, alertas, monitoramento e cota.
 - [ ] Testar Android e iPhone (touch, zoom, acessibilidade, 9:16 e retorno ao app).
+- [ ] Renderizar/inserir sem mudanças o Rodapé.pdf oficial na faixa inferior reservada do vídeo final.
 - [ ] Verificar que atribuições do Google ficam visíveis durante a gravação.
 - [ ] Verificar licença/autorização do uso do vídeo nas redes.
 - [ ] Mesclar a branch em main; testar site público; só depois publicar aviso operacional em \`central/data/avisos.json\`.
