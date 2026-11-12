@@ -106,7 +106,8 @@ O mapa incorporado por iframe não oferece API de overlays geográficos animados
 - [ ] Confirmar documentalmente ou em campo todas as laterais indicadas como públicas.
 - [ ] Revisar a exclusão do condomínio.
 - [x] Criar chave API web restrita ao domínio de produção e somente Maps JavaScript API; remover o referenciador localhost temporário ao finalizar os testes.
-- [x] Configurar orçamento e alertas de R$ 10/mês; verificar cotas: Map loads per day é Ilimitado e não ajustável.\n- [ ] Revisar consumo/limites novamente antes da publicação; não há teto de cobrança automático.
+- [x] Configurar orçamento e alertas de R$ 10/mês; verificar cotas: Map loads per day é Ilimitado e não ajustável.
+- [ ] Revisar consumo/limites novamente antes da publicação; não há teto de cobrança automático.
 - [ ] Testar Android e iPhone (touch, zoom, acessibilidade, 9:16 e retorno ao app).
 - [ ] Renderizar/inserir sem mudanças o Rodapé.pdf oficial na faixa inferior reservada do vídeo final.
 - [ ] Verificar que atribuições do Google ficam visíveis durante a gravação.
