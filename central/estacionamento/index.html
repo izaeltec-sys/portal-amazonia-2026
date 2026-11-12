@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#063f2a">
+<meta name="description" content="Orientações de estacionamento da 3ª Corrida de Rua Portal da Amazônia 2026, com mapa interativo.">
+<title>Orientação de estacionamento | Portal da Amazônia 2026</title>
+<style>
+:root{--green:#063f2a;--green-2:#0d5a3b;--gold:#d6a62b;--cream:#f4f1e8;--paper:#fffdf9;--ink:#16372b;--muted:#5d6e63;--red:#c93645;--ok:#17845a;--shadow:0 15px 45px rgba(0,0,0,.14)}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+html{background:var(--cream)}
+body{font:500 15px/1.45 Inter,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);overflow:hidden}
+button,a{font:inherit}
+button{cursor:pointer}
+button:disabled{opacity:.45;cursor:not-allowed}
+a{color:inherit}
+.app{max-width:800px;min-height:100%;height:100dvh;display:flex;flex-direction:column;margin:0 auto;background:var(--paper);box-shadow:0 0 65px rgba(6,63,42,.14)}
+.header{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--cream);padding:calc(env(safe-area-inset-top) + 11px) 15px 12px;z-index:15;border-bottom:1px solid #e0e1d4}
+.back{font-size:12px;text-decoration:none;font-weight:900;color:var(--green);border:1px solid #d6dbd2;border-radius:14px;padding:8px 10px;background:#fff;flex-shrink:0}
+.brand{min-width:0;text-align:center;line-height:1.12}
+.brand small{display:block;font-size:10px;letter-spacing:.11em;text-transform:uppercase;font-weight:900;color:#8a6521}
+.brand strong{display:block;font-size:15px;letter-spacing:-.03em;color:var(--green)}
+.rec{font-size:11px;background:var(--green);color:white;border:0;padding:10px 11px;border-radius:13px;font-weight:850;white-space:nowrap}
+.headline{background:linear-gradient(110deg,#083b2c,#0e6542);color:white;padding:13px 18px 14px;text-align:center;border-bottom:3px solid var(--gold)}
+.headline .eyebrow{color:#f5d68a;font-size:10px;text-transform:uppercase;font-weight:900;letter-spacing:.14em}
+.headline h1{font-size:clamp(19px,4.3vw,28px);line-height:1.1;letter-spacing:-.035em;margin:4px 0 0}
+.stage{position:relative;flex:1;min-height:230px;background:#e2e8e1;overflow:hidden}
+#map,#fallback{position:absolute;inset:0;height:100%;width:100%}
+#map{z-index:1}
+#fallback{z-index:2;background:#e7ecdf}
+#fallback iframe{height:100%;width:100%;border:0}
+#fallback[hidden]{display:none}
+.legend{position:absolute;z-index:4;left:12px;top:12px;display:flex;flex-direction:column;gap:6px;pointer-events:none;filter:drop-shadow(0 2px 4px rgba(0,0,0,.18))}
+.legend span{display:flex;align-items:center;gap:7px;width:max-content;max-width:calc(100vw - 30px);font-size:11px;font-weight:900;padding:7px 9px;background:rgba(255,253,247,.96);border:1px solid rgba(255,255,255,.65);border-radius:999px;color:var(--green)}
+.dot{display:inline-block;height:10px;width:10px;border-radius:50%}
+.dot.red{background:var(--red)}
+.dot.green{background:var(--ok)}
+.legend.pending{display:none}
+.overlay{position:absolute;z-index:5;bottom:clamp(15px,4vh,40px);left:12px;right:12px;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.message{background:rgba(255,253,247,.97);border-left:6px solid var(--gold);box-shadow:var(--shadow);padding:14px 18px;border-radius:16px;max-width:640px;min-height:78px;display:flex;flex-direction:column;justify-content:center;gap:3px;text-align:center;transform:translateY(0);transition:opacity .3s,transform .3s;width:100%}
+.message strong{font-size:clamp(18px,5vw,25px);line-height:1.15;letter-spacing:-.04em;color:var(--green);font-weight:1000}
+.message small{font-size:12px;line-height:1.35;color:var(--muted);font-weight:750}
+.message.red{border-color:var(--red)}.message.red strong{color:#a62638}
+.message.green{border-color:var(--ok)}.message.green strong{color:#096f45}
+.message.hide{opacity:0;transform:translateY(14px)}
+.action{position:absolute;right:12px;top:12px;z-index:8}
+.action button{display:block;background:var(--paper);color:var(--green);border:1px solid rgba(6,63,42,.15);border-radius:999px;box-shadow:0 4px 16px rgba(0,0,0,.14);padding:9px 12px;font-weight:900;font-size:12px}
+.action button[hidden]{display:none}
+.footer{background:var(--paper);border-top:1px solid #dae1d9;padding:12px 14px calc(env(safe-area-inset-bottom) + 14px);display:flex;align-items:center;gap:12px;justify-content:space-between}
+.footer p{font-size:12px;color:var(--muted);margin:0;line-height:1.4}
+.footer strong{color:var(--green)}
+.footer a{flex:0 0 auto;color:#114e35;font-size:11px;font-weight:900;text-decoration:none;border:1px solid #d9e3da;padding:9px 10px;border-radius:12px}
+.state{display:none;background:#fff4da;color:#6d5213;padding:10px 14px;font-size:12px;line-height:1.35}
+.state.show{display:block}
+.editor{display:none;z-index:11;position:absolute;left:10px;top:55px;right:10px;max-width:450px;max-height:calc(100% - 130px);overflow:auto;background:rgba(255,253,247,.97);border:1px solid #eadfb8;border-radius:16px;padding:12px;box-shadow:var(--shadow)}
+.editor.show{display:block}
+.editor strong{font-size:13px}
+.editor p{font-size:11px;margin:6px 0 10px;color:var(--muted)}
+.editor-tools{display:flex;gap:6px;flex-wrap:wrap}
+.editor-tools button{background:var(--cream);border:1px solid #d8dacf;border-radius:9px;padding:7px;font-size:11px;font-weight:850}
+.editor-tools button.active{background:var(--green);color:#fff}
+.editor #editorStatus{margin:8px 0;font-size:12px}
+.editor textarea{width:100%;min-height:95px;font:11px/1.4 monospace;color:#123926;border-radius:9px;border:1px solid #d1ddd4;resize:vertical}
+body.record .header .back,body.record .header .rec,body.record .footer,body.record .action,body.record .state{display:none}
+body.record .header{justify-content:center;padding:calc(env(safe-area-inset-top) + 8px) 10px 9px}
+body.record .headline{padding:10px 14px}
+body.record .brand strong{font-size:15px}
+body.record .overlay{bottom:clamp(26px,9vh,96px)}
+body.record .message{padding:20px 18px;min-height:94px}
+body.record .message strong{font-size:clamp(23px,5.7vw,30px)}
+body.record .legend{top:18px}
+@media(min-width:760px){.app{height:min(950px,100dvh);min-height:600px;margin:0 auto}.footer{padding-bottom:15px}.headline h1{font-size:25px}}
+@media(max-height:620px){.footer{padding-top:7px;padding-bottom:8px}.headline{padding:7px 12px}.message{padding:9px 12px;min-height:60px}.message strong{font-size:17px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="header">
+<a class="back" href="../#avisos" aria-label="Voltar aos avisos da Central">‹ Central</a>
+<div class="brand"><small>3ª Corrida de Rua</small><strong>Portal da Amazônia 2026</strong></div>
+<button class="rec" type="button" id="recordButton" aria-label="Ativar modo de gravação">Gravar tela</button>
+</header>
+<div class="headline"><div class="eyebrow">Orientação aos atletas e acompanhantes</div><h1>Onde estacionar no dia da corrida?</h1></div>
+<div id="status" role="status" aria-live="polite" class="state"></div>
+<main class="stage">
+<div id="map" role="application" aria-label="Mapa interativo de orientação de estacionamento nas imediações do SEST SENAT"></div>
+<div id="fallback"><iframe src="https://www.google.com/maps?q=-12.7189583%2C-60.1019988&z=17&output=embed" title="Mapa real da região do SEST SENAT, Vilhena" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+<div id="legend" class="legend pending" aria-hidden="true"><span><i class="dot red"></i> Rua da largada</span><span><i class="dot green"></i> Ruas laterais verificadas</span></div>
+<div class="action"><button type="button" id="replay" hidden>↻ Repetir animação</button></div>
+<div class="overlay"><div class="message" id="message" aria-live="polite"><strong>Orientação de estacionamento</strong><small>Prefira vias públicas laterais. Mantenha a Rua Mato Grosso livre para a largada e chegada.</small></div></div>
+<div class="editor" id="editor">
+<strong>Editor local de trechos — somente conferência</strong>
+<p>Clique no mapa para adicionar pontos à linha selecionada. Valide as ruas públicas no local; nunca marque vias internas do condomínio. Nenhum dado é enviado ao servidor.</p>
+<div class="editor-tools">
+<button type="button" id="editRed" class="active">Linha vermelha</button>
+<button type="button" id="editGreen">Rua lateral</button>
+<button type="button" id="newGreen">Nova lateral</button>
+<button type="button" id="undoPoint">Desfazer ponto</button>
+<button type="button" id="export">Copiar JSON</button>
+</div>
+<div id="editorStatus">Clique no mapa para marcar a Rua Mato Grosso.</div>
+<textarea id="geometry" aria-label="Coordenadas JSON para validação" readonly></textarea>
+</div>
+</main>
+<footer class="footer">
+<p><strong>Chegue com antecedência.</strong> Ajude a manter a área de largada livre. As orientações não dispensam o cumprimento das regras de trânsito e sinalização local.</p>
+<a href="https://maps.app.goo.gl/LEY2Ur9a1TaQpM7q8" target="_blank" rel="noopener">Abrir Google Maps</a>
+</footer>
+</div>
+<script defer src="./config.js"></script>
+<script defer src="./parking.js"></script>
+</body>
+</html>
