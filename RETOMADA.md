@@ -416,3 +416,11 @@ Quando houver trabalho no Regulamento, Central ou mídia:
 O prompt completo de retomada está em:
 
 `PROMPT_NOVO_CHAT.md`
+
+---
+
+## 10. Desenvolvimento isolado — estacionamento (11/11/2026)
+
+Branch experimental: `feat/central-parking-google-maps` (não mesclada em `main`). Módulo `central/estacionamento/` com Google Maps JavaScript API, animação de 14 s, visual para gravação de tela e editor local de segmentos.
+
+**Bloqueios de publicação:** chave Maps JavaScript API corretamente restrita e faturamento/cotas configurados; confirmação em campo dos trechos da Rua Mato Grosso e laterais públicas, com exclusão do condomínio. Até isso ocorrer, `approved:false` e caminhos vazios. A Central publicada não foi modificada. Leia `central/estacionamento/README.md` antes de ativar.
