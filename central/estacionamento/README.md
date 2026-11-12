@@ -85,13 +85,28 @@ O mapa incorporado por iframe não oferece API de overlays geográficos animados
 - Sem internet: o mapa não funciona; o módulo não promete uso offline.
 - O recurso **não usa imagens de satélite copiadas, tiles baixados ou mapa redesenhado por IA**.
 
+
+### Situação real — Google Cloud em 11/11/2026
+
+- Projeto exclusivo criado: **Portal Amazonia 2026 - Mapas**, ID `portal-amazonia-2026-mapas`.
+- A conta Google passou pela verificação solicitada e o Console mostra **avaliação gratuita**, créditos disponíveis, 90 dias restantes naquele momento e **sem upgrade para conta paga**.
+- **Maps JavaScript API ativada** no projeto exclusivo.
+- Chave web salva como **Portal Amazonia 2026 - Maps JS (GitHub Pages)**, restringida a **referenciadores HTTP** e **somente Maps JavaScript API**. A chave NÃO deve ser reproduzida em documentação.
+- Sites atualmente autorizados: `https://izaeltec-sys.github.io/*` e **temporariamente** `http://localhost:8000/*` para o teste no Vostro. **Remover o referenciador localhost ao concluir a homologação.**
+- Orçamento do Google Cloud criado e confirmado: **R$ 10 por mês**, nome `Portal Amazonia 2026 - Maps JS - alerta mensal`, filtrado para o projeto da corrida, com alertas aos administradores em **50%, 90% e 100%**; **não é teto de gastos**.
+- Na tela de cotas do Maps JavaScript API, `Map loads per day` aparece **Ilimitado** e **Ajustável: Não**. Portanto a promessa inicial de 250 carregamentos/dia como bloqueio **não foi implantada**; a proteção financeira nesse momento é avaliação gratuita sem upgrade + orçamento de alerta + restrição da chave.
+- No Vostro foi criada uma prévia **somente local** em `http://localhost:8000/index.html?editor=1`, que **carregou com sucesso o mapa real do Google**, usando a chave local temporária. O arquivo local `config.js` contém a chave web somente para teste; **não subir esse arquivo local com chave no repositório sem revisão**.
+- Código do editor recebeu botão **Ocultar editor / Mostrar editor** para permitir selecionar trechos sem o painel cobrir o mapa, e a mensagem foi elevada para preservar os créditos/branding do Google.
+- **Pendente:** confirmação dos trechos geográficos públicos e da faixa da Rua Mato Grosso; animação validada visualmente com caminhos reais; testes móveis; inserir o rodapé oficial no vídeo final; remover localhost da chave; mesclar a branch em main.
+- Na última tentativa de atualização/verificação da prévia local, o agente remoto do Vostro não respondeu; **não afirmar que a atualização do botão chegou ao navegador**. A versão correta está no GitHub da branch.
+
 ## Aceite antes de mesclar em main
 
 - [ ] Confirmar trechos da Rua Mato Grosso livres de estacionamento com a organização.
 - [ ] Confirmar documentalmente ou em campo todas as laterais indicadas como públicas.
 - [ ] Revisar a exclusão do condomínio.
-- [ ] Criar chave API web restrita ao domínio e somente Maps JavaScript API.
-- [ ] Configurar orçamento, alertas, monitoramento e cota.
+- [x] Criar chave API web restrita ao domínio de produção e somente Maps JavaScript API; remover o referenciador localhost temporário ao finalizar os testes.
+- [x] Configurar orçamento e alertas de R$ 10/mês; verificar cotas: Map loads per day é Ilimitado e não ajustável.\n- [ ] Revisar consumo/limites novamente antes da publicação; não há teto de cobrança automático.
 - [ ] Testar Android e iPhone (touch, zoom, acessibilidade, 9:16 e retorno ao app).
 - [ ] Renderizar/inserir sem mudanças o Rodapé.pdf oficial na faixa inferior reservada do vídeo final.
 - [ ] Verificar que atribuições do Google ficam visíveis durante a gravação.
