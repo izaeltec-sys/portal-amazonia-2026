@@ -107,8 +107,8 @@
         visible: true,
         strokeOpacity: 0.9,
         icons: [{
-          icon: { path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-            strokeColor: "#fff", fillColor: "#fff", fillOpacity: 1, strokeWeight: 1, scale: 3 },
+          icon: { path: google.maps.SymbolPath.CIRCLE,
+            strokeColor: "#fff", fillColor: "#fff", fillOpacity: 1, strokeWeight: 1, scale: 4 },
           offset: arrowOffset
         }]
       });
