@@ -181,3 +181,11 @@ Quando o conteúdo modificar regra oficial, prazo, direito, obrigação, categor
 ## Página principal existente
 
 O arquivo `/index.html` continua sendo o Regulamento oficial. A Central permanece em `/central/` para não quebrar links já divulgados.
+
+## Orientação animada de estacionamento — preparação 11/11/2026
+
+A branch `feat/central-parking-google-maps` adiciona uma página isolada em `central/estacionamento/`, com mapa Google real, animação de 14 segundos, modo de gravação e editor geográfico para validar trechos no mapa. Um link contextual foi acrescentado à tela Avisos e outro à tela Evento, **somente na branch de preparação**. O cache foi incrementado para `portal-central-v11` nesta branch.
+
+**Não está pronta para publicação:** antes de mesclar em `main`, criar chave Maps JavaScript API restrita por domínio e API, e aprovar a geometria real da Rua Mato Grosso e de cada via lateral pública, excluindo inteiramente o condomínio. Nenhuma chave foi cadastrada nem linha foi validada. Em ausência dessas condições, a página mostra o Google Maps incorporado e orientação textual, sem fingir animação ativa.
+
+Procedimentos completos em `central/estacionamento/README.md`.
