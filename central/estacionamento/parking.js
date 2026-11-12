@@ -158,6 +158,13 @@
   }
   function initEditor() {
     editor.classList.add("show");
+    var toggle = document.getElementById("editorToggle");
+    toggle.hidden = false;
+    toggle.addEventListener("click", function () {
+      var visible = editor.classList.toggle("show");
+      toggle.textContent = visible ? "Ocultar editor" : "Mostrar editor";
+      toggle.setAttribute("aria-expanded", String(visible));
+    });
     editRed = config.redRoad && Array.isArray(config.redRoad.path) ? config.redRoad.path.slice() : [];
     editGreens = Array.isArray(config.sideRoads) ? config.sideRoads.map(function (r) { return r.path.slice(); }) : [];
     map.addListener("click", function (ev) {
