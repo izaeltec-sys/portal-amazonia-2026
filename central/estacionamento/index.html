@@ -56,6 +56,8 @@ a{color:inherit}
 .state.show{display:block}
 .editor{display:none;z-index:11;position:absolute;left:10px;top:55px;right:10px;max-width:450px;max-height:calc(100% - 130px);overflow:auto;background:rgba(255,253,247,.97);border:1px solid #eadfb8;border-radius:16px;padding:12px;box-shadow:var(--shadow)}
 .editor.show{display:block}
+.record-footer-reserved{display:none}
+body.record .record-footer-reserved{display:block;flex:0 0 auto;height:clamp(78px,12vh,160px);background:var(--cream);border-top:1px solid #d9dfd6}
 .editor strong{font-size:13px}
 .editor p{font-size:11px;margin:6px 0 10px;color:var(--muted)}
 .editor-tools{display:flex;gap:6px;flex-wrap:wrap}
@@ -105,8 +107,9 @@ body.record .legend{top:18px}
 <textarea id="geometry" aria-label="Coordenadas JSON para validação" readonly></textarea>
 </div>
 </main>
+<div class="record-footer-reserved" aria-hidden="true"></div>
 <footer class="footer">
-<p><strong>Chegue com antecedência.</strong> Ajude a manter a área de largada livre. As orientações não dispensam o cumprimento das regras de trânsito e sinalização local.</p>
+<p><strong>Chegue com antecedência.</strong> Ajude a manter a área de largada livre. As orientações não dispensam o cumprimento das regras de trânsito e sinalização local. Para publicar o vídeo, inserir o Rodapé.pdf oficial na faixa reservada.</p>
 <a href="https://maps.app.goo.gl/LEY2Ur9a1TaQpM7q8" target="_blank" rel="noopener">Abrir Google Maps</a>
 </footer>
 </div>
