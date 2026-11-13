@@ -3,9 +3,9 @@
     "id": "2026-11-12-inscritos-dashboard",
     "data": "2026-11-12",
     "tipo": "informacao",
-    "titulo": "Lista de inscritos e estatísticas disponível",
-    "resumo": "Consulte seu nome ou o de seu filho e veja quantidades por Adulto, Escolar, PCD e Kids.",
-    "conteudo": "A Central do Atleta agora oferece uma lista pesquisável das inscrições confirmadas publicadas pela Agito Esportes, com filtros de nome, faixa etária, cidade e equipe. São quatro grupos: Adulto 5 km, Escolar 5 km, PCD 5 km e Kids. Os dados são sincronizados periodicamente e exibem a data da atualização. Se a inscrição não aparecer, consulte também a lista original da Agito e procure a plataforma em caso de divergência.",
+    "titulo": "Inscritos: novo painel e filtros por categoria, sexo e faixa",
+    "resumo": "Consulte as inscrições por 5 KM, PCD, KIDS e ESCOLAR. Agora com filtros em etapas e atalho do termo para menores.",
+    "conteudo": "A Central do Atleta reúne a lista pública da Agito com quatro grupos claros: 5 KM, PCD 5 km, KIDS e ESCOLAR 5 km. Consulte por sexo informado, faixa etária, cidade, equipe ou nome. Atenção: a Agito não informa o sexo das inscrições feitas nas faixas etárias mistas, portanto os filtros Masculino e Feminino não representam todos os atletas. Há também atalho para gerar o Termo de Responsabilidade de menores de 18 anos nos 5 km (14 a 17 anos); esse termo não se aplica à Corrida Kids. A lista mostra a última atualização e oferece acesso à fonte oficial.",
     "link": "./inscritos/",
     "rotuloLink": "Consultar inscritos e estatísticas",
     "destaque": true
