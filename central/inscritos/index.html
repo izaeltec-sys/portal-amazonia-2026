@@ -182,6 +182,18 @@ input:focus,select:focus{border-color:#357c55}
 @media(max-width:700px){.hero .shell{padding-top:27px;padding-bottom:28px}.hero h1{font-size:33px}.overview-main{padding:16px}.stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.stat-card{padding:12px}.stat-kicker{min-height:0}.stat-value{font-size:31px}.filter-panel{padding:16px}.primary-filters{grid-template-columns:1fr}.secondary-filters{grid-template-columns:1fr}.chart-panels{grid-template-columns:1fr}.highlights{gap:7px}.highlight{padding:13px}.highlight strong{font-size:23px}.highlight span{font-size:11px}.support-banner{flex-direction:column;align-items:stretch;padding:16px}.support-banner a{text-align:center}.donut{width:127px;height:127px}.donut:before{width:88px;height:88px}.mix-panel{gap:11px}.mix-legend{width:56%}.gender-chip{font-size:12px;min-height:42px;padding:7px 11px}.gender-options{gap:6px}.athlete-list{grid-template-columns:1fr}}
 @media(max-width:380px){.mix-panel{flex-direction:column}.mix-legend{width:100%}.stat-card{min-width:0}.stat-caption{font-size:9px}.highlights{grid-template-columns:1fr 1fr}.highlights .highlight:last-child{grid-column:span 2}.total-label{font-size:11px}}
 
+
+/* Gráficos legíveis: nomes à esquerda, totais isolados à direita. */
+.bar-line{display:flex;align-items:baseline;justify-content:space-between;gap:12px;min-width:0;margin-bottom:7px}
+.bar-line .bar-label{display:block;min-width:0;flex:1 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:1.4}
+.bar-line .bar-number{display:block;min-width:2.3ch;flex:0 0 auto;text-align:right;font-size:13px;font-weight:900;line-height:1.4}
+.chart-subheading{margin:17px 0 8px;border-top:1px solid #e7ebe2;padding-top:12px;font-size:12px;line-height:1.4;font-weight:900;color:#547562;letter-spacing:.025em}
+.chart-panel .chart-subheading:first-of-type{margin-top:12px;border-top:0;padding-top:0}
+.bar-list[hidden],.chart-subheading[hidden]{display:none!important}
+.bar-item{min-width:0}
+.bar-item:hover{background:#f1f7ed}
+@media(max-width:700px){.bar-line .bar-label{font-size:12px}.bar-line .bar-number{font-size:12px}.bar-line{gap:14px}}
+
 </style>
 </head>
 <body>
@@ -246,7 +258,7 @@ input:focus,select:focus{border-color:#357c55}
 <div class="highlight"><strong id="teamsMetric">—</strong><span>Equipes declaradas</span></div>
 </div>
 <div class="chart-panels">
-<div class="chart-panel"><h3 id="ageChartTitle">Faixas etárias</h3><p>Toque em uma faixa para filtrar os atletas.</p><div class="bar-list" id="ageBars"></div></div>
+<div class="chart-panel"><h3 id="ageChartTitle">Categorias e faixas etárias</h3><p id="ageChartDescription">Toque em uma categoria ou faixa para filtrar os atletas.</p><div class="chart-subheading" id="categoryBarsTitle">Categorias da prova</div><div class="bar-list" id="categoryBars"></div><div class="chart-subheading" id="ageBarsTitle">Faixas etárias · 5 KM e KIDS</div><div class="bar-list" id="ageBars"></div></div>
 <div class="chart-panel"><h3>Origem dos atletas</h3><p>Municípios que mais aparecem nos filtros atuais.</p><div class="bar-list" id="cityBars"></div></div>
 </div>
 </section>
