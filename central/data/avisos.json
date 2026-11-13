@@ -1,5 +1,16 @@
 [
   {
+    "id": "2026-11-12-inscritos-dashboard",
+    "data": "2026-11-12",
+    "tipo": "informacao",
+    "titulo": "Lista de inscritos e estatísticas disponível",
+    "resumo": "Consulte seu nome ou o de seu filho e veja quantidades por Adulto, Escolar, PCD e Kids.",
+    "conteudo": "A Central do Atleta agora oferece uma lista pesquisável das inscrições confirmadas publicadas pela Agito Esportes, com filtros de nome, faixa etária, cidade e equipe. São quatro grupos: Adulto 5 km, Escolar 5 km, PCD 5 km e Kids. Os dados são sincronizados periodicamente e exibem a data da atualização. Se a inscrição não aparecer, consulte também a lista original da Agito e procure a plataforma em caso de divergência.",
+    "link": "./inscritos/",
+    "rotuloLink": "Consultar inscritos e estatísticas",
+    "destaque": true
+  },
+  {
     "id": "2026-10-30-alteracao-02-percurso",
     "data": "2026-10-30",
     "tipo": "alteracao",
