@@ -91,6 +91,97 @@ input::placeholder{color:#78877d}
 @media(max-width:650px){.shell{padding-left:14px;padding-right:14px}.main{padding:19px 14px 30px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stat{padding:14px}.stat.selected{padding:13px}.stat-name{font-size:12px}.data-grid,.athlete-list{grid-template-columns:1fr}.panel{padding:15px}.hero .shell{padding-top:22px;padding-bottom:25px}.hero p{font-size:13px}.section-heading{align-items:flex-start}.filter-grid{gap:9px}.filter-grid label span{font-size:11px}.athlete{padding:14px}.total-row{padding:14px}}
 @media(max-width:380px){.filter-grid{grid-template-columns:1fr}.search-row{flex-wrap:wrap}.reset{width:100%}.brand{font-size:10px}.back{padding:8px}.stats{gap:8px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+
+/* Dashboard v2 — leitura mobile-first com hierarquia em três etapas */
+:root{--bg:#f4f2e9;--emerald:#084934;--gold:#caa245;--forest:#003c2c;--subtle:#edf2ea}
+body{background:var(--bg);color:#233f30}
+.topbar{box-shadow:0 3px 12px rgba(4,45,29,.025)}
+.topbar .shell{padding-top:15px;padding-bottom:15px}
+.brand small{color:#a98023}
+.hero{position:relative;background:radial-gradient(circle at 90% 8%,rgba(216,178,77,.16) 0,transparent 32%),linear-gradient(124deg,#003b2a,#0d6347 76%);border-bottom:0;overflow:hidden}
+.hero:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.085);width:370px;height:370px;border-radius:50%;right:-140px;top:-185px;pointer-events:none}
+.hero .shell{padding-top:35px;padding-bottom:40px;position:relative;z-index:1}
+.hero h1{font-size:clamp(32px,5vw,49px);font-weight:950;max-width:750px;line-height:1.07;letter-spacing:-.052em}
+.hero p{line-height:1.57;color:#e7f0e7;max-width:710px}
+.hero .updated{font-size:11px;background:rgba(0,0,0,.12);border:1px solid rgba(255,255,255,.22);margin-top:17px}
+.main{padding-top:22px}
+.section{margin-bottom:23px}
+.overview-panel{display:grid;grid-template-columns:minmax(0,1fr) 275px;gap:16px;align-items:stretch;margin-bottom:20px}
+.overview-main{background:linear-gradient(140deg,#fffdf8,#f6f8ed);border:1px solid #e3e5da;border-radius:24px;box-shadow:var(--shadow);padding:22px}
+.total-meta{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.total-label{font-size:13px;text-transform:uppercase;letter-spacing:.08em;font-weight:850;color:#5f7469}
+.total-big{display:block;color:#063d2c;font-size:clamp(47px,7vw,68px);font-weight:960;letter-spacing:-.075em;line-height:1.04;margin:5px 0 1px}
+.total-sub{color:#66796a;font-size:12px}
+.pill-button{border-color:#b4d0c0}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px}
+.stat-card{color:#103c2e;text-align:left;cursor:pointer;border-radius:15px;border:1px solid #e3e6dc;background:white;padding:13px 13px 14px;box-shadow:0 4px 16px rgba(0,0,0,.025);display:flex;flex-direction:column;min-width:0;gap:3px;position:relative;overflow:hidden}
+.stat-card:before{content:"";position:absolute;left:0;top:0;height:4px;width:100%;background:var(--group-color)}
+.stat-card.selected{outline:2px solid var(--group-color);outline-offset:0;background:#eff5ed}
+.stat-card:hover{border-color:#9cbbab}
+.stat-kicker{font-weight:840;color:#45594d;font-size:12px;line-height:1.2;min-height:30px}
+.stat-value{color:var(--group-color);font-size:clamp(25px,3.1vw,34px);font-weight:930;letter-spacing:-.045em;line-height:1.05}
+.stat-caption{font-size:10px;color:#718176}
+.mix-panel{background:#fffdf8;border-radius:24px;border:1px solid #e3e5da;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;gap:12px;box-shadow:var(--shadow)}
+.mix-title{font-size:12px;font-weight:900;color:#204733;text-transform:uppercase;letter-spacing:.045em}
+.donut{width:142px;height:142px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:conic-gradient(#07583e 0% 85%,#c69b39 85% 89%,#49a078 89% 96%,#8d9e85 96% 100%);position:relative}
+.donut:before{content:"";width:101px;height:101px;border-radius:50%;background:#fffdf8;position:absolute}
+.donut-center{position:relative;font-size:12px;line-height:1.25;text-align:center;font-weight:900;color:#224a38}
+.mix-legend{display:flex;flex-direction:column;width:100%;gap:2px}
+.legend-item{background:none;color:#1e4734;border:1px solid transparent;border-radius:9px;display:flex;gap:8px;align-items:center;text-align:left;min-height:31px;padding:3px 6px;cursor:pointer}
+.legend-item.selected{background:#e9f3ed;border-color:#b9cfc0}
+.legend-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.legend-name{flex:1;font-size:11px;color:#607166}
+.legend-number{font-size:11px;font-variant-numeric:tabular-nums}
+.filter-panel{padding:21px;border:1px solid #dde7dc;border-radius:23px;background:white;box-shadow:var(--shadow)}
+.filter-eyebrow{color:#ad812c;font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:900}
+.filter-head{display:flex;justify-content:space-between;align-items:center;gap:9px;flex-wrap:wrap}
+.filter-head h2{margin:3px 0 0}
+.step{margin-top:17px}
+.step-heading{display:flex;align-items:center;gap:9px;font-weight:850;font-size:14px;color:#124b35;margin:0 0 9px}
+.step-number{background:#e9f2e6;color:#16573d;border-radius:9px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:950;min-width:26px;height:26px}
+.gender-options{display:flex;flex-wrap:wrap;gap:8px}
+.gender-chip{background:#f7f8f4;color:#2c4c39;border:1px solid #ccd9cc;border-radius:999px;display:flex;gap:9px;align-items:center;justify-content:space-between;min-height:43px;padding:8px 14px;font-size:13px;font-weight:800}
+.gender-chip b{font-size:11px;padding:1px 7px;background:#e9eee4;border-radius:999px;color:#335b43}
+.gender-chip.selected{background:#07553d;color:#fff;border-color:#07553d}
+.gender-chip.selected b{background:#206d51;color:#fff}
+.gender-help{padding:9px 12px;background:#f6f4eb;border-left:3px solid #d2a849;border-radius:4px 11px 11px 4px;color:#5f6958;font-size:12px;margin:11px 0 0}
+.primary-filters{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:10px}
+.secondary-filters{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.field{gap:6px}
+.field>span{font-size:12px}
+input,select{background:#fcfdf9;min-height:49px;border:1px solid #c7d7c8}
+input:focus,select:focus{border-color:#357c55}
+.support-banner{border:1px solid #e6d4a8;border-radius:19px;background:linear-gradient(112deg,#fff7e4,#fffdf4);display:flex;justify-content:space-between;align-items:center;gap:17px;padding:18px 21px;margin-bottom:22px}
+.support-banner h2{font-size:18px;margin:0 0 4px;color:#59441f}
+.support-banner p{font-size:12px;color:#695d46;margin:0;max-width:700px}
+.support-banner a{border-radius:11px;padding:11px 16px;white-space:nowrap;text-decoration:none;background:#d8a336;color:#1f301d;font-size:12px;font-weight:900}
+.highlights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin-bottom:17px}
+.highlight{background:#fefdf8;border:1px solid #e1e5d9;border-radius:16px;padding:17px 20px;display:flex;flex-direction:column;gap:2px}
+.highlight strong{font-size:26px;line-height:1.2;color:#0b533a;font-weight:930;letter-spacing:-.05em}
+.highlight span{font-size:12px;color:#6a776d}
+.chart-panels{display:grid;grid-template-columns:1.15fr 1fr;gap:15px}
+.chart-panel{background:white;border:1px solid #e1e7de;border-radius:19px;padding:19px;box-shadow:0 6px 25px rgba(0,0,0,.035)}
+.chart-panel h3{margin:0;color:#0e4933;font-size:17px}
+.chart-panel p{margin:4px 0 0;font-size:12px;color:#697a6d}
+.bar-list{gap:11px}
+.bar-track{height:10px}
+.bar-fill{background:linear-gradient(90deg,#0d6340,#b1c685)}
+.athlete-list{gap:10px}
+.athlete-card{border-radius:15px;padding:15px 17px;background:#fffefb;border:1px solid #e0e7dc}
+.athlete-card:hover{border-color:#b9d2c0;box-shadow:0 5px 16px rgba(0,0,0,.04)}
+.athlete-top{align-items:flex-start}
+.athlete-name{font-size:15px;color:#0c4330;overflow-wrap:anywhere}
+.group-pill{color:#0d573b;font-size:10px;font-weight:900;text-transform:uppercase;background:#e9f3e8;border-radius:99px;padding:4px 9px;white-space:nowrap}
+.athlete-details{display:flex;flex-wrap:wrap;gap:6px 9px;margin-top:11px}
+.athlete-details span{font-size:11px;background:#f1f4ec;border-radius:7px;padding:3px 7px;color:#617367}
+.results{margin-top:22px}
+.results-header{padding:0 2px}
+.active-summary{display:inline-flex;color:#4a755d;border:1px solid #cadec8;background:#eaf3e7;border-radius:999px;padding:5px 10px;font-size:11px;font-weight:800;max-width:100%;overflow-wrap:anywhere}
+.note-policy{font-size:12px;color:#6d745c;line-height:1.5}
+@media(max-width:960px){.overview-panel{grid-template-columns:1fr}.mix-panel{flex-direction:row;gap:27px;justify-content:space-around}.mix-legend{width:min(245px,55%)}}
+@media(max-width:700px){.hero .shell{padding-top:27px;padding-bottom:28px}.hero h1{font-size:33px}.overview-main{padding:16px}.stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.stat-card{padding:12px}.stat-kicker{min-height:0}.stat-value{font-size:31px}.filter-panel{padding:16px}.primary-filters{grid-template-columns:1fr}.secondary-filters{grid-template-columns:1fr}.chart-panels{grid-template-columns:1fr}.highlights{gap:7px}.highlight{padding:13px}.highlight strong{font-size:23px}.highlight span{font-size:11px}.support-banner{flex-direction:column;align-items:stretch;padding:16px}.support-banner a{text-align:center}.donut{width:127px;height:127px}.donut:before{width:88px;height:88px}.mix-panel{gap:11px}.mix-legend{width:56%}.gender-chip{font-size:12px;min-height:42px;padding:7px 11px}.gender-options{gap:6px}.athlete-list{grid-template-columns:1fr}}
+@media(max-width:380px){.mix-panel{flex-direction:column}.mix-legend{width:100%}.stat-card{min-width:0}.stat-caption{font-size:9px}.highlights{grid-template-columns:1fr 1fr}.highlights .highlight:last-child{grid-column:span 2}.total-label{font-size:11px}}
+
 </style>
 </head>
 <body>
@@ -99,52 +190,74 @@ input::placeholder{color:#78877d}
 <div class="brand"><small>3ª Corrida de Rua</small>Portal da Amazônia 2026</div>
 </div></header>
 <section class="hero"><div class="shell">
-<div class="eyebrow">Central do Atleta · Lista pública da Agito</div>
-<h1>Inscritos e Estatísticas</h1>
-<p>Encontre seu nome, confira a categoria da inscrição e acompanhe a distribuição dos participantes. Adulto, Escolar e PCD disputam 5 km; a Corrida Kids tem distâncias por faixa etária.</p>
-<div class="updated" id="lastUpdate" aria-live="polite">Consultando atualização...</div>
+<div class="eyebrow">3ª Corrida de Rua · Vilhena / RO</div>
+<h1>Inscritos &amp; Estatísticas</h1>
+<p>Encontre seu nome ou o de seu filho, explore os números da corrida e confira a inscrição na categoria correta. Dados publicados pela Agito Esportes.</p>
+<div class="updated" id="lastUpdate" aria-live="polite">Consultando dados da Agito...</div>
 </div></section>
 <main class="shell main">
-<div id="loading" class="loading" role="status">Carregando a lista de inscritos...</div>
-<div id="error" class="error" hidden role="alert"><strong>Dados temporariamente indisponíveis.</strong><p id="errorReason"></p><a href="https://agitoesportes.com.br/event/3-corrida-de-rua-portal-da-amazonia/inscriptions" class="external" target="_blank" rel="noopener noreferrer">Consultar lista oficial na Agito</a></div>
+<div id="loading" class="loading" role="status">Carregando o painel de participantes...</div>
+<div id="error" class="error" hidden role="alert"><strong>Dados temporariamente indisponíveis.</strong><p>Não foi possível abrir a lista de inscritos. Consulte a fonte original ou tente novamente.</p><a href="https://agitoesportes.com.br/event/3-corrida-de-rua-portal-da-amazonia/inscriptions" class="external" target="_blank" rel="noopener noreferrer">Abrir lista original da Agito</a></div>
 <div id="dashboard" hidden>
-<section class="section" aria-label="Resumo de inscrições">
-<div class="total-row"><div><span>Inscrições confirmadas</span><strong id="totalCount">—</strong></div><button class="pill-button" id="allGroups" type="button" aria-pressed="true">Ver todos os grupos</button></div>
-<div class="stats" id="groupCards" aria-label="Selecione um grupo para filtrar"></div>
-</section>
-<section class="section panel" aria-labelledby="filterTitle">
-<div class="section-heading"><h2 id="filterTitle">Encontre seu nome</h2><span class="muted small">Dados públicos da Agito</span></div>
-<div class="search-row">
-<label class="field search-field" for="nameSearch"><span>Buscar por nome, cidade ou equipe</span><input id="nameSearch" type="search" inputmode="search" placeholder="Digite o nome do atleta..." autocomplete="off"></label>
-<button class="reset" type="button" id="clearFilters">Limpar filtros</button>
+<section class="overview-panel" aria-label="Resumo de inscritos">
+<div class="overview-main">
+<div class="total-meta"><div><span class="total-label">Atletas confirmados</span><strong class="total-big" id="totalCount">—</strong><span class="total-sub">Inscrições registradas na Agito</span></div><button type="button" class="pill-button" id="allGroups" aria-pressed="true">Ver todos</button></div>
+<div class="stats" id="groupCards" aria-label="Categorias principais — selecione para filtrar"></div>
 </div>
-<div class="filter-grid">
-<label class="field" for="categoryFilter"><span>Categoria / faixa etária</span><select id="categoryFilter"><option value="TODAS">Todas</option></select></label>
-<label class="field" for="cityFilter"><span>Cidade</span><select id="cityFilter"><option value="TODAS">Todas</option></select></label>
-<label class="field" for="teamFilter"><span>Equipe</span><select id="teamFilter"><option value="TODAS">Todas</option></select></label>
-<label class="field" for="genderFilter"><span>Naipe registrado</span><select id="genderFilter"><option value="TODOS">Todos os naipes</option><option value="Feminino">Feminino</option><option value="Masculino">Masculino</option><option value="Não informado">Não informado pela Agito</option></select></label>
-</div>
-<p class="hint" id="naipeHelp">O filtro de naipe depende do registro público da Agito.</p>
-<a class="external" href="#resultsTitle" style="margin-top:12px">Ir para a lista filtrada ↓</a>
+<div class="mix-panel"><div class="mix-title">Distribuição da corrida</div><div class="donut" id="donut" role="img" aria-label="Gráfico da distribuição por grupos"><span class="donut-center">4 grupos<br>oficiais</span></div><div class="mix-legend" id="donutLegend" aria-label="Legenda interativa da distribuição"></div></div>
 </section>
-<section class="section" aria-label="Gráficos de inscrições">
-<div class="section-heading"><h2>Distribuição dos participantes</h2><p class="muted small" id="breakdownHint"></p></div>
-<div class="data-grid">
-<div class="panel"><h3 style="font-size:16px;margin:0;color:var(--green)">Inscrições por categoria</h3><p class="hint">Toque em uma categoria para filtrar a lista.</p><div class="bar-list" id="categoryBars"></div></div>
-<div class="panel"><h3 style="font-size:16px;margin:0;color:var(--green)">Municípios dos inscritos</h3><p class="hint">Oito cidades com mais registros no filtro atual.</p><div class="bar-list" id="cityBars"></div></div>
+<section class="support-banner" aria-label="Termo para menores de idade">
+<div><h2>Tem atleta de 14 a 17 anos nos 5 km?</h2><p>Preencha o Termo de Responsabilidade e Autorização, imprima ou salve em PDF. <strong>A Corrida Kids não exige esse termo.</strong></p></div>
+<a href="../../index.html#termo">Preencher termo do menor ↗</a>
+</section>
+<section class="section filter-panel" aria-labelledby="filterTitle">
+<div class="filter-head"><div><span class="filter-eyebrow">Consulta simplificada</span><h2 id="filterTitle">Encontre sua inscrição</h2></div><button class="reset" type="button" id="clearFilters">Limpar filtros</button></div>
+<div class="step">
+<div class="step-heading"><span class="step-number">1</span> Categoria da prova</div>
+<p class="hint" style="margin-bottom:10px">Selecione uma das quatro categorias acima. Os 5 km masculinos e femininos fazem parte de 5 KM.</p>
+</div>
+<div class="step">
+<div class="step-heading"><span class="step-number">2</span> Sexo informado na inscrição</div>
+<div class="gender-options" id="genderOptions" aria-label="Filtro por sexo informado na Agito"></div>
+<p class="gender-help" id="genderHelp"></p>
+</div>
+<div class="step">
+<div class="step-heading"><span class="step-number">3</span> Faixa etária</div>
+<div class="primary-filters">
+<label class="field" for="ageFilter"><span>Faixa da categoria escolhida</span><select id="ageFilter"><option value="ALL">Todas as faixas</option></select></label>
+<label class="field" for="cityFilter"><span>Cidade</span><select id="cityFilter"><option value="ALL">Todas as cidades</option></select></label>
+<label class="field" for="teamFilter"><span>Equipe</span><select id="teamFilter"><option value="ALL">Todas as equipes</option></select></label>
+</div>
+<p class="hint" id="ageFilterHint"></p>
+</div>
+<div class="step">
+<label class="field" for="nameSearch"><span>Pesquisar nome do atleta, equipe ou município</span><input type="search" id="nameSearch" autocomplete="off" placeholder="Ex.: nome da criança, atleta ou equipe"></label>
+</div>
+<div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-top:17px">
+<span id="activeSummary" class="active-summary">Todos os grupos · Todos os sexos · Todas as faixas</span>
+<a class="external" href="#resultsTitle">Ver inscritos filtrados ↓</a>
+</div>
+</section>
+<section class="section" aria-labelledby="insightsTitle">
+<div class="section-heading"><h2 id="insightsTitle">Visão geral</h2><span class="muted small">Números acompanham os filtros</span></div>
+<div class="highlights">
+<div class="highlight"><strong id="filteredMetric">—</strong><span id="filteredDescription">Inscrições</span></div>
+<div class="highlight"><strong id="citiesMetric">—</strong><span>Cidades representadas</span></div>
+<div class="highlight"><strong id="teamsMetric">—</strong><span>Equipes declaradas</span></div>
+</div>
+<div class="chart-panels">
+<div class="chart-panel"><h3 id="ageChartTitle">Faixas etárias</h3><p>Toque em uma faixa para filtrar os atletas.</p><div class="bar-list" id="ageBars"></div></div>
+<div class="chart-panel"><h3>Origem dos atletas</h3><p>Municípios que mais aparecem nos filtros atuais.</p><div class="bar-list" id="cityBars"></div></div>
 </div>
 </section>
 <section class="section results" aria-labelledby="resultsTitle">
-<div class="section-heading results-header"><h2 id="resultsTitle">Lista de participantes</h2><span class="result-count" id="resultCount" aria-live="polite"></span></div>
-<div id="list" class="athlete-list" role="list"></div>
-<div id="noMatches" class="notice" hidden>Nenhum participante corresponde aos filtros. Confira a grafia, selecione outro grupo ou consulte a lista original da Agito.</div>
-<button type="button" class="load" id="loadMore" hidden>Mostrar mais atletas</button>
+<div class="section-heading results-header"><div><h2 id="resultsTitle">Lista de inscritos</h2><div class="active-summary" id="resultCount" aria-live="polite"></div></div><a class="external" href="https://agitoesportes.com.br/event/3-corrida-de-rua-portal-da-amazonia/inscriptions" target="_blank" rel="noopener noreferrer">Lista da Agito ↗</a></div>
+<div class="athlete-list" id="list" role="list"></div>
+<div class="notice" id="noMatches" hidden>Nenhum inscrito corresponde aos filtros. Experimente escolher “Todos” no filtro de sexo ou limpar os filtros. Parte das inscrições não possui sexo identificado no serviço público da Agito.</div>
+<button class="load" type="button" id="loadMore" hidden>Mostrar mais atletas</button>
 <p class="hint" id="missingNames"></p>
 </section>
-<div class="notice">
-<strong>Sobre a consulta:</strong> Esta página organiza a lista pública fornecida pela Agito Esportes. Ela não substitui o comprovante de inscrição nem a confirmação da plataforma. Se não localizar seu nome ou o de seu filho, confira primeiro a lista original e, em caso de divergência, procure a Agito. <strong>Categoria Escolar: 5 km</strong>, conforme capítulo 5 do Regulamento oficial, mesmo que o cadastro técnico da Agito informe outro valor.
-</div>
-<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:14px"><a class="external" target="_blank" rel="noopener noreferrer" href="https://agitoesportes.com.br/event/3-corrida-de-rua-portal-da-amazonia/inscriptions">Ver lista original na Agito</a><a class="external" href="../../index.html#escolar">Conferir Regulamento oficial</a></div>
+<div class="notice note-policy"><strong>Fonte:</strong> Agito Esportes. Esta página organiza informações já disponibilizadas publicamente pela plataforma e não substitui o comprovante de inscrição. A categoria <strong>Escolar disputa 5 km</strong>, conforme capítulo 5 do Regulamento oficial. O cadastro de categoria etária da Agito não informa o sexo de cada atleta; por isso, o filtro masculino/feminino é parcial, sem deduções por nomes. <a href="../../index.html#termo"><strong>Formulário do termo para menores de 18 anos nos 5 km.</strong></a></div>
 </div>
 </main>
 <footer class="bottom"><div class="shell"><span>3ª Corrida de Rua Portal da Amazônia · 15/11/2026 · Vilhena/RO</span><a href="../#evento">Voltar à Central</a></div></footer>
