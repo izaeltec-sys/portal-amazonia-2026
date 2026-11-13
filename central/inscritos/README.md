@@ -111,3 +111,13 @@ A interface agora oferece filtros completos **Todos / Masculino / Feminino** em 
 **ATENÇÃO:** o RaceTagPro está servindo uma listagem **de resultados/inscritos** em `results.json`; esse conteúdo pode mudar depois da realização do evento. A sincronização já tem data limite 17/11/2026; acompanhe qualquer alteração de estrutura ou possível exposição de resultados não homologados. Nunca usar o painel para classificação de resultados.
 
 **Histórico:** o texto anterior sobre "705 com sexo não informado" refere-se apenas à API nova. Ele foi superado pela descoberta do RaceTagPro e não descreve o status atual do painel.
+
+---
+
+## Ajuste dos gráficos — 12/11/2026
+
+- Corrigido descompasso entre JS (`bar-row`) e CSS (`bar-line`): os rótulos e totais são exibidos em colunas separadas, com o total alinhado à direita e acessibilidade mantida.
+- Gráfico da esquerda passa a exibir primeiro as **quatro categorias** (5 KM, PCD, Kids, Escolar) com suas contagens; depois as **faixas etárias apenas das categorias 5 KM e Kids**. Escolar e PCD deixam de ser misturados na faixa genérica `Geral`.
+- Barras de categoria e faixa continuam interativas, inclusive com filtros de sexo, cidade/equipe e navegação para a lista de atletas.
+- Dados do RaceTagPro/snapshot v3, Regulamento e logos não foram alterados. Atualizado cache PWA v14.
+- Testado com 895 registros: PCD (9), Escolar (29), Kids 12-13 (18), 5 KM 30-34 (152), Feminino (514); HTML IDs únicos, JS sintaticamente válido e rótulos/quantidades com classes corretas.
