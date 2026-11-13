@@ -448,3 +448,22 @@ A API pública da Agito foi consultada em 9 páginas. Snapshot inicial: **895** 
 O frontend `central/inscritos/index.html` disponibiliza pesquisa de nomes, filtros de faixa/cidade/equipe/naipe e dashboard por categoria e município. A página usa GitHub Raw para acessar o JSON mais recente sem depender de um rebuild do Pages a cada commit do GitHub Actions, com fallback local. `scripts/atualizar_inscritos.py` coleta/valida dados e `.github/workflows/atualizar-inscritos.yml` agenda execução horária até 17/11/2026.
 
 Após publicação: verificar deploy GitHub Pages, teste em celular, execução manual do workflow, atualização automática e se a Agito continua acessível. Não usar informação de sexo inferido pelo nome. Para governança e operação, consultar `central/inscritos/README.md`.
+
+---
+
+## Revisão do painel — 12/11/2026 (v2)
+
+A Organização pediu filtros **em etapas**, sem misturar as categorias técnicas da Agito:
+
+1. Grupo principal: **5 KM, PCD, KIDS, ESCOLAR**. A antiga chave `ADULTO` passa a `5KM` no JSON v2. As opções da Agito `5KM FEMININO` e `5KM MASCULINO` integram o grupo **5 KM**; não são faixas etárias.
+2. Sexo: **Todos, Masculino, Feminino, Não informado**. Sem inferências por nomes. No primeiro snapshot de 895 inscrições, o grupo 5 KM tem **794**, dos quais 40 masculinos declarados, 49 femininos declarados e **705 sem informação** porque as demais categorias têm `gender_type: Misto`. Não interpretar ausência de informação como categoria competitiva ou sexo.
+3. Faixa etária: selecionada após grupo e sexo, com opções derivadas de `faixa` normalizada; para 5 KM MASCULINO/FEMININO, a faixa técnica é **Geral (sem faixa)**; para KIDS, as faixas são 1-3, 4-6, 7-9, 10-11 e 12-13; Escolar/PCD sem divisão de faixas na listagem pública.
+4. Cidade, equipe e nome são filtros auxiliares; os gráficos e contagens acompanham os filtros.
+
+Frontend redesenhado como dashboard mobile-first, com gráfico de distribuição por grupo, indicadores de participantes, municípios/equipes, gráficos por faixa e lista nominal. Mantido o princípio de não recriar logotipos oficiais.
+
+**Termo de menores:** existe no Regulamento oficial em `/index.html#termo`. Criados atalhos na home da Central, no menu Evento, na FAQ e na página de inscritos. Aplica-se a atletas **de 14 a 17 anos inscritos nos 5 km**, **não** aos participantes da Corrida Kids. O formulário permanece o original do Regulamento.
+
+A API de listagem pública só retorna os campos de membros `user_id`, `responsible`, `name`, `city`, `uf`, `team` e `has_photo`: **não há sexo individual** nos registros de faixas mistas. Para dividir integralmente masculino/feminino, é necessário um export autorizado da empresa com essa coluna e avaliação da base legal; não é possível obter separação real somente dessa API pública.
+
+O JSON agora usa `versao:2`, chave `faixa` e grupo `5KM`. A sincronização via GitHub Actions foi adaptada para esse esquema. Não publicar HTML v2 com JSON v1 de forma isolada. Testar a atualização horária e o PWA após o merge.

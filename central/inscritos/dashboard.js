@@ -1,230 +1,298 @@
 "use strict";
 (() => {
   const $ = id => document.getElementById(id);
-  const groups = ["ADULTO", "ESCOLAR", "PCD", "KIDS"];
-  const pretty = { ADULTO: "Adulto · 5 km", ESCOLAR: "Escolar · 5 km", PCD: "PCD · 5 km", KIDS: "Kids" };
-  const state = { rows: [], grupo: "TODOS", categoria: "TODAS", cidade: "TODAS", equipe: "TODAS", naipe: "TODOS", busca: "", show: 30 };
+  const fmt = n => Number(n || 0).toLocaleString("pt-BR");
+  const groups = ["5KM", "PCD", "KIDS", "ESCOLAR"];
+  const labels = { "5KM": "5 KM", PCD: "PCD · 5 km", KIDS: "Kids", ESCOLAR: "Escolar · 5 km" };
+  const colors = { "5KM": "#07583e", PCD: "#c69b39", KIDS: "#49a078", ESCOLAR: "#8d9e85" };
+  const state = { rows: [], grupo: "ALL", sexo: "ALL", faixa: "ALL", cidade: "ALL", equipe: "ALL", busca: "", show: 24 };
   const collator = new Intl.Collator("pt-BR", { numeric: true, sensitivity: "base" });
-  const normalize = text => String(text || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("pt-BR").trim();
-  const show = (el, visible) => { el.hidden = !visible; };
-  const fmt = value => Number(value || 0).toLocaleString("pt-BR");
+  const normalize = v => String(v || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("pt-BR").trim();
+  const money = n => Number(n || 0);
+  const create = (tag, cls, content) => {
+    const el = document.createElement(tag);
+    if (cls) el.className = cls;
+    if (content != null) el.textContent = String(content);
+    return el;
+  };
+  const show = (id, visible) => { $(id).hidden = !visible; };
 
-  function node(tag, cls, text) {
-    const e = document.createElement(tag);
-    if (cls) e.className = cls;
-    if (text != null) e.textContent = String(text);
-    return e;
+  function groupRows() {
+    return state.rows.filter(r => state.grupo === "ALL" || state.grupo === r.grupo);
   }
-  function fieldOptions(id, entries, allLabel, current) {
-    const select = $(id);
-    select.replaceChildren();
-    const all = node("option", "", allLabel);
-    all.value = "TODAS";
-    select.appendChild(all);
-    entries.forEach(value => {
-      const o = node("option", "", value);
-      o.value = value;
-      select.appendChild(o);
-    });
-    select.value = entries.includes(current) ? current : "TODAS";
-    return select.value;
+  function genderRows() {
+    return groupRows().filter(r => state.sexo === "ALL" || r.naipe === state.sexo);
   }
-  function refreshOptions() {
-    const byGroup = state.rows.filter(r => state.grupo === "TODOS" || r.grupo === state.grupo);
-    const unique = key => [...new Set(byGroup.map(r => r[key]).filter(Boolean))].sort(collator.compare);
-    state.categoria = fieldOptions("categoryFilter", unique("categoria"), "Todas as faixas / categorias", state.categoria);
-    state.cidade = fieldOptions("cityFilter", unique("cidade"), "Todas as cidades", state.cidade);
-    state.equipe = fieldOptions("teamFilter", unique("equipe"), "Todas as equipes", state.equipe);
-  }
-  function currentRows() {
-    const term = normalize(state.busca);
-    return state.rows.filter(r => {
-      if (state.grupo !== "TODOS" && r.grupo !== state.grupo) return false;
-      if (state.categoria !== "TODAS" && r.categoria !== state.categoria) return false;
-      if (state.cidade !== "TODAS" && r.cidade !== state.cidade) return false;
-      if (state.equipe !== "TODAS" && r.equipe !== state.equipe) return false;
-      if (state.naipe !== "TODOS" && r.naipe !== state.naipe) return false;
-      if (term && !normalize([r.nome, r.categoria, r.cidade, r.uf, r.equipe].join(" ")).includes(term)) return false;
+  function filteredRows() {
+    const q = normalize(state.busca);
+    return genderRows().filter(r => {
+      if (state.faixa !== "ALL" && r.faixa !== state.faixa) return false;
+      if (state.cidade !== "ALL" && r.cidade !== state.cidade) return false;
+      if (state.equipe !== "ALL" && r.equipe !== state.equipe) return false;
+      if (q && !normalize([r.nome, r.cidade, r.uf, r.equipe, r.faixa].join(" ")).includes(q)) return false;
       return true;
     });
   }
   function countBy(rows, key) {
-    const map = new Map();
-    rows.forEach(r => {
+    const counts = new Map();
+    for (const r of rows) {
       const label = String(r[key] || "").trim();
-      if (label) map.set(label, (map.get(label) || 0) + 1);
-    });
-    return [...map].sort((a, b) => b[1] - a[1] || collator.compare(a[0], b[0]));
+      if (label) counts.set(label, (counts.get(label) || 0) + 1);
+    }
+    return [...counts].sort((a,b) => b[1] - a[1] || collator.compare(a[0], b[0]));
   }
-  function drawBars(target, items, maxBars, clickable) {
+  function updateSelect(id, values, allLabel, key) {
+    const el = $(id);
+    const choices = [...new Set(values.filter(Boolean))].sort(collator.compare);
+    el.replaceChildren();
+    const all = create("option", "", allLabel);
+    all.value = "ALL";
+    el.append(all);
+    for (const v of choices) {
+      const option = create("option", "", v === "Geral" ? "Geral (sem faixa)" : v);
+      option.value = v;
+      el.append(option);
+    }
+    if (!choices.includes(state[key])) state[key] = "ALL";
+    el.value = state[key];
+    if (id === "ageFilter") {
+      el.disabled = choices.length < 2;
+      $("ageFilterHint").textContent = choices.length < 2
+        ? "Sem divisão de faixas neste grupo."
+        : "Faixas válidas para o grupo e sexo selecionados.";
+    }
+  }
+  function updateOptions() {
+    const source = genderRows();
+    updateSelect("ageFilter", source.map(r => r.faixa), "Todas as faixas etárias", "faixa");
+    updateSelect("cityFilter", source.map(r => r.cidade), "Todas as cidades", "cidade");
+    updateSelect("teamFilter", source.map(r => r.equipe), "Todas as equipes", "equipe");
+  }
+  function setGroup(group) {
+    state.grupo = group;
+    state.sexo = "ALL"; state.faixa = "ALL"; state.cidade = "ALL"; state.equipe = "ALL";
+    state.show = 24;
+    updateOptions();
+    render();
+  }
+  function setGender(gender) {
+    state.sexo = gender;
+    state.faixa = "ALL"; state.cidade = "ALL"; state.equipe = "ALL";
+    state.show = 24;
+    updateOptions();
+    render();
+  }
+  function clear() {
+    state.busca = "";
+    $("nameSearch").value = "";
+    setGroup("ALL");
+  }
+
+  function renderGroupCards() {
+    $("totalCount").textContent = fmt(state.rows.length);
+    const counts = Object.fromEntries(groups.map(g=>[g,0]));
+    for (const r of state.rows) counts[r.grupo] += 1;
+    const container = $("groupCards");
+    container.replaceChildren();
+    for (const group of groups) {
+      const card = create("button", "stat-card" + (group === state.grupo ? " selected" : ""));
+      card.type = "button";
+      card.style.setProperty("--group-color", colors[group]);
+      card.setAttribute("aria-pressed", String(state.grupo === group));
+      card.setAttribute("aria-label", "Filtrar " + labels[group] + ": " + counts[group] + " inscritos");
+      const top = create("span", "stat-kicker", labels[group]);
+      const bottom = create("span", "stat-value", fmt(counts[group]));
+      const small = create("span", "stat-caption", group === "5KM" ? "Prova principal" : "Inscritos confirmados");
+      card.append(top, bottom, small);
+      card.addEventListener("click", () => setGroup(state.grupo === group ? "ALL" : group));
+      container.append(card);
+    }
+    $("allGroups").setAttribute("aria-pressed", String(state.grupo === "ALL"));
+    const degrees = [];
+    let pos = 0;
+    for (const group of groups) {
+      const end = pos + counts[group] / Math.max(1, state.rows.length) * 360;
+      degrees.push(colors[group] + " " + pos.toFixed(2) + "deg " + end.toFixed(2) + "deg");
+      pos = end;
+    }
+    $("donut").style.background = "conic-gradient(" + degrees.join(",") + ")";
+    const legend = $("donutLegend");
+    legend.replaceChildren();
+    for (const group of groups) {
+      const row = create("button", "legend-item" + (state.grupo === group ? " selected" : ""));
+      row.type = "button";
+      const dot = create("i", "legend-dot"); dot.style.backgroundColor = colors[group];
+      row.append(dot, create("span", "legend-name", labels[group]), create("strong", "legend-number", fmt(counts[group])));
+      row.addEventListener("click", () => setGroup(state.grupo === group ? "ALL" : group));
+      legend.append(row);
+    }
+  }
+  function renderGender() {
+    const rows = groupRows();
+    const counts = { Masculino: 0, Feminino: 0, "Não informado": 0 };
+    for (const r of rows) if (counts[r.naipe] !== undefined) counts[r.naipe] += 1;
+    const options = [
+      ["ALL", "Todos", rows.length],
+      ["Masculino", "Masculino", counts.Masculino],
+      ["Feminino", "Feminino", counts.Feminino],
+      ["Não informado", "Não informado", counts["Não informado"]]
+    ];
+    const target = $("genderOptions");
     target.replaceChildren();
-    if (!items.length) {
-      target.appendChild(node("p", "muted small", "Sem dados para os filtros escolhidos."));
+    for (const [value,label,count] of options) {
+      const button = create("button", "gender-chip" + (state.sexo === value ? " selected" : ""));
+      button.type = "button";
+      button.setAttribute("aria-pressed", String(state.sexo === value));
+      button.append(create("span", "", label), create("b", "", fmt(count)));
+      button.addEventListener("click", () => setGender(value));
+      target.append(button);
+    }
+    const missing = counts["Não informado"];
+    $("genderHelp").textContent = missing
+      ? fmt(missing) + " inscrição(ões) com sexo não informado na lista pública da Agito. Naipes só são identificados quando a própria categoria informa Masculino ou Feminino. Não fazemos estimativas pelo nome."
+      : "Masculino e feminino conforme o cadastro público da categoria na Agito.";
+  }
+  function drawBars(target, pairs, limit, clickable) {
+    target.replaceChildren();
+    if (!pairs.length) {
+      target.append(create("p", "muted", "Nenhum registro com os filtros escolhidos."));
       return;
     }
-    const max = Math.max(...items.map(x => x[1]), 1);
-    const limit = maxBars ? items.slice(0, maxBars) : items;
-    limit.forEach(([label, count]) => {
-      const item = node(clickable ? "button" : "div", "bar-item");
+    const max = Math.max(1, ...pairs.map(x=>x[1]));
+    const list = limit ? pairs.slice(0,limit) : pairs;
+    for (const [label,num] of list) {
+      const item = create(clickable ? "button" : "div", "bar-item");
       if (clickable) {
         item.type = "button";
-        item.title = "Filtrar pela categoria " + label;
+        item.title = "Selecionar faixa " + label;
         item.addEventListener("click", () => {
-          state.categoria = label;
-          $("categoryFilter").value = label;
-          state.show = 30;
+          state.faixa = label;
+          $("ageFilter").value = label;
+          state.show = 24;
           render();
-          $("resultsTitle").scrollIntoView({ behavior: "smooth", block: "start" });
+          $("resultsTitle").scrollIntoView({behavior:"smooth",block:"start"});
         });
       }
-      const top = node("div", "bar-line");
-      top.append(node("span", "bar-label", label), node("strong", "bar-number", fmt(count)));
-      const track = node("div", "bar-track");
-      const fill = node("div", "bar-fill");
-      fill.style.width = ((count / max) * 100).toFixed(1) + "%";
-      track.appendChild(fill);
-      item.append(top, track);
-      target.appendChild(item);
-    });
+      const caption = create("div", "bar-row");
+      caption.append(create("span", "bar-label", label === "Geral" ? "Geral (sem faixa)" : label),
+        create("strong", "", fmt(num)));
+      const track = create("div", "bar-track");
+      const fill = create("div", "bar-fill");
+      fill.style.width = (100 * num/max).toFixed(2) + "%";
+      track.append(fill);
+      item.append(caption, track);
+      target.append(item);
+    }
   }
-  function renderStats() {
-    const all = state.rows;
-    $("totalCount").textContent = fmt(all.length);
-    const main = $("groupCards");
-    main.replaceChildren();
-    const counts = Object.fromEntries(groups.map(g => [g, 0]));
-    all.forEach(r => counts[r.grupo]++);
-    groups.forEach(g => {
-      const card = node("button", "stat");
-      card.type = "button";
-      card.setAttribute("aria-pressed", state.grupo === g ? "true" : "false");
-      card.setAttribute("aria-label", "Filtrar " + pretty[g] + ": " + fmt(counts[g]) + " inscrições");
-      if (state.grupo === g) card.classList.add("selected");
-      card.append(node("span", "stat-name", pretty[g]), node("strong", "stat-number", fmt(counts[g])), node("span", "stat-foot", "inscrições"));
-      card.addEventListener("click", () => {
-        state.grupo = state.grupo === g ? "TODOS" : g;
-        state.categoria = "TODAS"; state.cidade = "TODAS"; state.equipe = "TODAS";
-        state.show = 30;
-        refreshOptions(); render();
-      });
-      main.appendChild(card);
-    });
-    $("allGroups").setAttribute("aria-pressed", state.grupo === "TODOS" ? "true" : "false");
+  function renderInsights(rows) {
+    $("filteredMetric").textContent = fmt(rows.length);
+    $("filteredDescription").textContent = rows.length === state.rows.length
+      ? "Todas as inscrições"
+      : "Correspondem aos filtros";
+    const cities = countBy(rows,"cidade");
+    $("citiesMetric").textContent = fmt(cities.length);
+    const teams = countBy(rows,"equipe");
+    $("teamsMetric").textContent = fmt(teams.length);
+    drawBars($("ageBars"),countBy(rows,"faixa"),0,true);
+    drawBars($("cityBars"),cities,7,false);
+    $("ageChartTitle").textContent = state.grupo === "KIDS" ? "Faixas da Corrida Kids" :
+      state.grupo === "ALL" ? "Faixas e inscrições gerais" : "Faixas · " + labels[state.grupo];
   }
-  function entryCard(r) {
-    const card = node("article", "athlete");
-    card.setAttribute("role", "listitem");
-    const top = node("div", "athlete-top");
-    const name = node("h3", "athlete-name", r.nome);
-    if (r.sem_nome) name.classList.add("unknown");
-    const tag = node("span", "athlete-type", r.grupo);
-    top.append(name, tag);
-    const category = node("div", "athlete-category", pretty[r.grupo] + " · " + r.categoria);
-    const detail = node("div", "athlete-meta");
-    const city = [r.cidade, r.uf].filter(Boolean).join(" / ");
-    if (city) detail.appendChild(node("span", "", city));
-    if (r.equipe) detail.appendChild(node("span", "", "Equipe: " + r.equipe));
-    if (r.naipe !== "Não informado") detail.appendChild(node("span", "", r.naipe));
-    card.append(top, category);
-    if (detail.childNodes.length) card.appendChild(detail);
+  function athleteCard(r) {
+    const card = create("article","athlete-card");
+    card.setAttribute("role","listitem");
+    const title = create("h3","athlete-name",r.nome);
+    if(r.sem_nome) title.classList.add("missing");
+    const group = create("span","group-pill",labels[r.grupo]);
+    const top = create("div","athlete-top"); top.append(title,group);
+    const details = create("div","athlete-details");
+    const faixa = r.faixa === "Geral" ? "Geral" : "Faixa " + r.faixa;
+    details.append(create("span","",faixa));
+    if(r.naipe !== "Não informado") details.append(create("span","",r.naipe));
+    const city = [r.cidade,r.uf].filter(Boolean).join(" / ");
+    if(city) details.append(create("span","",city));
+    if(r.equipe) details.append(create("span","","Equipe: "+r.equipe));
+    card.append(top,details);
     return card;
   }
-  function render() {
-    renderStats();
-    const rows = currentRows();
-    const container = $("list");
-    container.replaceChildren();
-    rows.slice(0, state.show).forEach(r => container.appendChild(entryCard(r)));
-    $("resultCount").textContent = fmt(rows.length) + " inscriç" + (rows.length === 1 ? "ão encontrada" : "ões encontradas");
-    show($("noMatches"), rows.length === 0);
-    show($("loadMore"), rows.length > state.show);
-    $("loadMore").textContent = "Mostrar mais " + Math.min(rows.length - state.show, 30) + " atletas";
-    drawBars($("categoryBars"), countBy(rows, "categoria"), 0, true);
-    drawBars($("cityBars"), countBy(rows, "cidade"), 8, false);
-    $("breakdownHint").textContent = state.grupo === "TODOS"
-      ? "Todos os grupos e suas subcategorias na Agito."
-      : "Subcategorias do grupo " + pretty[state.grupo] + ".";
-    $("naipeHelp").textContent = "A Agito identifica parte das faixas etárias como “Misto”. Isso significa que o sexo não foi informado no registro público, e não uma alteração nas regras da prova.";
-    $("clearFilters").disabled = state.grupo === "TODOS" && state.categoria === "TODAS" &&
-      state.cidade === "TODAS" && state.equipe === "TODAS" && state.naipe === "TODOS" && !state.busca;
+  function renderList(rows) {
+    $("resultCount").textContent = fmt(rows.length) + " " + (rows.length===1?"inscrito encontrado":"inscritos encontrados");
+    const list=$("list");list.replaceChildren();
+    rows.slice(0,state.show).forEach(r=>list.append(athleteCard(r)));
+    show("noMatches",rows.length===0);
+    show("loadMore",rows.length>state.show);
+    $("loadMore").textContent="Mostrar mais "+Math.min(24,rows.length-state.show)+" inscritos";
   }
-  function reset() {
-    state.grupo = "TODOS"; state.categoria = "TODAS"; state.cidade = "TODAS";
-    state.equipe = "TODAS"; state.naipe = "TODOS"; state.busca = ""; state.show = 30;
-    $("nameSearch").value = ""; $("genderFilter").value = "TODOS";
-    refreshOptions(); render();
+  function render() {
+    renderGroupCards();
+    renderGender();
+    const rows=filteredRows();
+    renderInsights(rows);
+    renderList(rows);
+    const clearDisabled=state.grupo==="ALL"&&state.sexo==="ALL"&&state.faixa==="ALL"&&state.cidade==="ALL"&&state.equipe==="ALL"&&!state.busca;
+    $("clearFilters").disabled=clearDisabled;
+    $("activeSummary").textContent=[
+      state.grupo==="ALL"?"Todos os grupos":labels[state.grupo],
+      state.sexo==="ALL"?"Todos os sexos":state.sexo,
+      state.faixa==="ALL"?"Todas as faixas":state.faixa==="Geral"?"Geral":state.faixa
+    ].join(" · ");
   }
   function wire() {
-    $("allGroups").addEventListener("click", reset);
-    $("clearFilters").addEventListener("click", reset);
-    $("nameSearch").addEventListener("input", e => { state.busca = e.target.value; state.show = 30; render(); });
-    const options = [["categoryFilter", "categoria"], ["cityFilter", "cidade"], ["teamFilter", "equipe"], ["genderFilter", "naipe"]];
-    options.forEach(([id, key]) => $(id).addEventListener("change", e => {
-      state[key] = e.target.value; state.show = 30; render();
-    }));
-    $("loadMore").addEventListener("click", () => { state.show += 30; render(); });
+    $("allGroups").addEventListener("click",()=>setGroup("ALL"));
+    $("clearFilters").addEventListener("click",clear);
+    $("nameSearch").addEventListener("input",e=>{state.busca=e.target.value;state.show=24;render()});
+    for (const [id,key] of [["ageFilter","faixa"],["cityFilter","cidade"],["teamFilter","equipe"]]) {
+      $(id).addEventListener("change",e=>{state[key]=e.target.value;state.show=24;render()});
+    }
+    $("loadMore").addEventListener("click",()=>{state.show+=24;render()});
   }
   function validate(data) {
-    if (!data || data.versao !== 1 || !Array.isArray(data.inscritos) ||
-        !Number.isInteger(data.total) || data.total !== data.inscritos.length || !data.atualizado_em)
-      throw new Error("Dados de inscrições incompletos.");
-    const counts = Object.fromEntries(groups.map(g => [g, 0]));
-    for (const r of data.inscritos) {
-      if (!r || !groups.includes(r.grupo) || typeof r.nome !== "string" || typeof r.categoria !== "string")
-        throw new Error("Registro inválido.");
-      counts[r.grupo]++;
+    if(!data||data.versao!==2||!Array.isArray(data.inscritos)||data.inscritos.length!==data.total||
+       !Number.isInteger(data.total)||!data.atualizado_em)throw Error("Snapshot incompleto");
+    const actual=Object.fromEntries(groups.map(g=>[g,0]));
+    for(const r of data.inscritos){
+      if(!r||!groups.includes(r.grupo)||typeof r.nome!=="string"||typeof r.faixa!=="string"||
+         !["Masculino","Feminino","Não informado"].includes(r.naipe))throw Error("Inscrito inválido");
+      actual[r.grupo]+=1;
     }
-    for (const g of groups) {
-      if (counts[g] !== data.totais_por_grupo[g]) throw new Error("Contagem divergente: " + g);
-    }
+    for(const g of groups)if(actual[g]!==data.totais_por_grupo[g])throw Error("Contagens divergentes");
     return data;
   }
   async function init() {
     wire();
-    try {
-      // Commits via GITHUB_TOKEN podem não disparar um novo build do GitHub Pages.
-      // O GitHub Raw expõe o JSON atualizado com CORS=* e cache de cerca de 5 min.
-      // Um snapshot no próprio Pages serve como fallback quando necessário.
-      const sources = [
-        "https://raw.githubusercontent.com/izaeltec-sys/portal-amazonia-2026/main/central/inscritos/dados.json",
-        "./dados.json"
-      ];
-      let data = null;
-      let lastError = null;
-      for (const url of sources) {
-        const controller = new AbortController();
-        const timer = setTimeout(() => controller.abort(), 7000);
-        try {
-          const response = await fetch(url, { cache: "no-store", signal: controller.signal });
-          if (!response.ok) throw new Error("HTTP " + response.status);
-          data = validate(await response.json());
-          break;
-        } catch (error) {
-          lastError = error;
-        } finally {
-          clearTimeout(timer);
-        }
-      }
-      if (!data) throw (lastError || new Error("Sem dados disponíveis"));
-      state.rows = data.inscritos;
-      refreshOptions();
-      const date = new Date(data.atualizado_em);
-      $("lastUpdate").textContent = Number.isNaN(+date) ? "Atualização não informada" :
-        "Atualizado em " + date.toLocaleString("pt-BR", {
-          timeZone: "America/Porto_Velho", day: "2-digit", month: "2-digit", year: "numeric",
-          hour: "2-digit", minute: "2-digit"
-        }) + " (horário de Rondônia)";
-      $("missingNames").textContent = data.sem_nome
-        ? data.sem_nome + " inscrição(ões) sem nome disponível na listagem original da Agito; incluídas nas contagens."
-        : "";
-      $("loading").hidden = true;
-      $("dashboard").hidden = false;
-      render();
-    } catch (err) {
-      $("loading").hidden = true;
-      $("error").hidden = false;
-      $("errorReason").textContent = "Não foi possível carregar a cópia da lista de inscritos. Tente novamente ou consulte a lista oficial da Agito.";
+    const sources=[
+      "https://raw.githubusercontent.com/izaeltec-sys/portal-amazonia-2026/main/central/inscritos/dados.json",
+      "./dados.json"
+    ];
+    let data;
+    for(const url of sources){
+      const controller=new AbortController();
+      const timeout=setTimeout(()=>controller.abort(),6500);
+      try{
+        const r=await fetch(url,{cache:"no-store",signal:controller.signal});
+        if(!r.ok)throw Error("Falha HTTP "+r.status);
+        data=validate(await r.json());
+        break;
+      }catch(e){ /* segunda fonte serve como fallback */ }
+      finally{clearTimeout(timeout)}
     }
+    show("loading",false);
+    if(!data){
+      show("error",true);
+      return;
+    }
+    state.rows=data.inscritos;
+    updateOptions();
+    const date=new Date(data.atualizado_em);
+    $("lastUpdate").textContent=Number.isNaN(+date)?"Atualização não informada":
+      "Dados da Agito atualizados em "+date.toLocaleString("pt-BR",{
+        timeZone:"America/Porto_Velho",day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"
+      })+" (RO)";
+    $("missingNames").textContent=data.sem_nome
+      ? fmt(data.sem_nome)+" inscrição(ões) não possuem nome público na Agito, mas estão incluídas nas estatísticas."
+      : "";
+    show("dashboard",true);
+    render();
   }
   init();
 })();

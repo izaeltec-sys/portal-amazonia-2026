@@ -59,13 +59,22 @@ def group(category: str) -> str:
     if upper.startswith("PCD"): return "PCD"
     if upper == "ESCOLAR": return "ESCOLAR"
     if upper.startswith("5KM ") or re.fullmatch(r"\d{2}(?:\+|-\d{2})", upper):
-        return "ADULTO"
+        return "5KM"
     raise ValueError(f"Categoria nova/desconhecida: {category!r}; revisar mapeamento antes de publicar")
+
+def faixa(category: str, grupo: str) -> str:
+    if grupo == "5KM":
+        return "Geral" if category.upper().startswith("5KM ") else category
+    if grupo == "KIDS":
+        return category.removeprefix("KIDS ").strip()
+    return "Geral"
+
 
 def naipe(category: str, category_info: dict) -> str:
     label = clean(category_info.get("gender_type"), 30).upper()
     if label == "FEMININO": return "Feminino"
     if label == "MASCULINO": return "Masculino"
+    # Sexo só é conhecido nas opções explícitas 5KM masculino/feminino.
     # Não deduzir sexo por nome nem por faixa etária "Misto".
     return "Não informado"
 
@@ -108,10 +117,12 @@ def build() -> dict:
             if clean(ins.get("status"), 30).lower() != "confirmed":
                 raise ValueError("Inscrição não confirmada em listagem pública; revisar política de exibição")
             name = clean(member.get("name"), 105)
+            grupo = group(category)
             item = {
                 "nome": name if name else "Nome não informado pela Agito",
-                "grupo": group(category),
+                "grupo": grupo,
                 "categoria": category,
+                "faixa": faixa(category, grupo),
                 "naipe": naipe(category, meta),
                 "cidade": clean(member.get("city"), 65),
                 "uf": clean(member.get("uf"), 2).upper(),
@@ -125,17 +136,17 @@ def build() -> dict:
     if len(rows) != total:
         raise ValueError(f"Incompleto: {len(rows)} de {total} registros. Preservando dado anterior.")
     counts = Counter(r["grupo"] for r in rows)
-    if set(counts) != {"ADULTO", "ESCOLAR", "PCD", "KIDS"}:
+    if set(counts) != {"5KM", "ESCOLAR", "PCD", "KIDS"}:
         raise ValueError(f"Grupos esperados ausentes: {dict(counts)}")
-    rows.sort(key=lambda r: (r["grupo"], r["categoria"], r["nome"].casefold()))
+    rows.sort(key=lambda r: (r["grupo"], r["faixa"], r["nome"].casefold()))
     return {
-        "versao": 1,
+        "versao": 2,
         "atualizado_em": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
         "origem": "Lista pública de inscrições — Agito Esportes",
         "fonte": "https://agitoesportes.com.br/event/3-corrida-de-rua-portal-da-amazonia/inscriptions",
         "total": len(rows),
         "sem_nome": sum(r["sem_nome"] for r in rows),
-        "totais_por_grupo": {g: counts[g] for g in ("ADULTO", "ESCOLAR", "PCD", "KIDS")},
+        "totais_por_grupo": {g: counts[g] for g in ("5KM", "PCD", "KIDS", "ESCOLAR")},
         "aviso_escolar": "A categoria Escolar disputa 5 km, conforme o Regulamento oficial 1.3 (capítulo 5). O cadastro técnico da Agito indica incorretamente 1 km.",
         "inscritos": rows
     }
