@@ -11,7 +11,7 @@ Módulo leve, sem serviços de mapa, banco de dados ou dependências JavaScript 
 - Sincronização automática: .github/workflows/atualizar-inscritos.yml
 - Fonte pública: https://agitoesportes.com.br/event/3-corrida-de-rua-portal-da-amazonia/inscriptions
 
-A API pública da Agito possui bloqueio CORS para outros domínios. Por isso, o navegador **não** consulta a API diretamente. O GitHub Actions faz a consulta server-side, valida paginação e evento, remove campos não utilizados e publica somente um JSON estático para o GitHub Pages.
+A API pública da Agito possui bloqueio CORS para outros domínios. Por isso, o navegador **não** consulta a API diretamente. O GitHub Actions faz a consulta server-side, valida paginação e evento, remove campos não utilizados e publica somente um JSON estático no repositório. O frontend consulta primeiro o JSON público em raw.githubusercontent.com (CORS liberado; cache de aproximadamente 5 minutos) e usa a cópia do GitHub Pages como fallback. Isso evita depender de um novo build do Pages a cada commit do GITHUB_TOKEN.
 
 Atualização programada: uma vez por hora (cron às XX:23), até 17/11/2026 UTC inclusive. Após essa data, o script não consulta mais a Agito sem a opção --force. O agendamento do GitHub não é pontual e pode atrasar; a Central exibe a data do último snapshot bem-sucedido.
 
