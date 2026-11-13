@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
-"""Sincroniza SOMENTE campos já publicados na listagem pública da Agito.
-Sem autenticação; não copia CPF, data de nascimento, user_id, contato ou fotos.
-Fonte não documentada: trate alterações/indisponibilidade como erro sem sobrescrever a última cópia válida.
+"""Sincroniza inscrições públicas do RaceTagPro com complemento opcional da Agito.
+
+Fonte autoritativa para nome COMPLETO, sexo, categoria, número e município:
+  RaceTagPro — data/105VZVH/event.json e results.json (publicados no site oficial).
+Origem complementar para equipe/UF: listagem pública Agito, apenas em associação
+inequívoca por primeiro nome, grupo, faixa e município. Não tenta associar registros
+ambíguos nem deduz sexo pelo nome.
+
+Não replica IDs internos, contato, CPF, aniversário, fotos, posições ou resultados.
+Falhas de validação preservam integralmente o último snapshot.
 """
 from __future__ import annotations
+
 import argparse
 import datetime as dt
 import json
@@ -11,165 +19,252 @@ import re
 import sys
 import time
 import unicodedata
-from collections import Counter
+from collections import Counter, defaultdict
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
-API = "https://agitoesportes.com.br/api"
+AGITO_API = "https://agitoesportes.com.br/api"
 SLUG = "3-corrida-de-rua-portal-da-amazonia"
-EVENT_ID = "6162cb4f-b415-4670-98ac-18f316a3e941"
+AGITO_EVENT_ID = "6162cb4f-b415-4670-98ac-18f316a3e941"
+RACETAG_EVENT_ID = "105VZVH"
+RACETAG_BASE = "https://old.agitoesportes.com.br/racetagpro/data"
 DEST = Path(__file__).resolve().parents[1] / "central" / "inscritos" / "dados.json"
 DATE_LIMIT = dt.date(2026, 11, 17)
 PAGE_SIZE = 100
 MAX_PAGES = 60
-HEADERS = {"Accept": "application/json", "User-Agent": "PortalAmazonia2026-CentralAtleta/1.0 (sync de listagem publica)"}
 
-def load(url: str) -> dict:
+HEADERS = {
+    "Accept": "application/json,text/plain,*/*",
+    "User-Agent": "Mozilla/5.0 (compatible; PortalAmazonia2026/1.0; public-race-list-sync)",
+    "Referer": "https://old.agitoesportes.com.br/"
+}
+
+def load(url: str, expected: type):
     last = None
     for attempt in range(4):
         try:
             req = Request(url, headers=HEADERS)
             with urlopen(req, timeout=25) as response:
-                if response.status != 200:
-                    raise RuntimeError(f"HTTP {response.status}")
-                if not response.headers.get("Content-Type", "").startswith("application/json"):
-                    raise ValueError("Conteúdo inesperado (não JSON)")
+                if response.status != 200 or "json" not in response.headers.get("Content-Type", ""):
+                    raise ValueError("Resposta não JSON ou HTTP inesperado")
                 result = json.load(response)
-                if not isinstance(result, dict):
-                    raise ValueError("Objeto JSON esperado")
+                if not isinstance(result, expected):
+                    raise ValueError("Formato inesperado")
                 return result
         except (HTTPError, URLError, OSError, TimeoutError, ValueError) as exc:
             last = exc
             if attempt < 3:
                 time.sleep(1 + attempt * 2)
-    raise RuntimeError(f"Agito indisponível: {type(last).__name__}") from last
+    raise RuntimeError(f"Consulta pública indisponível: {type(last).__name__}") from last
 
-def clean(value, max_len: int = 100) -> str:
-    if not isinstance(value, str):
+def clean(v, limit=105):
+    if not isinstance(v, str):
         return ""
-    value = unicodedata.normalize("NFC", value)
-    value = re.sub(r"[\x00-\x1f\x7f-\x9f]", " ", value)
-    return re.sub(r"\s+", " ", value).strip()[:max_len]
+    v = unicodedata.normalize("NFC", v)
+    v = re.sub(r"[\x00-\x1f\x7f-\x9f]", " ", v)
+    return re.sub(r"\s+", " ", v).strip()[:limit]
 
-def group(category: str) -> str:
-    upper = category.upper()
-    if upper.startswith("KIDS"): return "KIDS"
-    if upper.startswith("PCD"): return "PCD"
-    if upper == "ESCOLAR": return "ESCOLAR"
-    if upper.startswith("5KM ") or re.fullmatch(r"\d{2}(?:\+|-\d{2})", upper):
-        return "5KM"
-    raise ValueError(f"Categoria nova/desconhecida: {category!r}; revisar mapeamento antes de publicar")
+def norm(v):
+    v = unicodedata.normalize("NFD", clean(v, 150).upper())
+    v = "".join(c for c in v if unicodedata.category(c) != "Mn")
+    return re.sub(r"\s+", " ", v).strip()
 
-def faixa(category: str, grupo: str) -> str:
+def group(route):
+    if route == "5KM": return "5KM"
+    if route == "PCD": return "PCD"
+    if route == "ESCOLAR": return "ESCOLAR"
+    if re.fullmatch(r"KIDS \d+ A \d+ ANOS", route): return "KIDS"
+    raise ValueError(f"Modalidade inesperada: {route}")
+
+def faixa(grupo, category):
+    if grupo in ("PCD", "ESCOLAR"): return "Geral"
+    match = re.fullmatch(r"[FM]-(\d+)-(\d+)", category)
+    if not match:
+        raise ValueError(f"Faixa desconhecida: {category}")
+    lower, upper = map(int, match.groups())
     if grupo == "5KM":
-        return "Geral" if category.upper().startswith("5KM ") else category
+        return "Geral" if (lower, upper) == (14, 99) else (
+            "60+" if (lower, upper) == (60, 99) else f"{lower}-{upper}"
+        )
     if grupo == "KIDS":
-        return category.removeprefix("KIDS ").strip()
-    return "Geral"
+        if (lower, upper) not in {(1, 3), (4, 6), (7, 9), (10, 11), (12, 13)}:
+            raise ValueError(f"Faixa Kids inesperada: {category}")
+        return f"{lower}-{upper}"
+    raise ValueError("Grupo inválido")
 
+def race_rows():
+    event = load(f"{RACETAG_BASE}/{RACETAG_EVENT_ID}/event.json", dict)
+    results = load(f"{RACETAG_BASE}/{RACETAG_EVENT_ID}/results.json", list)
+    if event.get("id") != RACETAG_EVENT_ID or not 100 <= len(results) <= 20000:
+        raise ValueError("Evento RaceTagPro incorreto ou lista vazia")
+    routes = {x["i"]: x["n"] for x in event.get("routes", [])}
+    categories = {x["i"]: x for x in event.get("categories", [])}
+    municipalities = {
+        (x["i"], x["r"], x["g"]): x["n"]
+        for x in event.get("teams", [])
+    }
+    if len(routes) < 8 or len(categories) < 25 or len(municipalities) < 30:
+        raise ValueError("Metadados RaceTagPro incompletos")
 
-def naipe(category: str, category_info: dict) -> str:
-    label = clean(category_info.get("gender_type"), 30).upper()
-    if label == "FEMININO": return "Feminino"
-    if label == "MASCULINO": return "Masculino"
-    # Sexo só é conhecido nas opções explícitas 5KM masculino/feminino.
-    # Não deduzir sexo por nome nem por faixa etária "Misto".
-    return "Não informado"
-
-def build() -> dict:
-    metadata = load(f"{API}/categories/{EVENT_ID}/list")
-    cat_list = metadata.get("categories")
-    if not isinstance(cat_list, list) or len(cat_list) < 10:
-        raise ValueError("Lista de categorias inesperada")
-    by_id = {c.get("id"): c for c in cat_list if isinstance(c, dict)}
-    total = None
     rows = []
-    event_id = None
+    seen_numbers = set()
+    for result in results:
+        if not isinstance(result, dict):
+            raise ValueError("Registro RaceTagPro malformado")
+        bib = result.get("n")
+        gender = result.get("g")
+        cid = result.get("c")
+        rid = result.get("r")
+        tid = result.get("t")
+        if not isinstance(bib, int) or bib <= 0 or bib in seen_numbers:
+            raise ValueError("Número de peito inválido ou duplicado")
+        seen_numbers.add(bib)
+        if gender not in ("F", "M") or rid not in routes or cid not in categories:
+            raise ValueError("Sexo, modalidade ou categoria não identificados")
+        meta = categories[cid]
+        if meta.get("g") != gender:
+            raise ValueError("Sexo divergente entre atleta e categoria")
+        category = clean(meta.get("n"), 50)
+        name = clean(result.get("nm"), 130)
+        municipality = clean(municipalities.get((tid, rid, gender)), 65)
+        if not name or " " not in name or not municipality:
+            raise ValueError("Nome completo ou município ausente")
+        g = group(routes[rid])
+        row = {
+            "nome": name,
+            "grupo": g,
+            "categoria": category,
+            "faixa": faixa(g, category),
+            "naipe": "Feminino" if gender == "F" else "Masculino",
+            "cidade": municipality.title(),  # Somente para exibição; correspondência usa norm().
+            "uf": "",
+            "equipe": "",
+            "sem_nome": False,
+            "numero": bib
+        }
+        rows.append(row)
+    return rows
+
+def agito_rows():
+    all_rows = []
+    total = None
     for page in range(1, MAX_PAGES + 1):
-        params = urlencode({"search_term": "", "page": page, "limit": PAGE_SIZE})
-        data = load(f"{API}/inscriptions/{SLUG}/public-list?{params}")
-        if not isinstance(data.get("event"), dict) or data["event"].get("id") != EVENT_ID:
-            raise ValueError("Evento retornado não corresponde à Corrida Portal da Amazônia")
+        query = urlencode({"search_term": "", "page": page, "limit": PAGE_SIZE})
+        data = load(f"{AGITO_API}/inscriptions/{SLUG}/public-list?{query}", dict)
+        if not isinstance(data.get("event"), dict) or data["event"].get("id") != AGITO_EVENT_ID:
+            raise ValueError("Evento complementar divergente")
         count = data.get("registers")
         if not isinstance(count, int) or count < 1 or count > 20000:
-            raise ValueError("Contagem inválida")
+            raise ValueError("Quantidade complementar inválida")
         if total is None: total = count
-        if count != total: raise ValueError("Total mudou durante paginação; repetir sincronização")
+        if count != total: raise ValueError("Quantidade complementar mudou durante coleta")
         batch = data.get("inscriptions")
         if not isinstance(batch, list) or len(batch) > PAGE_SIZE:
-            raise ValueError("Página inválida")
-        for ins in batch:
-            if not isinstance(ins, dict) or not isinstance(ins.get("category"), dict):
-                raise ValueError("Inscrição sem categoria")
-            cat = ins["category"]
-            category = clean(cat.get("name"), 75)
-            meta = by_id.get(cat.get("id"), {})
-            if not category or not meta or clean(meta.get("name")) != category:
-                raise ValueError("Categoria divergente da lista pública")
-            members = ins.get("members")
-            if not isinstance(members, list) or len(members) != 1:
-                raise ValueError("Inscrição com estrutura inesperada de membros")
-            member = members[0]
-            if not isinstance(member, dict):
-                raise ValueError("Dados de atleta inesperados")
-            if clean(ins.get("status"), 30).lower() != "confirmed":
-                raise ValueError("Inscrição não confirmada em listagem pública; revisar política de exibição")
-            name = clean(member.get("name"), 105)
-            grupo = group(category)
-            item = {
-                "nome": name if name else "Nome não informado pela Agito",
-                "grupo": grupo,
-                "categoria": category,
-                "faixa": faixa(category, grupo),
-                "naipe": naipe(category, meta),
-                "cidade": clean(member.get("city"), 65),
-                "uf": clean(member.get("uf"), 2).upper(),
-                "equipe": clean(member.get("team"), 90),
-                "sem_nome": not bool(name)
-            }
-            rows.append(item)
-        if len(rows) >= total: break
-        if not batch: raise ValueError("Paginação terminou antes do total esperado")
-        time.sleep(0.2)
-    if len(rows) != total:
-        raise ValueError(f"Incompleto: {len(rows)} de {total} registros. Preservando dado anterior.")
+            raise ValueError("Página complementar inválida")
+        for record in batch:
+            members = record.get("members")
+            category = record.get("category", {})
+            if not isinstance(members, list) or len(members) != 1 or not isinstance(category, dict):
+                raise ValueError("Registro complementar inválido")
+            m = members[0]
+            if not isinstance(m, dict) or record.get("status") != "confirmed":
+                raise ValueError("Inscrição complementar inválida")
+            cat = clean(category.get("name"), 50).upper()
+            if cat == "ESCOLAR": grupo, age = "ESCOLAR", "Geral"
+            elif cat.startswith("PCD"): grupo, age = "PCD", "Geral"
+            elif cat.startswith("KIDS "): grupo, age = "KIDS", cat[5:]
+            elif cat.startswith("5KM "): grupo, age = "5KM", "Geral"
+            elif re.fullmatch(r"\d{2}-\d{2}|\d{2}\+", cat):
+                grupo, age = "5KM", cat
+            else: raise ValueError(f"Categoria complementar desconhecida: {cat}")
+            all_rows.append({
+                "primeiro": norm(m.get("name")).split(" ")[0],
+                "grupo": grupo, "faixa": age,
+                "cidade": norm(m.get("city")),
+                "uf": clean(m.get("uf"), 2).upper(),
+                "equipe": clean(m.get("team"), 90)
+            })
+        if len(all_rows) >= total: break
+        if not batch: raise ValueError("Paginação complementar incompleta")
+        time.sleep(0.1)
+    if len(all_rows) != total: raise ValueError("Coleta complementar parcial")
+    return all_rows
+
+def enrich(rows, source):
+    """Atribui equipe/UF somente em chaves 1:1; nunca associa primeiro nome ambíguo."""
+    primary = defaultdict(list)
+    other = defaultdict(list)
+    for row in rows:
+        key = (norm(row["nome"]).split(" ")[0], row["grupo"], row["faixa"], norm(row["cidade"]))
+        primary[key].append(row)
+    for row in source:
+        key = (row["primeiro"], row["grupo"], row["faixa"], row["cidade"])
+        other[key].append(row)
+    matched = 0
+    for key, target in primary.items():
+        if len(target) != 1 or len(other[key]) != 1:
+            continue
+        supplement = other[key][0]
+        target[0]["equipe"] = supplement["equipe"]
+        target[0]["uf"] = supplement["uf"]
+        matched += 1
+    return matched
+
+def build():
+    rows = race_rows()
+    # Complemento opcional; a lista principal RaceTagPro continua funcional
+    # mesmo se a Agito mudar a API ou temporariamente bloquear consultas.
+    matched = 0
+    try:
+        extra = agito_rows()
+        if len(extra) == len(rows):
+            matched = enrich(rows, extra)
+        else:
+            print("Aviso: totais das fontes divergem; complemento ignorado.", file=sys.stderr)
+    except (ValueError, RuntimeError) as exc:
+        print(f"Aviso: complemento de equipes indisponível: {exc}", file=sys.stderr)
     counts = Counter(r["grupo"] for r in rows)
-    if set(counts) != {"5KM", "ESCOLAR", "PCD", "KIDS"}:
-        raise ValueError(f"Grupos esperados ausentes: {dict(counts)}")
-    rows.sort(key=lambda r: (r["grupo"], r["faixa"], r["nome"].casefold()))
+    if set(counts) != {"5KM", "PCD", "KIDS", "ESCOLAR"}:
+        raise ValueError(f"Grupos inesperados: {counts}")
+    sexes = Counter(r["naipe"] for r in rows)
+    if sum(sexes.values()) != len(rows) or not {"Feminino", "Masculino"} <= set(sexes):
+        raise ValueError("Sexo individual incompleto")
+    rows.sort(key=lambda r: (r["grupo"], r["faixa"], norm(r["nome"]), r["numero"]))
+    now = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+    print(f"RaceTagPro {len(rows)} registros, {dict(sexes)}, complemento inequívoco {matched}.")
     return {
-        "versao": 2,
-        "atualizado_em": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
-        "origem": "Lista pública de inscrições — Agito Esportes",
-        "fonte": "https://agitoesportes.com.br/event/3-corrida-de-rua-portal-da-amazonia/inscriptions",
+        "versao": 3,
+        "atualizado_em": now,
+        "origem": "RaceTagPro — listagem pública da Agito Esportes",
+        "fonte": "https://old.agitoesportes.com.br/racetagpro/#/3-corrida-de-rua-portal-da-amazonia",
+        "fonte_complementar": "https://agitoesportes.com.br/event/3-corrida-de-rua-portal-da-amazonia/inscriptions",
         "total": len(rows),
-        "sem_nome": sum(r["sem_nome"] for r in rows),
+        "sem_nome": 0,
         "totais_por_grupo": {g: counts[g] for g in ("5KM", "PCD", "KIDS", "ESCOLAR")},
-        "aviso_escolar": "A categoria Escolar disputa 5 km, conforme o Regulamento oficial 1.3 (capítulo 5). O cadastro técnico da Agito indica incorretamente 1 km.",
+        "totais_por_sexo": {g: sexes[g] for g in ("Feminino", "Masculino")},
+        "aviso_escolar": "Escolar disputa 5 km conforme Regulamento 1.3; RaceTagPro confirma 5 km.",
         "inscritos": rows
     }
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--force", action="store_true", help="Permite atualização depois da data limite")
+    parser.add_argument("--force", action="store_true", help="Permite atualização após prazo")
     parser.add_argument("--dest", type=Path, default=DEST)
     args = parser.parse_args()
     if dt.datetime.now(dt.timezone.utc).date() > DATE_LIMIT and not args.force:
         print("Evento encerrado: sincronização automática desativada.")
         return
     result = build()
-    dest = args.dest
-    dest.parent.mkdir(parents=True, exist_ok=True)
-    tmp = dest.with_suffix(".tmp")
-    tmp.write_text(json.dumps(result, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
-    tmp.replace(dest)
-    print("Snapshot validado:", result["total"], "registros", result["totais_por_grupo"], "sem nome:", result["sem_nome"])
+    args.dest.parent.mkdir(parents=True, exist_ok=True)
+    temp = args.dest.with_suffix(".tmp")
+    temp.write_text(json.dumps(result, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+    temp.replace(args.dest)
+    print("Snapshot validado", result["total"], result["totais_por_grupo"], result["totais_por_sexo"])
 
 if __name__ == "__main__":
-    try:
-        main()
+    try: main()
     except Exception as exc:
-        print(f"Falha de sincronização; último snapshot preservado: {exc}", file=sys.stderr)
+        print(f"Sincronização falhou; último snapshot preservado: {exc}", file=sys.stderr)
         raise SystemExit(1)

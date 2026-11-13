@@ -129,13 +129,12 @@
   }
   function renderGender() {
     const rows = groupRows();
-    const counts = { Masculino: 0, Feminino: 0, "Não informado": 0 };
+    const counts = { Masculino: 0, Feminino: 0 };
     for (const r of rows) if (counts[r.naipe] !== undefined) counts[r.naipe] += 1;
     const options = [
       ["ALL", "Todos", rows.length],
       ["Masculino", "Masculino", counts.Masculino],
-      ["Feminino", "Feminino", counts.Feminino],
-      ["Não informado", "Não informado", counts["Não informado"]]
+      ["Feminino", "Feminino", counts.Feminino]
     ];
     const target = $("genderOptions");
     target.replaceChildren();
@@ -147,10 +146,7 @@
       button.addEventListener("click", () => setGender(value));
       target.append(button);
     }
-    const missing = counts["Não informado"];
-    $("genderHelp").textContent = missing
-      ? fmt(missing) + " inscrição(ões) com sexo não informado na lista pública da Agito. Naipes só são identificados quando a própria categoria informa Masculino ou Feminino. Não fazemos estimativas pelo nome."
-      : "Masculino e feminino conforme o cadastro público da categoria na Agito.";
+    $("genderHelp").textContent = "Sexo de todos os inscritos confirmado pelo RaceTagPro da Agito: " + fmt(counts.Feminino) + " femininos e " + fmt(counts.Masculino) + " masculinos neste grupo.";
   }
   function drawBars(target, pairs, limit, clickable) {
     target.replaceChildren();
@@ -208,10 +204,11 @@
     const details = create("div","athlete-details");
     const faixa = r.faixa === "Geral" ? "Geral" : "Faixa " + r.faixa;
     details.append(create("span","",faixa));
-    if(r.naipe !== "Não informado") details.append(create("span","",r.naipe));
+    details.append(create("span","",r.naipe));
     const city = [r.cidade,r.uf].filter(Boolean).join(" / ");
     if(city) details.append(create("span","",city));
     if(r.equipe) details.append(create("span","","Equipe: "+r.equipe));
+    if(r.numero) details.append(create("span","","Nº "+r.numero));
     card.append(top,details);
     return card;
   }
@@ -247,15 +244,17 @@
     $("loadMore").addEventListener("click",()=>{state.show+=24;render()});
   }
   function validate(data) {
-    if(!data||data.versao!==2||!Array.isArray(data.inscritos)||data.inscritos.length!==data.total||
+    if(!data||data.versao!==3||!Array.isArray(data.inscritos)||data.inscritos.length!==data.total||
        !Number.isInteger(data.total)||!data.atualizado_em)throw Error("Snapshot incompleto");
     const actual=Object.fromEntries(groups.map(g=>[g,0]));
     for(const r of data.inscritos){
       if(!r||!groups.includes(r.grupo)||typeof r.nome!=="string"||typeof r.faixa!=="string"||
-         !["Masculino","Feminino","Não informado"].includes(r.naipe))throw Error("Inscrito inválido");
+         !["Masculino","Feminino"].includes(r.naipe))throw Error("Inscrito inválido");
+      if(!Number.isInteger(r.numero)||r.numero<1)throw Error("Número de peito inválido");
       actual[r.grupo]+=1;
     }
     for(const g of groups)if(actual[g]!==data.totais_por_grupo[g])throw Error("Contagens divergentes");
+    if(!data.totais_por_sexo || data.totais_por_sexo.Feminino + data.totais_por_sexo.Masculino !== data.total) throw Error("Total por sexo divergente");
     return data;
   }
   async function init() {
@@ -285,7 +284,7 @@
     updateOptions();
     const date=new Date(data.atualizado_em);
     $("lastUpdate").textContent=Number.isNaN(+date)?"Atualização não informada":
-      "Dados da Agito atualizados em "+date.toLocaleString("pt-BR",{
+      "RaceTagPro (Agito) atualizado em "+date.toLocaleString("pt-BR",{
         timeZone:"America/Porto_Velho",day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"
       })+" (RO)";
     $("missingNames").textContent=data.sem_nome
