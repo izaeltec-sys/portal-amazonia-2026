@@ -182,9 +182,30 @@
   async function init() {
     wire();
     try {
-      const response = await fetch("./dados.json", { cache: "no-store" });
-      if (!response.ok) throw new Error("HTTP " + response.status);
-      const data = validate(await response.json());
+      // Commits via GITHUB_TOKEN podem não disparar um novo build do GitHub Pages.
+      // O GitHub Raw expõe o JSON atualizado com CORS=* e cache de cerca de 5 min.
+      // Um snapshot no próprio Pages serve como fallback quando necessário.
+      const sources = [
+        "https://raw.githubusercontent.com/izaeltec-sys/portal-amazonia-2026/main/central/inscritos/dados.json",
+        "./dados.json"
+      ];
+      let data = null;
+      let lastError = null;
+      for (const url of sources) {
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), 7000);
+        try {
+          const response = await fetch(url, { cache: "no-store", signal: controller.signal });
+          if (!response.ok) throw new Error("HTTP " + response.status);
+          data = validate(await response.json());
+          break;
+        } catch (error) {
+          lastError = error;
+        } finally {
+          clearTimeout(timer);
+        }
+      }
+      if (!data) throw (lastError || new Error("Sem dados disponíveis"));
       state.rows = data.inscritos;
       refreshOptions();
       const date = new Date(data.atualizado_em);
