@@ -212,3 +212,25 @@ Frontend redesenhado como dashboard mobile-first, com gráfico de distribuição
 A API de listagem pública só retorna os campos de membros `user_id`, `responsible`, `name`, `city`, `uf`, `team` e `has_photo`: **não há sexo individual** nos registros de faixas mistas. Para dividir integralmente masculino/feminino, é necessário um export autorizado da empresa com essa coluna e avaliação da base legal; não é possível obter separação real somente dessa API pública.
 
 O JSON agora usa `versao:2`, chave `faixa` e grupo `5KM`. A sincronização via GitHub Actions foi adaptada para esse esquema. Não publicar HTML v2 com JSON v1 de forma isolada. Testar a atualização horária e o PWA após o merge.
+
+---
+
+## Atualização RaceTagPro — 12/11/2026
+
+A Organização identificou que o RaceTagPro publica a relação completa dos atletas por **Feminino** e **Masculino**, inclusive por faixa etária. A aplicação usa dados JSON estáticos públicos:
+
+- `https://old.agitoesportes.com.br/racetagpro/data/events.json` — identificador do evento `105VZVH`;
+- `https://old.agitoesportes.com.br/racetagpro/data/105VZVH/event.json` — rotas, categorias, sexo e municípios;
+- `https://old.agitoesportes.com.br/racetagpro/data/105VZVH/results.json` — nomes completos, número de peito, categoria, modalidade e sexo (campo `g`).
+
+**Verificação:** 895 atletas, todos com nome completo, número único e sexo informado: **514 femininos / 381 masculinos**; nos 5 KM, **473 femininos / 321 masculinos**. Os grupos totalizam **5 KM 794, PCD 9, KIDS 63, ESCOLAR 29**. O RaceTagPro confirma a modalidade Escolar como **5 km**.
+
+O snapshot foi atualizado para **`versao:3`**, preservando o esquema das quatro categorias, mais `numero` (número de peito). Sexo e faixas agora vêm diretamente das categorias e do registro de cada atleta da RaceTagPro. Sem inferência por nome.
+
+**Complemento da API nova da Agito:** o endpoint `public-list` retorna em muitos registros apenas o primeiro nome, porém possui informação de equipe e UF. Para não associar pessoas erroneamente, o sincronizador somente complementa `equipe` e `uf` quando a combinação **primeiro nome normalizado + grupo + faixa + município** é única nas DUAS bases. Em associação ambígua, equipe/UF permanecem vazias. Na coleta inicial foram 674 associações inequívocas, com 341 equipes não vazias. Não misturar identificadores internos entre fornecedores.
+
+A interface agora oferece filtros completos **Todos / Masculino / Feminino** em todos os grupos; foi removida a opção "Não informado", que só refletia a limitação da API nova. As fontes estão creditadas no painel. A rotina horária lê RaceTagPro primeiro; se o complemento Agito não responder, mantém os dados principais do RaceTagPro. Se o RaceTagPro falhar, não sobrescreve o snapshot anterior.
+
+**ATENÇÃO:** o RaceTagPro está servindo uma listagem **de resultados/inscritos** em `results.json`; esse conteúdo pode mudar depois da realização do evento. A sincronização já tem data limite 17/11/2026; acompanhe qualquer alteração de estrutura ou possível exposição de resultados não homologados. Nunca usar o painel para classificação de resultados.
+
+**Histórico:** o texto anterior sobre "705 com sexo não informado" refere-se apenas à API nova. Ele foi superado pela descoberta do RaceTagPro e não descreve o status atual do painel.
