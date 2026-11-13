@@ -148,51 +148,113 @@
     }
     $("genderHelp").textContent = "Sexo de todos os inscritos confirmado pelo RaceTagPro da Agito: " + fmt(counts.Feminino) + " femininos e " + fmt(counts.Masculino) + " masculinos neste grupo.";
   }
-  function drawBars(target, pairs, limit, clickable) {
+  function drawBars(target, pairs, limit, onSelect) {
     target.replaceChildren();
     if (!pairs.length) {
       target.append(create("p", "muted", "Nenhum registro com os filtros escolhidos."));
       return;
     }
-    const max = Math.max(1, ...pairs.map(x=>x[1]));
-    const list = limit ? pairs.slice(0,limit) : pairs;
-    for (const [label,num] of list) {
+    const max = Math.max(1, ...pairs.map(x => x[1]));
+    const list = limit ? pairs.slice(0, limit) : pairs;
+    for (const [label, num] of list) {
+      const clickable = typeof onSelect === "function";
       const item = create(clickable ? "button" : "div", "bar-item");
       if (clickable) {
         item.type = "button";
-        item.title = "Selecionar faixa " + label;
+        item.title = "Filtrar por " + label;
+        item.setAttribute("aria-label", "Filtrar por " + label + ": " + fmt(num) + " atletas");
         item.addEventListener("click", () => {
-          state.faixa = label;
-          $("ageFilter").value = label;
-          state.show = 24;
-          render();
-          $("resultsTitle").scrollIntoView({behavior:"smooth",block:"start"});
+          onSelect(label);
+          $("resultsTitle").scrollIntoView({behavior: "smooth", block: "start"});
         });
       }
-      const caption = create("div", "bar-row");
-      caption.append(create("span", "bar-label", label === "Geral" ? "Geral (sem faixa)" : label),
-        create("strong", "", fmt(num)));
+      // A classe deve corresponder ao CSS: bar-line e bar-number.
+      // Rótulo e quantidade ficam em colunas independentes, inclusive no celular.
+      const caption = create("div", "bar-line");
+      caption.append(
+        create("span", "bar-label", label === "Geral" ? "Geral (sem faixa)" : label),
+        create("strong", "bar-number", fmt(num))
+      );
       const track = create("div", "bar-track");
       const fill = create("div", "bar-fill");
-      fill.style.width = (100 * num/max).toFixed(2) + "%";
+      fill.style.width = (100 * num / max).toFixed(2) + "%";
       track.append(fill);
       item.append(caption, track);
       target.append(item);
     }
+  }
+  function setAgeBar(group, faixa) {
+    // A opção "Geral" nunca deve somar Escolar e PCD como se fossem a
+    // mesma categoria: o grupo é selecionado primeiro.
+    if (state.grupo !== group) {
+      state.grupo = group;
+      state.cidade = "ALL";
+      state.equipe = "ALL";
+    }
+    state.faixa = faixa;
+    state.show = 24;
+    updateOptions();
+    render();
   }
   function renderInsights(rows) {
     $("filteredMetric").textContent = fmt(rows.length);
     $("filteredDescription").textContent = rows.length === state.rows.length
       ? "Todas as inscrições"
       : "Correspondem aos filtros";
-    const cities = countBy(rows,"cidade");
+    const cities = countBy(rows, "cidade");
     $("citiesMetric").textContent = fmt(cities.length);
-    const teams = countBy(rows,"equipe");
+    const teams = countBy(rows, "equipe");
     $("teamsMetric").textContent = fmt(teams.length);
-    drawBars($("ageBars"),countBy(rows,"faixa"),0,true);
-    drawBars($("cityBars"),cities,7,false);
-    $("ageChartTitle").textContent = state.grupo === "KIDS" ? "Faixas da Corrida Kids" :
-      state.grupo === "ALL" ? "Faixas e inscrições gerais" : "Faixas · " + labels[state.grupo];
+    drawBars($("cityBars"), cities, 7);
+
+    // Em "Todos", as quatro modalidades aparecem separadamente e no topo
+    // do gráfico, incluindo Escolar e PCD. Ao filtrar, as quantidades
+    // acompanham os filtros de sexo, faixa, cidade e equipe.
+    const byGroup = new Map(groups.map(g => [g, 0]));
+    for (const r of rows) byGroup.set(r.grupo, byGroup.get(r.grupo) + 1);
+    const categoryPairs = groups
+      .filter(g => byGroup.get(g) > 0)
+      .map(g => [labels[g], byGroup.get(g)]);
+    drawBars($("categoryBars"), categoryPairs, 0, label => {
+      const group = groups.find(g => labels[g] === label);
+      if (group) setGroup(group);
+    });
+
+    // Faixas só existem nas modalidades 5 KM e KIDS; Escolar e PCD
+    // permanecem identificadas no resumo acima, nunca em "Geral" agregado.
+    const ageCounts = new Map();
+    const ageMeta = new Map();
+    for (const r of rows) {
+      if (r.grupo !== "5KM" && r.grupo !== "KIDS") continue;
+      const label = state.grupo === "ALL"
+        ? (r.grupo === "5KM" ? "5 KM · " : "Kids · ") + r.faixa
+        : r.faixa;
+      ageCounts.set(label, (ageCounts.get(label) || 0) + 1);
+      ageMeta.set(label, { group: r.grupo, faixa: r.faixa });
+    }
+    const agePairs = [...ageCounts].sort((a, b) =>
+      b[1] - a[1] || collator.compare(a[0], b[0])
+    );
+    const hasAges = agePairs.length > 0;
+    $("ageBarsTitle").hidden = !hasAges;
+    $("ageBars").hidden = !hasAges;
+    drawBars($("ageBars"), agePairs, 0, label => {
+      const target = ageMeta.get(label);
+      if (target) setAgeBar(target.group, target.faixa);
+    });
+
+    $("ageChartTitle").textContent = state.grupo === "ALL"
+      ? "Categorias e faixas etárias"
+      : "Distribuição · " + labels[state.grupo];
+    $("ageChartDescription").textContent = hasAges
+      ? "Toque em uma categoria ou faixa etária para filtrar os atletas."
+      : "Esta categoria não tem subdivisão de faixas na lista pública.";
+    $("categoryBarsTitle").textContent = state.grupo === "ALL"
+      ? "Categorias da prova"
+      : "Categoria selecionada";
+    $("ageBarsTitle").textContent = state.grupo === "ALL"
+      ? "Faixas etárias · 5 KM e KIDS"
+      : "Faixas etárias";
   }
   function athleteCard(r) {
     const card = create("article","athlete-card");
