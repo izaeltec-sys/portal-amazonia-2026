@@ -1,0 +1,43 @@
+name: Atualizar inscritos da Agito
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: agito-inscritos-sync
+  cancel-in-progress: false
+
+jobs:
+  sincronizar:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Coletar listagem pública sanitizada
+        run: python scripts/atualizar_inscritos.py
+      - name: Atualizar snapshot somente após validação completa
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add central/inscritos/dados.json
+          if git diff --cached --quiet; then
+            echo 'Sem alteração no snapshot.'
+            exit 0
+          fi
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'data(inscritos): atualiza lista pública da Agito'
+          git pull --rebase origin main
+          git push origin HEAD:main
