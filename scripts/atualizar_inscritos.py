@@ -235,7 +235,7 @@ def build():
     now = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
     print(f"RaceTagPro {len(rows)} registros, {dict(sexes)}, complemento inequívoco {matched}.")
     return {
-        "versao": 2,
+        "versao": 3,
         "atualizado_em": now,
         "origem": "RaceTagPro — listagem pública da Agito Esportes",
         "fonte": "https://old.agitoesportes.com.br/racetagpro/#/3-corrida-de-rua-portal-da-amazonia",
