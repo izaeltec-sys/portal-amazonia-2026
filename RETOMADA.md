@@ -433,4 +433,18 @@ Recursos efetivamente encerrados/limpos no Vostro e Google Cloud:
 
 Alternativa operacional: orientação textual de estacionamento em Avisos/WhatsApp, sem mapa animado.
 
-Nova oportunidade em avaliação: dashboard público de inscrições com dados já publicados pela Agito, via extração server-side e snapshot estático sanitizado na Central. **Não publicar dados de menores nem dados não presentes na listagem pública.** Não confundir análise de viabilidade com funcionalidade publicada.
+Nova oportunidade em avaliação: dashboard público de inscrições com dados já publicados pela Agito, via extração server-side e snapshot estático sanitizado na Central. **Atualização da Organização em 12/11/2026: incluir os nomes de Kids/Escolar que já constem na lista pública da Agito, para consulta pelos responsáveis; minimizar os outros campos e não copiar dados não divulgados.** Não confundir análise de viabilidade com funcionalidade publicada.
+
+---
+
+## Dashboard de inscritos — implementação em 12/11/2026
+
+Branch de implementação: `feat/central-inscritos-dashboard`.
+
+Categorias oficiais: **ADULTO (5 km), ESCOLAR (5 km), PCD (5 km), KIDS**. O Regulamento 1.3 (capítulo 5) define **Escolar 5 km**; o cadastro técnico da Agito informa erroneamente 1 km. Não extrapolar masculino/feminino para faixas etárias com marcador "Misto".
+
+A API pública da Agito foi consultada em 9 páginas. Snapshot inicial: **895** inscrições confirmadas, Adulto 794, Escolar 29, PCD 9, Kids 63; duas sem nome na origem. Dados sanitizados em `central/inscritos/dados.json` (sem IDs internos, fotos, contato, CPF, nascimento, datas ou endereço).
+
+O frontend `central/inscritos/index.html` disponibiliza pesquisa de nomes, filtros de faixa/cidade/equipe/naipe e dashboard por categoria e município. A página usa GitHub Raw para acessar o JSON mais recente sem depender de um rebuild do Pages a cada commit do GitHub Actions, com fallback local. `scripts/atualizar_inscritos.py` coleta/valida dados e `.github/workflows/atualizar-inscritos.yml` agenda execução horária até 17/11/2026.
+
+Após publicação: verificar deploy GitHub Pages, teste em celular, execução manual do workflow, atualização automática e se a Agito continua acessível. Não usar informação de sexo inferido pelo nome. Para governança e operação, consultar `central/inscritos/README.md`.

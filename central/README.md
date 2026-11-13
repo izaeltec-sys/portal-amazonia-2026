@@ -181,3 +181,15 @@ Quando o conteúdo modificar regra oficial, prazo, direito, obrigação, categor
 ## Página principal existente
 
 O arquivo `/index.html` continua sendo o Regulamento oficial. A Central permanece em `/central/` para não quebrar links já divulgados.
+
+## Inscritos e Estatísticas — 12/11/2026
+
+Nova seção em `central/inscritos/` com dashboard, busca de nomes e filtros por categoria, cidade, equipe e naipe informado. Os dados são copiados exclusivamente da lista pública da Agito, com identificação de fonte e horário de atualização.
+
+Quatro grupos: **ADULTO 5 km**, **ESCOLAR 5 km**, **PCD 5 km** e **KIDS**. O capítulo 5 do Regulamento 1.3 confirma que a categoria Escolar corre 5 km, embora o cadastro técnico da Agito exponha 1 km. Não atribuir masculino/feminino à categoria original marcada como "Misto"; apenas exibir naipe quando declarado.
+
+A Organização confirmou necessidade de **incluir os nomes de atletas Kids/Escolar**, permitindo verificação pelos responsáveis, com minimização dos demais dados. Consulta inicial: **895 inscrições confirmadas** (794 Adulto, 29 Escolar, 9 PCD, 63 Kids; 2 sem nome público).
+
+O robô `scripts/atualizar_inscritos.py` é agendado via GitHub Actions, e o frontend usa o JSON da branch main via GitHub Raw (CORS habilitado), com fallback do próprio GitHub Pages. A atualização automática é por hora até 17/11/2026 e pode atrasar conforme o agendador do GitHub. Nenhuma chave, token privado ou banco de dados é necessário.
+
+Leia `central/inscritos/README.md` antes de editar a rotina.
