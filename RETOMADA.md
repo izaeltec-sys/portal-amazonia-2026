@@ -416,3 +416,21 @@ Quando houver trabalho no Regulamento, Central ou mídia:
 O prompt completo de retomada está em:
 
 `PROMPT_NOVO_CHAT.md`
+
+---
+
+## Encerramento — estacionamento animado (12/11/2026)
+
+O projeto da orientação animada de estacionamento foi **cancelado por decisão da Organização** em 12/11/2026, por complexidade desproporcional ao benefício. A branch histórica `feat/central-parking-google-maps` não foi mesclada; a Central publicada segue sem o módulo.
+
+Recursos efetivamente encerrados/limpos no Vostro e Google Cloud:
+- Prévia local Node.js em `localhost:8000` parada, diretório temporário de prévia (incluindo cópia local da chave) apagado.
+- Chave dedicada da Maps JavaScript API excluída.
+- Faturamento desvinculado do projeto dedicado `portal-amazonia-2026-mapas`, confirmado pelo Google Cloud.
+- Projeto dedicado encerrado; Console informou exclusão programada após **12/12/2026**.
+- Alerta/orçamento próprio de R$ 10/mês removido da conta de faturamento.
+- **Não** foi encerrada a conta geral do Google Cloud, nem o projeto preexistente My First Project.
+
+Alternativa operacional: orientação textual de estacionamento em Avisos/WhatsApp, sem mapa animado.
+
+Nova oportunidade em avaliação: dashboard público de inscrições com dados já publicados pela Agito, via extração server-side e snapshot estático sanitizado na Central. **Não publicar dados de menores nem dados não presentes na listagem pública.** Não confundir análise de viabilidade com funcionalidade publicada.
