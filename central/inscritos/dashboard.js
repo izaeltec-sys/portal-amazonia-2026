@@ -90,6 +90,7 @@
 
   function renderGroupCards() {
     $("totalCount").textContent = fmt(state.rows.length);
+    $("donutMobileTotal").textContent = fmt(state.rows.length);
     const counts = Object.fromEntries(groups.map(g=>[g,0]));
     for (const r of state.rows) counts[r.grupo] += 1;
     const container = $("groupCards");

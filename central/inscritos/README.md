@@ -121,3 +121,11 @@ A interface agora oferece filtros completos **Todos / Masculino / Feminino** em 
 - Barras de categoria e faixa continuam interativas, inclusive com filtros de sexo, cidade/equipe e navegação para a lista de atletas.
 - Dados do RaceTagPro/snapshot v3, Regulamento e logos não foram alterados. Atualizado cache PWA v14.
 - Testado com 895 registros: PCD (9), Escolar (29), Kids 12-13 (18), 5 KM 30-34 (152), Feminino (514); HTML IDs únicos, JS sintaticamente válido e rótulos/quantidades com classes corretas.
+
+---
+
+## Refino visual mobile — 13/11/2026
+
+O painel **Distribuição da corrida** agora mostra o título em linha própria e, em telefones de até 700 px, dispõe rosca e legenda em duas colunas. O centro da rosca exibe o total de inscrições gerado pelo mesmo JSON dos cards. Entre 360 e 430 px, os textos, quantidades e cores ficam visíveis sem rolagem horizontal. Título principal e fontes dos quatro cartões receberam ajustes somente em breakpoints móveis. Em desktop, a composição original foi preservada.
+
+Ajustes restritos a `central/inscritos/index.html`, uma atualização do texto do total no JS e invalidação de cache PWA v15. Não alterados inscritos, categorias, filtros, Regulamento ou materiais oficiais.
