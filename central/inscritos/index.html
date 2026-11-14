@@ -194,6 +194,47 @@ input:focus,select:focus{border-color:#357c55}
 .bar-item:hover{background:#f1f7ed}
 @media(max-width:700px){.bar-line .bar-label{font-size:12px}.bar-line .bar-number{font-size:12px}.bar-line{gap:14px}}
 
+
+/* Refino mobile 13/11: título da distribuição acima da rosca e legenda.
+   O layout desktop mantém a apresentação anterior. */
+.mix-content{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;width:100%;min-width:0}
+.donut-desktop-caption{display:block}
+.donut-mobile-caption{display:none}
+@media(max-width:960px){
+  .mix-panel{flex-direction:column;gap:14px;justify-content:center}
+  .mix-content{flex-direction:row;gap:22px;justify-content:space-around;align-items:center}
+}
+@media(max-width:700px){
+  .hero h1{font-size:clamp(28px,7.7vw,33px);line-height:1.15;letter-spacing:-.045em}
+  .mix-panel{flex-direction:column;align-items:stretch;justify-content:flex-start;padding:18px;gap:14px}
+  .mix-title{width:100%;text-align:left;font-size:13px;line-height:1.35}
+  .mix-content{display:grid;grid-template-columns:minmax(120px,44%) minmax(0,1fr);gap:12px;align-items:center;justify-items:stretch}
+  .donut{width:clamp(115px,32vw,137px);height:clamp(115px,32vw,137px);justify-self:center}
+  .donut:before{width:72%;height:72%}
+  .donut-center{font-size:12px;line-height:1.15}
+  .donut-desktop-caption{display:none}
+  .donut-mobile-caption{display:flex;flex-direction:column;align-items:center;gap:2px}
+  .donut-mobile-caption strong{font-size:21px;font-weight:900;line-height:1}
+  .donut-mobile-caption small{font-size:10px;font-weight:650;line-height:1.2}
+  .mix-legend{width:100%;min-width:0;gap:4px}
+  .legend-item{min-width:0;min-height:34px;gap:7px;padding:4px 3px}
+  .legend-dot{flex:0 0 9px}
+  .legend-name{min-width:0;font-size:12px;line-height:1.25;overflow-wrap:anywhere}
+  .legend-number{flex:0 0 auto;font-size:12px}
+  .overview-main{padding:17px}
+  .stat-card{padding:14px;min-height:105px}
+  .stat-kicker{font-size:13px;line-height:1.25}
+  .stat-caption{font-size:11px;line-height:1.3}
+  .stat-value{font-size:clamp(29px,7vw,34px)}
+}
+@media(max-width:370px){
+  .mix-panel{padding:14px}
+  .mix-content{grid-template-columns:minmax(108px,42%) minmax(0,1fr);gap:9px}
+  .donut{width:115px;height:115px}
+  .legend-item{gap:5px;padding:3px 2px}
+  .legend-name{font-size:11px}
+  .stat-card{padding:12px}
+}
 </style>
 </head>
 <body>
@@ -216,7 +257,7 @@ input:focus,select:focus{border-color:#357c55}
 <div class="total-meta"><div><span class="total-label">Atletas confirmados</span><strong class="total-big" id="totalCount">—</strong><span class="total-sub">Inscrições registradas na Agito</span></div><button type="button" class="pill-button" id="allGroups" aria-pressed="true">Ver todos</button></div>
 <div class="stats" id="groupCards" aria-label="Categorias principais — selecione para filtrar"></div>
 </div>
-<div class="mix-panel"><div class="mix-title">Distribuição da corrida</div><div class="donut" id="donut" role="img" aria-label="Gráfico da distribuição por grupos"><span class="donut-center">4 grupos<br>oficiais</span></div><div class="mix-legend" id="donutLegend" aria-label="Legenda interativa da distribuição"></div></div>
+<div class="mix-panel"><div class="mix-title">Distribuição da corrida</div><div class="mix-content"><div class="donut" id="donut" role="img" aria-label="Gráfico da distribuição por grupos"><span class="donut-center"><span class="donut-desktop-caption">4 grupos<br>oficiais</span><span class="donut-mobile-caption"><strong id="donutMobileTotal">—</strong><small>inscritos</small></span></span></div><div class="mix-legend" id="donutLegend" aria-label="Legenda interativa da distribuição"></div></div></div>
 </section>
 <section class="support-banner" aria-label="Termo para menores de idade">
 <div><h2>Tem atleta de 14 a 17 anos nos 5 km?</h2><p>Preencha o Termo de Responsabilidade e Autorização, imprima ou salve em PDF. <strong>A Corrida Kids não exige esse termo.</strong></p></div>
