@@ -66,18 +66,19 @@ th:nth-child(3),td:nth-child(3){width:195px}
  #printPages{display:block!important}
  .print-sheet{position:relative;box-sizing:border-box;width:210mm;height:297mm;
    page-break-after:always;break-after:page;overflow:hidden;
-   padding:11mm 11mm 35mm;background:#fff}
+   padding:0 11mm 27mm;background:#fff}
  .print-sheet:last-child{break-after:auto;page-break-after:auto}
- .print-head{display:flex;align-items:center;justify-content:space-between;gap:5mm;
-   min-height:26mm;border-bottom:1.2px solid #d0a03c;
-   padding-bottom:3.2mm;margin-bottom:3mm}
- .print-head-logo{width:57mm;height:24mm;object-fit:contain}
+ .print-head{box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:6mm;
+   width:210mm;min-height:33mm;margin:0 -11mm 3.5mm;padding:4mm 11mm 3.5mm;
+   background:#f8f5ed!important;color:#073c2e!important;
+   border-bottom:1.1mm solid #d9a743}
+ .print-head-logo{width:58mm;height:25mm;object-fit:contain;flex-shrink:0}
  .print-head-info{flex:1;text-align:right}
  .print-supertitle{font-size:8pt;letter-spacing:.1em;text-transform:uppercase;
-   color:#8e6929;font-weight:bold}
- .print-title{color:#064832;font-size:15pt;font-weight:900;line-height:1.08;
-   margin:2mm 0 1.1mm}
- .print-caption{color:#455f53;font-size:8pt;line-height:1.3}
+   color:#78551f;font-weight:bold}
+ .print-title{color:#063c2b;font-size:15pt;font-weight:900;line-height:1.14;
+   margin:1.7mm 0 1mm}
+ .print-caption{color:#294f40;font-size:8.5pt;line-height:1.3}
  .print-micro{font-size:8pt;color:#395448;display:flex;justify-content:space-between;
    gap:3mm;margin:3mm 0 2.2mm}
  .print-micro strong{font-weight:800;color:#064832}
@@ -92,12 +93,12 @@ th:nth-child(3),td:nth-child(3){width:195px}
  .print-table th:nth-child(1),.print-table td:nth-child(1){width:20mm;font-weight:bold}
  .print-table th:nth-child(2),.print-table td:nth-child(2){width:auto}
  .print-table th:nth-child(3),.print-table td:nth-child(3){width:29mm}
- .print-footer{position:absolute;bottom:0;left:0;width:210mm;height:30mm;
+ .print-footer{position:absolute;bottom:0;left:0;width:210mm;height:22mm;
    background:#000;display:flex;align-items:center;justify-content:center}
- .print-footer img{width:188mm;height:auto;display:block;object-fit:contain}
- .print-page{position:absolute;bottom:32mm;right:11mm;font-size:8.5pt;
+ .print-footer img{width:163mm;height:auto;max-height:21mm;display:block;object-fit:contain}
+ .print-page{position:absolute;bottom:24mm;right:11mm;font-size:8.5pt;
    color:#4f6759;text-align:right}
- .print-caution{position:absolute;bottom:32mm;left:11mm;
+ .print-caution{position:absolute;bottom:24mm;left:11mm;
    font-size:8pt;color:#4f6759;max-width:100mm}
 }
 </style>
