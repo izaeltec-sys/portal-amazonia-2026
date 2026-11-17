@@ -11,6 +11,8 @@
 .wrap{max-width:1090px;margin:0 auto;padding:0 18px}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 0}
 .nav a{font-size:13px;font-weight:850;color:var(--dark2);text-decoration:none}
+.nav .back-central,.back-bottom{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:39px;padding:9px 15px;background:#fff;color:var(--dark2);border:1px solid #d4e3d5;border-radius:999px;font-size:13px;font-weight:850;text-decoration:none;box-shadow:0 2px 6px #021a100b}
+.nav .back-central:hover,.back-bottom:hover{background:#f6edda;border-color:#d9a743}.back-bottom{margin:4px 0 20px;background:#fff;border-color:#b7d4c0}
 .nav button{padding:10px 14px;font:inherit;font-size:13px;font-weight:800;background:#fff;border:1px solid var(--line);border-radius:24px;color:var(--dark2);cursor:pointer}
 header{background:linear-gradient(135deg,#003e2b,#086045 100%);color:#fff;border-bottom:5px solid #d3a54c}
 .hero{display:grid;grid-template-columns:minmax(180px,260px) 1fr;gap:30px;align-items:center;padding:35px 0 32px}
@@ -46,14 +48,14 @@ th:nth-child(3),td:nth-child(3){width:195px}
 .footer img{display:block;max-width:100%;width:min(940px,100%);height:auto;object-fit:contain;margin:0 auto}
 .footmeta{background:#063e2c;color:#d5eadb;font-size:11px;text-align:center;padding:12px}
 @media(max-width:640px){.hero{grid-template-columns:1fr;gap:18px;padding:24px 0 25px}.logo-frame{max-width:260px;padding:9px;min-height:auto}.bars{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{padding:13px}.stats strong{font-size:26px}.controls{grid-template-columns:1fr}th:nth-child(1),td:nth-child(1){width:66px}th:nth-child(3),td:nth-child(3){width:99px}tbody td{font-size:12px;padding:10px 7px}thead th{font-size:10px;padding:10px 7px}.nav a{font-size:12px}}
-@media print{@page{size:A4 portrait;margin:13mm 11mm 19mm 11mm}html,body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}.nav,.toolpanel,.notice,.footmeta,.searchhint{display:none!important}.wrap{padding:0}.hero{display:flex;align-items:center;gap:22px;padding:0 0 12px}.logo-frame{width:140px;min-height:100px}.logo-frame img{height:90px}.eyebrow{color:#064c34}.hero h1{font-size:19px;line-height:1.15;margin:5px 0;color:#064c34}.hero .lead{color:#456b59;font-size:10px}.bars{grid-template-columns:repeat(4,1fr);margin:7px 0 10px;gap:5px}.stats{padding:7px;border-radius:5px;box-shadow:none}.stats span{font-size:8px}.stats strong{font-size:16px}.tablecard{border:0;border-radius:0;margin:10px 0}.tabletitle{padding:3px 0 8px}.tabletitle h2{font-size:14px}#count{font-size:10px}table{page-break-inside:auto}thead{display:table-header-group}tr{break-inside:avoid;page-break-inside:avoid}thead th{font-size:9px;padding:5px}tbody td{font-size:9px;padding:4px 5px;line-height:1.25}.footer{position:fixed;bottom:-16mm;left:-11mm;right:-11mm;border-top:1px solid var(--gold);padding:5px 30px}.footer img{height:43px;width:auto;max-width:95%}.disclaimer{font-size:9px;padding:0 0 5px}h1,h2{break-after:avoid}}
+@media print{@page{size:A4 portrait;margin:13mm 11mm 19mm 11mm}html,body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}.nav,.toolpanel,.notice,.footmeta,.searchhint,.back-bottom{display:none!important}.wrap{padding:0}.hero{display:flex;align-items:center;gap:22px;padding:0 0 12px}.logo-frame{width:140px;min-height:100px}.logo-frame img{height:90px}.eyebrow{color:#064c34}.hero h1{font-size:19px;line-height:1.15;margin:5px 0;color:#064c34}.hero .lead{color:#456b59;font-size:10px}.bars{grid-template-columns:repeat(4,1fr);margin:7px 0 10px;gap:5px}.stats{padding:7px;border-radius:5px;box-shadow:none}.stats span{font-size:8px}.stats strong{font-size:16px}.tablecard{border:0;border-radius:0;margin:10px 0}.tabletitle{padding:3px 0 8px}.tabletitle h2{font-size:14px}#count{font-size:10px}table{page-break-inside:auto}thead{display:table-header-group}tr{break-inside:avoid;page-break-inside:avoid}thead th{font-size:9px;padding:5px}tbody td{font-size:9px;padding:4px 5px;line-height:1.25}.footer{position:fixed;bottom:-16mm;left:-11mm;right:-11mm;border-top:1px solid var(--gold);padding:5px 30px}.footer img{height:43px;width:auto;max-width:95%}.disclaimer{font-size:9px;padding:0 0 5px}h1,h2{break-after:avoid}}
 </style>
 </head>
 <body>
 <header><div class="wrap">
- <nav class="nav"><a href="../">← Central do Atleta</a><button type="button" onclick="window.print()">Imprimir lista</button></nav>
+ <nav class="nav"><a class="back-central" href="../" aria-label="Voltar à Central do Atleta">← Voltar à Central do Atleta</a><button type="button" onclick="window.print()">Imprimir lista</button></nav>
  <div class="hero">
-   <div class="logo-frame"><img src="../assets/logo-horizontal.jpg" alt="Logotipo oficial da Corrida Portal da Amazônia 2026"></div>
+   <div class="logo-frame"><img src="./logo-evento-oficial.png" alt="Logotipo oficial da Corrida Portal da Amazônia 2026"></div>
    <div>
     <div class="eyebrow">SORTEIO SOLIDÁRIO · BICICLETA</div>
     <h1>Lista preliminar de atletas habilitados</h1>
@@ -79,6 +81,7 @@ th:nth-child(3),td:nth-child(3){width:195px}
   <div class="tabletitle"><h2>Relação preliminar — por número de peito</h2><span id="count" aria-live="polite">800 atletas</span></div>
   <table><thead><tr><th scope="col">Peito</th><th scope="col">Nome completo</th><th scope="col">Modalidade</th></tr></thead><tbody id="rows"><tr><td colspan="3">Carregando lista...</td></tr></tbody></table>
  </section>
+ <div style="display:flex;justify-content:center"><a class="back-bottom" href="../">← Voltar à Central do Atleta</a></div>
  <div class="disclaimer">Fonte: Relatório de Kits de Atletas, disponibilizado pela cronometragem, com 895 inscrições identificadas, das quais 800 constam como “Kit Entregue: Sim”. O relatório não demonstra individualmente a doação de alimentos nem comprova participação efetiva na prova. A lista não contém CPF ou data de nascimento.</div>
 </main>
 <footer class="footer"><img src="./footer-oficial.png" alt="Rodapé oficial do evento com realizadores e apoiadores"></footer>
