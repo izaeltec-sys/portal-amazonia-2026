@@ -1,5 +1,16 @@
 [
   {
+    "id": "2026-11-17-lista-preliminar-sorteio",
+    "data": "2026-11-17",
+    "tipo": "aviso",
+    "titulo": "Sorteio solidário da bicicleta: confira a lista preliminar",
+    "resumo": "Publicada a relação preliminar dos 800 atletas com retirada de kit registrada. Pesquise seu nome e número de peito; contestações antes do sorteio.",
+    "conteudo": "A organização disponibilizou para conferência a lista preliminar de atletas habilitados ao sorteio solidário da bicicleta. A base considera 800 atletas com retirada de kit registrada no relatório da cronometragem: 714 nos 5 km, 7 PCD, 23 Escolar e 56 Kids. A consulta informa o número de peito original, nome e modalidade, sem divulgar CPF. Se não encontrar seu nome ou identificar alguma divergência, procure a Organização por mensagem privada, informando nome, número de peito e, se possível, comprovante da retirada. O prazo de contestação e a data da live serão anunciados pelos canais oficiais; a lista ainda poderá ser corrigida. A retirada do kit não comprova individualmente a doação do alimento ou a participação na prova.",
+    "link": "./sorteio-bicicleta/",
+    "rotuloLink": "Conferir lista preliminar",
+    "destaque": true
+  },
+  {
     "id": "2026-11-12-inscritos-dashboard",
     "data": "2026-11-12",
     "tipo": "informacao",

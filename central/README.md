@@ -234,3 +234,14 @@ A interface agora oferece filtros completos **Todos / Masculino / Feminino** em 
 **ATENÇÃO:** o RaceTagPro está servindo uma listagem **de resultados/inscritos** em `results.json`; esse conteúdo pode mudar depois da realização do evento. A sincronização já tem data limite 17/11/2026; acompanhe qualquer alteração de estrutura ou possível exposição de resultados não homologados. Nunca usar o painel para classificação de resultados.
 
 **Histórico:** o texto anterior sobre "705 com sexo não informado" refere-se apenas à API nova. Ele foi superado pela descoberta do RaceTagPro e não descreve o status atual do painel.
+
+
+## Lista preliminar do sorteio solidário — 17/11/2026
+
+- Página pública `central/sorteio-bicicleta/index.html`, com acesso em atalho, menu da Central e aviso de 17/11/2026.
+- Base preliminar congelada de **800 números de peito originais** com `Kit Entregue: Sim` no relatório da cronometragem (5 km 714, PCD 7, Escolar 23, Kids 56). Sem CPF nem nascimento.
+- Dados do nome e modalidade compatibilizados pelo número de peito com `central/inscritos/dados.json` de 17/11/2026. A numeração não foi alterada.
+- Rodapé oficial publicado como asset binário original em `central/sorteio-bicicleta/footer-oficial.png`; logotipo oficial existente em `central/assets/logo-horizontal.jpg`.
+- Os prazos e a data da live **não foram definidos na página**: necessitam divulgação oficial. A lista **não** equivale à relação definitiva do sorteio.
+- Alterações futuras de elegibilidade exigem republicação explícita da versão definitiva, com conferência e registro.
+- Service Worker atualizado para `portal-central-v16` para renovação do shell da Central.
