@@ -125,7 +125,7 @@ function fallbackCopyText(text){
  if(!ok)throw new Error('Cópia indisponível');
 }
 copyButton.addEventListener('click',async()=>{
- const text=list.map(a=>a.numero+' | '+a.nome.replace(/[\\r\\n|]+/g,' ').trim()+' | '+a.modalidade).join('\\n');
+ const text=list.map(a=>a.numero+' | '+a.nome.replace(/[\r\n|]+/g,' ').trim()+' | '+a.modalidade).join('\n');
  try{
   if(navigator.clipboard&&navigator.clipboard.writeText){
    await navigator.clipboard.writeText(text);
