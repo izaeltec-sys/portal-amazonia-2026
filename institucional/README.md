@@ -17,16 +17,26 @@ Portfólio institucional das organizações, destinado a apresentar experiência
 - Links e referências externas são materiais de consulta, não fotografias incorporadas automaticamente.
 - Créditos de prestadores de serviço externos não são expostos no portfólio.
 
-## Logos originais (pendência de publicação binária)
+## Logotipos oficiais — publicados
 
-Estão previstos estes arquivos, **sem edição, redesenho ou reconstrução**:
+Os arquivos originais fornecidos foram publicados no repositório, **sem alteração visual ou reconstrução**:
 
-- `institucional/assets/associacao-eec.png`: cópia exata do logotipo fornecido (no desenho original aparece E.E.C).
-- `institucional/assets/legado-polaco.png`: cópia exata do logotipo Polaco Cycling Team Eventos fornecido.
+- `institucional/assets/associacao-eec.png` — original da associação, incluindo a inscrição E.E.C como fornecida.
+- `institucional/assets/legado-polaco.png` — original da Polaco Cycling Team Eventos.
 
-O HTML já contém os caminhos e o texto institucional alternativo. Enquanto os PNGs não estiverem no repositório, não aparecem imagens quebradas; o texto identifica as organizações.
+O logotipo da Polaco é predominantemente branco e verde, por isso o site lhe oferece um **fundo escuro no layout**, sem editar o PNG.
 
-Não criar versões artificiais ou retocar qualquer logotipo. Quando os PNGs forem incluídos nos caminhos acima, serão exibidos automaticamente no site.
+## Fotografias reais — versão de acervo
+
+As imagens foram incluídas em `institucional/assets/fotos/`, para evitar dependência dos links das plataformas. O nome dos arquivos e o vínculo dos registros:
+
+- `portal-2024-acervo.jpg`: foto fornecida pela organização, original de 17/11/2024 (versão web reduzida para publicação).
+- `aabb-2025-largada.jpg`: capa fotográfica do álbum do 1º Circuito AABB 2025; Wellington Vilela.
+- `portal-2025-largada.jpg`: capa fotográfica do álbum da 2ª Portal da Amazônia 2025; Wellington Vilela.
+- `portal-2025-atletas.jpg`: foto real do acervo, com data de novembro de 2025; sem atribuir autoria sem comprovação.
+- `portal-2026-largada.jpg`: fotografia de largada da 3ª Portal da Amazônia 2026; Wellington Vilela, com liberação da organização.
+
+As galerias não devem ser tratadas como autorização automática para todos os usos: a organização confirmou o direito de publicação das fotos de Wellington e autorizou expressamente o álbum Banlek de 2026. Para outras imagens, confirmar a liberação antes de acrescentar.
 
 ## Dados e critérios
 
@@ -41,8 +51,8 @@ Não criar versões artificiais ou retocar qualquer logotipo. Quando os PNGs for
 
 ## Próximas versões
 
-1. Incluir os dois PNGs originais nos caminhos previstos.
-2. Selecionar fotos reais em alta resolução, com liberação de uso e créditos.
+1. Revisar o enquadramento e a legibilidade dos logos e fotos já publicados.
+2. Selecionar novas fotografias reais da galeria liberada de 2026, incluindo pódio, Kids e organização.
 3. Acrescentar relatórios de corridas e dados comprovados de ações sociais, incluindo entregas de brinquedos e alimentos.
 4. Validar denominação, telefone e canal de contato institucional.
 5. Revisar detalhes de equipamentos adaptados, disponibilidade e regras de empréstimo/uso.

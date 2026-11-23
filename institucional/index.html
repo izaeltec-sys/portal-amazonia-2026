@@ -178,6 +178,25 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
 .footer p,.footer small{font-size:14px}
 @media(max-width:980px){.cover{grid-template-columns:49% 51%}.cover h1{font-size:clamp(61px,8vw,91px)}.head{grid-template-columns:20% 1fr}.event{grid-template-columns:75px 1fr 175px}.event h3{font-size:32px}}
 @media(max-width:700px){body{font-size:17px}.cover{grid-template-columns:1fr;min-height:0}.cover-copy{padding:52px 24px 54px}.cover-copy .eyebrow{margin-bottom:28px}.cover h1{font-size:clamp(68px,13vw,96px)}.cover .lead{font-size:18px}.cover-media{min-height:380px}.brand{font-size:19px}.section{padding:65px 0}.head{grid-template-columns:1fr;gap:12px}.head h2{font-size:54px}.head p,.intro .bodycopy{font-size:17px}.intro .mission{font-size:42px}.event{grid-template-columns:59px 1fr;gap:12px}.year{font-size:27px}.event h3{font-size:31px}.event .metric{grid-column:2;text-align:left}.metric strong{font-size:38px}.photo-pair figure:nth-child(2){padding-top:0}.photo-pair figcaption{display:block}.photo-pair figcaption span{display:block}.stat .value{font-size:43px}.service h3{font-size:32px}.social-stories h3{font-size:38px}.editorial-figure h3{font-size:44px}.next-events h3{font-size:43px}.closing h2{font-size:53px}}
+
+/* Fotografia documental e logotipos: proporções preservadas. */
+.signature img:not(.polaco-logo){width:112px;height:94px;object-fit:contain;flex:none}
+.signature .polaco-logo{width:230px;height:94px;object-fit:contain;padding:15px 17px;background:#14303c;flex:none}
+.signature .logo-placeholder{max-width:160px}
+.memory-spread{display:grid;grid-template-columns:1.35fr .65fr;min-height:420px;margin-top:0;margin-bottom:78px;background:#14333f;color:#f7f2e6}
+.memory-spread .memory-image{min-width:0;overflow:hidden}
+.memory-spread .memory-image img{width:100%;height:100%;min-height:420px;object-fit:cover;object-position:center 47%}
+.memory-spread .memory-words{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:37px 40px}
+.memory-spread .chapter{color:#eead83;margin-bottom:22px}
+.memory-spread strong{font:700 clamp(33px,3.8vw,55px)/.95 'Barlow Condensed','Arial Narrow',sans-serif;letter-spacing:.01em;max-width:330px}
+.memory-spread p{font-size:17px;line-height:1.55;color:#d9e4df;margin:25px 0 14px}
+.memory-spread small{font-size:13px;line-height:1.45;color:#bdcfd0;margin-top:auto}
+.editorial-figure img{object-position:center 30%}
+.photo-pair figure:nth-child(2){padding-top:58px}
+@media(max-width:900px){.memory-spread{grid-template-columns:1fr 1fr}.memory-spread .memory-words{padding:28px}.signature .polaco-logo{width:190px}}
+@media(max-width:700px){.memory-spread{display:block;margin-bottom:28px}.memory-spread .memory-image img{min-height:0;height:auto;aspect-ratio:1.6;object-fit:cover}.memory-spread .memory-words{padding:30px 25px 32px}.memory-spread strong{font-size:45px}.memory-spread small{margin-top:16px}.signature .polaco-logo{width:210px;height:83px}.signature img:not(.polaco-logo){width:105px;height:84px}.photo-pair figure:nth-child(2){padding-top:0}}
+@media print{.signature .polaco-logo{background:#14303c!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}.memory-spread{grid-template-columns:60% 40%;min-height:0;margin:6mm 0 8mm;break-inside:avoid}.memory-spread .memory-image img{height:60mm;min-height:0;object-fit:cover}.memory-spread .memory-words{padding:4mm}.memory-spread strong{font-size:24pt}.memory-spread p{font-size:9pt;margin:3mm 0}.memory-spread small{font-size:8pt}.photo-pair figure:nth-child(2){padding-top:0}}
+
 /* PDF terá acabamento final após fechamento das fotografias e logotipos. */
 @media print{.cover{grid-template-columns:48% 52%}.cover h1{font-size:43pt}.cover-copy{padding:12mm 6mm 12mm 0}.cover .lead{font-size:12pt}.head h2{font-size:31pt}.intro .mission{font-size:25pt}.event h3{font-size:18pt}.event .metric strong{font-size:23pt}.photo-pair figure:nth-child(2){padding-top:0}.social-stories h3,.service h3{font-size:21pt}}
 
@@ -194,7 +213,7 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
  <p class="lead">AEEC e Polaco Cycling Team Eventos: experiência na produção esportiva, compromisso com a comunidade e histórias construídas em Vilhena.</p>
  <div class="tagline">AEEC &amp; Polaco Cycling Team Eventos</div>
  </div>
- <div class="cover-media"><img src="https://d2hk32cswy6zx7.cloudfront.net/7d38b9e76914df439b0e8f8987987c7d/v2_7d262720-c29e-45ae-a74a-90f1f0f5b4c8.jpg" alt="Largada real da 3ª Corrida Portal da Amazônia de 2026, com atletas e pórtico oficial" fetchpriority="high">
+ <div class="cover-media"><img src="assets/fotos/portal-2026-largada.jpg" alt="Largada real da 3ª Corrida Portal da Amazônia de 2026, com atletas e pórtico oficial" fetchpriority="high">
  <div class="photo-note"><strong>Vilhena, 2026</strong> 3ª Corrida Portal da Amazônia<br>Foto: Wellington Vilela</div></div>
 </section>
 <section class="signatures"><div class="outer signatures-inner">
@@ -205,6 +224,10 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
  <div class="head"><div class="chapter">Quem somos</div><div><h2>Antes da largada, existe uma equipe.</h2><p>Planejar, reunir pessoas, transformar ideias em experiências reais. É assim que construímos competições e ações de impacto local.</p></div></div>
  <div class="intro"><p class="mission">A boa organização não aparece apenas no pórtico. Ela está em cada detalhe que faz o evento acontecer.</p><div class="bodycopy"><p><strong>A AEEC</strong> atua em esporte, educação, inclusão e projetos comunitários. <strong>A Polaco Cycling Team Eventos</strong> reúne experiência operacional em competições e produção esportiva, com origem no ciclismo e consolidação nas corridas de rua.</p><p>Juntas, desenvolvem projetos próprios e colaboram com entidades, escolas, instituições e empresas na organização de eventos.</p></div></div>
 </div></section>
+<figure class="memory-spread outer">
+ <div class="memory-image"><img src="assets/fotos/portal-2024-acervo.jpg" alt="Atletas reunidos em grupo em Vilhena em 17 de novembro de 2024, em fotografia do acervo da organização" loading="lazy"></div>
+ <figcaption class="memory-words"><span class="chapter">Acervo · Novembro de 2024</span><strong>Os encontros ficam. As histórias continuam.</strong><p>Um registro da comunidade esportiva que acompanha a trajetória dos eventos.</p><small>Fotografia do acervo fornecido pela organização · 17/11/2024</small></figcaption>
+</figure>
 <div class="outer"><div class="rule"></div></div>
 <section class="section section-events" id="trajetoria"><div class="outer">
  <div class="head"><div class="chapter">Percurso · 2024–2026</div><div><h2>Uma trajetória feita em movimento.</h2><p>Os registros a seguir mostram a evolução do trabalho. Cada indicador mantém seu significado original: inscritos, participantes divulgados ou concluintes.</p></div></div>
@@ -216,8 +239,8 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
   <article class="event"><div class="year">2026</div><div><h3>3ª Corrida de Rua Portal da Amazônia</h3><p>15 de novembro · Vilhena · comunicação digital integrada e Central do Atleta</p></div><div class="metric"><strong>3ª edição</strong><span>resultados e inscrições disponíveis para consolidação</span></div></article>
  </div>
  <div class="photo-pair" aria-label="Fotografias reais dos eventos realizados">
- <figure><img src="https://d2hk32cswy6zx7.cloudfront.net/a2be091d4a84a9a830ee60cd93509df7/v2_02891f33-bced-42ea-a86d-74b1bd1b3f61.jpg" alt="Atletas reunidos sob o pórtico do primeiro Circuito AABB em Vilhena, 2025" loading="lazy"><figcaption><b>2025 · Circuito AABB</b><span>Wellington Vilela</span></figcaption></figure>
- <figure><img src="https://d2hk32cswy6zx7.cloudfront.net/8a693040b362cab9fd3f8a6f18498f24/v2_79045db2-96de-4ef1-a330-cd078c7abfeb.jpg" alt="Atletas alinhados na largada noturna da 2ª Corrida Portal da Amazônia em 2025" loading="lazy"><figcaption><b>2025 · Portal da Amazônia</b><span>Wellington Vilela</span></figcaption></figure>
+ <figure><img src="assets/fotos/aabb-2025-largada.jpg" alt="Atletas reunidos sob o pórtico do primeiro Circuito AABB em Vilhena, 2025" loading="lazy"><figcaption><b>2025 · Circuito AABB</b><span>Wellington Vilela</span></figcaption></figure>
+ <figure><img src="assets/fotos/portal-2025-largada.jpg" alt="Atletas alinhados na largada noturna da 2ª Corrida Portal da Amazônia em 2025" loading="lazy"><figcaption><b>2025 · Portal da Amazônia</b><span>Wellington Vilela</span></figcaption></figure>
  </div>
  <p class="footnote">A sequência atual da Corrida Portal da Amazônia começou em 2024. Eventos de outras organizações com nome semelhante não integram essa contagem.</p>
 </div></section>
@@ -255,8 +278,8 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
  </div>
 </div></section>
 <section class="section editorial"><div class="outer">
- <div class="editorial-figure"><img src="https://d2hk32cswy6zx7.cloudfront.net/7d38b9e76914df439b0e8f8987987c7d/v2_7d262720-c29e-45ae-a74a-90f1f0f5b4c8.jpg" alt="Largada da 3ª Corrida Portal da Amazônia, mostrando a montagem do pórtico e os atletas" loading="lazy">
- <div><div class="chapter">Memória de 2026</div><h3>Uma corrida é feita de pessoas, estrutura e planejamento.</h3><p>Do primeiro comunicado ao encerramento, cada edição reúne trabalho de bastidores, apoio comunitário e atenção aos atletas.</p><p class="footnote">Registro real da 3ª Corrida de Rua Portal da Amazônia · Foto: Wellington Vilela.</p></div></div>
+ <div class="editorial-figure"><img src="assets/fotos/portal-2025-atletas.jpg" alt="Atletas correndo em prova noturna, registro do acervo esportivo de novembro de 2025" loading="lazy">
+ <div><div class="chapter">Nos bastidores de cada evento</div><h3>Uma boa experiência começa muito antes da largada.</h3><p>Organização, acolhimento e atenção aos detalhes: é o trabalho que transforma uma prova em um encontro da comunidade.</p><p class="footnote">Fotografia real do acervo esportivo · novembro de 2025.</p></div></div>
 </div></section>
 <section class="section" id="proximos"><div class="outer">
  <div class="head"><div class="chapter">Perspectivas 2027</div><div><h2>O próximo ano já começou a ser planejado.</h2><p>Previsões de realização. Datas exatas e formatos ainda serão confirmados com as instituições envolvidas.</p></div></div>
