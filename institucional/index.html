@@ -197,6 +197,80 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
 @media(max-width:700px){.memory-spread{display:block;margin-bottom:28px}.memory-spread .memory-image img{min-height:0;height:auto;aspect-ratio:1.6;object-fit:cover}.memory-spread .memory-words{padding:30px 25px 32px}.memory-spread strong{font-size:45px}.memory-spread small{margin-top:16px}.signature .polaco-logo{width:210px;height:83px}.signature img:not(.polaco-logo){width:105px;height:84px}.photo-pair figure:nth-child(2){padding-top:0}}
 @media print{.signature .polaco-logo{background:#14303c!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}.memory-spread{grid-template-columns:60% 40%;min-height:0;margin:6mm 0 8mm;break-inside:avoid}.memory-spread .memory-image img{height:60mm;min-height:0;object-fit:cover}.memory-spread .memory-words{padding:4mm}.memory-spread strong{font-size:24pt}.memory-spread p{font-size:9pt;margin:3mm 0}.memory-spread small{font-size:8pt}.photo-pair figure:nth-child(2){padding-top:0}}
 
+
+/* Histórico interativo acessível: cards expansíveis sem JavaScript. */
+.eventlist.accordion{border-top:1px solid var(--line)}
+.trajectory-hint{font-size:15px;font-weight:600;color:var(--ink-soft);display:flex;align-items:center;gap:11px;margin:0 0 23px}
+.trajectory-hint>span{font:700 22px/1 'Barlow Condensed',sans-serif;display:grid;place-items:center;width:30px;height:30px;color:var(--cream);background:var(--night)}
+.edition{border-bottom:1px solid var(--line);background:transparent}
+.edition-summary{list-style:none;display:grid;grid-template-columns:90px minmax(0,1fr) 190px 40px;align-items:center;gap:21px;min-height:133px;padding:21px 0;cursor:pointer;transition:background-color .18s}
+.edition-summary::-webkit-details-marker{display:none}
+.edition-summary::marker{content:""}
+.edition-summary:hover{background:#eceae1}
+.edition-summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.edition[open]>.edition-summary{background:#e9e7df}
+.edition-year{font:700 31px/.95 'Barlow Condensed','Arial Narrow',sans-serif;color:#a9562b}
+.edition-main{min-width:0;display:block}
+.edition-title{display:block;font:700 clamp(28px,3vw,38px)/1.05 'Barlow Condensed','Arial Narrow',sans-serif;letter-spacing:.003em;max-width:780px}
+.edition-subtitle{display:block;font-size:15px;color:#5f7379;line-height:1.48;margin-top:10px}
+.edition-metric{text-align:right;align-self:center}
+.edition-metric strong{font:700 47px/.95 'Barlow Condensed','Arial Narrow',sans-serif;display:block;white-space:nowrap}
+.edition-metric small{font-size:13px;line-height:1.45;color:#61747b;display:block;margin-top:6px}
+.edition-expand{display:grid;place-items:center;justify-self:end;width:36px;height:36px;border:1px solid #aab4ad;color:var(--night);font-size:30px;line-height:1;transition:background .15s,transform .18s}
+.edition-expand::before{content:"+";transform:translateY(-1px)}
+.edition[open] .edition-expand{background:var(--night);color:#fff;border-color:var(--night)}
+.edition[open] .edition-expand::before{content:"−"}
+.edition-content{background:#e6e8de;padding:34px clamp(18px,3vw,40px) 35px;border-top:1px solid #d2d6cd}
+.edition-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.88fr);gap:36px;margin-bottom:30px}
+.edition-label{display:block;color:#9c542d;font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:13px}
+.edition-body p{font-size:17px;line-height:1.67;color:#3d565d;margin:0;max-width:640px}
+.edition-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px;margin:0}
+.edition-facts div{border-top:1px solid #b7c2b7;padding-top:10px;min-width:0}
+.edition-facts dt{font-size:13px;color:#536b71;line-height:1.4}
+.edition-facts dd{font:700 21px/1.15 'Barlow Condensed','Arial Narrow',sans-serif;color:var(--night);margin:4px 0 0}
+.edition-gallery{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:0 0 24px}
+.edition-gallery.single{grid-template-columns:1fr;max-width:840px}
+.edition-gallery figure{margin:0;min-width:0}
+.edition-gallery img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center;display:block}
+.edition-gallery figcaption{font-size:13px;color:#526971;margin-top:8px;line-height:1.4}
+.edition-links{display:flex;flex-wrap:wrap;gap:9px}
+.edition-links a{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-size:14px;font-weight:700;background:var(--night);color:white;padding:11px 15px}
+.edition-links a:hover,.edition-links a:focus-visible{background:#315665}
+@media(max-width:920px){
+ .edition-summary{grid-template-columns:70px minmax(0,1fr) 145px 36px;gap:14px}
+ .edition-title{font-size:31px}.edition-metric strong{font-size:37px}
+ .edition-intro{grid-template-columns:1fr;gap:20px}
+}
+@media(max-width:700px){
+ .trajectory-hint{font-size:14px;line-height:1.45}
+ .edition-summary{grid-template-columns:55px 1fr 33px;grid-template-rows:auto auto;gap:5px 11px;padding:17px 0;min-height:0}
+ .edition-year{font-size:27px;grid-column:1;grid-row:1}
+ .edition-main{grid-column:2;grid-row:1}
+ .edition-title{font-size:29px}
+ .edition-subtitle{font-size:14px;margin-top:6px}
+ .edition-metric{grid-column:2;grid-row:2;text-align:left;margin-top:6px;display:flex;flex-wrap:wrap;align-items:baseline;gap:7px}
+ .edition-metric strong{font-size:32px}
+ .edition-metric small{font-size:12px;margin:0;max-width:250px}
+ .edition-expand{grid-column:3;grid-row:1 / 3;align-self:center;width:31px;height:31px}
+ .edition-content{padding:22px 15px 24px}
+ .edition-facts{gap:13px}
+ .edition-facts dd{font-size:20px}
+ .edition-gallery{grid-template-columns:1fr}
+ .edition-gallery img{aspect-ratio:16/11}
+ .edition-links{flex-direction:column}
+ .edition-links a{justify-content:space-between}
+}
+@media print{
+ .edition-summary{min-height:auto;padding:4mm 0;grid-template-columns:16mm 1fr 33mm 10mm;gap:4mm;break-inside:avoid}
+ .edition-title{font-size:17pt}.edition-year{font-size:16pt}.edition-metric strong{font-size:17pt}
+ .edition-metric small,.edition-subtitle{font-size:8pt}
+ .edition-content{padding:4mm;break-inside:avoid}
+ .edition-intro{grid-template-columns:1fr 1fr;gap:6mm;margin-bottom:4mm}
+ .edition-body p{font-size:9pt}
+ .edition-gallery img{height:48mm;aspect-ratio:auto;object-fit:cover}
+ .edition-links{display:none}
+}
+
 /* PDF terá acabamento final após fechamento das fotografias e logotipos. */
 @media print{.cover{grid-template-columns:48% 52%}.cover h1{font-size:43pt}.cover-copy{padding:12mm 6mm 12mm 0}.cover .lead{font-size:12pt}.head h2{font-size:31pt}.intro .mission{font-size:25pt}.event h3{font-size:18pt}.event .metric strong{font-size:23pt}.photo-pair figure:nth-child(2){padding-top:0}.social-stories h3,.service h3{font-size:21pt}}
 
@@ -230,19 +304,82 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
 </figure>
 <div class="outer"><div class="rule"></div></div>
 <section class="section section-events" id="trajetoria"><div class="outer">
- <div class="head"><div class="chapter">Percurso · 2024–2026</div><div><h2>Uma trajetória feita em movimento.</h2><p>Os registros a seguir mostram a evolução do trabalho. Cada indicador mantém seu significado original: inscritos, participantes divulgados ou concluintes.</p></div></div>
- <div class="eventlist">
-  <article class="event"><div class="year">2024</div><div><h3>1ª Corrida de Rua Cidade de Vilhena — Portal da Amazônia</h3><p>17 de novembro · Organização Polaco · início da série atual</p></div><div class="metric"><strong>209</strong><span>concluintes de 5 km · 305 registros na modalidade</span></div></article>
-  <article class="event"><div class="year">2025</div><div><h3>1º Circuito AABB de Corrida de Rua</h3><p>3 de agosto · Realização AABB/FENABB · planejamento e organização AEEC e Polaco</p></div><div class="metric"><strong>≈ 860</strong><span>participantes divulgados institucionalmente</span></div></article>
-  <article class="event"><div class="year">2025</div><div><h3>2ª Corrida de Rua Portal da Amazônia</h3><p>22 de novembro · Organização Polaco Cycling</p></div><div class="metric"><strong>660</strong><span>inscrições confirmadas no sistema · 766 registros totais</span></div></article>
-  <article class="event"><div class="year">2026</div><div><h3>2º Circuito AABB de Corrida de Rua</h3><p>26 de julho · Realização AABB/FENABB · planejamento e organização AEEC e Polaco</p></div><div class="metric"><strong>925</strong><span>inscrições divulgadas</span></div></article>
-  <article class="event"><div class="year">2026</div><div><h3>3ª Corrida de Rua Portal da Amazônia</h3><p>15 de novembro · Vilhena · comunicação digital integrada e Central do Atleta</p></div><div class="metric"><strong>3ª edição</strong><span>resultados e inscrições disponíveis para consolidação</span></div></article>
+ <div class="head"><div class="chapter">Percurso · 2024–2026</div><div><h2>Uma trajetória feita em movimento.</h2><p>Cinco edições realizadas entre 2024 e 2026. Abra cada uma para consultar números, fotografias e fontes, sem confundir inscrições com concluintes.</p></div></div>
+
+ <div class="trajectory-hint" aria-label="Como consultar o histórico"><span aria-hidden="true">+</span> Selecione uma edição para explorar os detalhes, fotografias e fontes.</div>
+ <div class="eventlist accordion" aria-label="Edições realizadas">
+ <details class="edition" name="edicoes" id="edicao-1">
+   <summary class="edition-summary" aria-label="Detalhes de 1ª Corrida de Rua Cidade de Vilhena — Portal da Amazônia">
+    <span class="edition-year">2024</span>
+    <span class="edition-main"><span class="edition-title">1ª Corrida de Rua Cidade de Vilhena — Portal da Amazônia</span><span class="edition-subtitle">17 de novembro · Organização Polaco · início da série atual</span></span>
+    <span class="edition-metric"><strong>209</strong><small>concluintes dos 5 km</small></span>
+    <span class="edition-expand" aria-hidden="true"></span>
+   </summary>
+   <div class="edition-content">
+    <div class="edition-intro"><div class="edition-body"><span class="edition-label">Sobre esta edição</span><p>A primeira edição da sequência atual da Portal da Amazônia marcou a entrada desse projeto no calendário das corridas de rua de Vilhena. Não se confunde com provas anteriores de outras organizações que utilizaram nome semelhante.</p></div>
+     <dl class="edition-facts"><div><dt>Data</dt><dd>17 de novembro de 2024</dd></div><div><dt>Prova com resultado documentado</dt><dd>5 km</dd></div><div><dt>Registros na modalidade</dt><dd>305</dd></div><div><dt>Concluintes dos 5 km</dt><dd>209</dd></div></dl></div>
+    <div class="edition-gallery single"><figure><img src="assets/fotos/portal-2024-acervo.jpg" alt="Atletas em registro do evento de novembro de 2024" loading="lazy"><figcaption>Foto do acervo da organização · 2024</figcaption></figure></div>
+    <div class="edition-links"><a href="https://old.agitoesportes.com.br/resultados/g-live.html?f=eventos/2024/1o-CORRIDA-CIDADE-DE-VILHENA-PORTAL-DA-AMAZONIA/evento.clax" target="_blank" rel="noopener noreferrer">Consultar resultados de 2024 <span aria-hidden="true">↗</span></a></div>
+   </div>
+  </details>
+<details class="edition" name="edicoes" id="edicao-2">
+   <summary class="edition-summary" aria-label="Detalhes de 1º Circuito AABB de Corrida de Rua">
+    <span class="edition-year">2025</span>
+    <span class="edition-main"><span class="edition-title">1º Circuito AABB de Corrida de Rua</span><span class="edition-subtitle">3 de agosto · Evento AABB/FENABB · organização AEEC e Polaco</span></span>
+    <span class="edition-metric"><strong>≈ 860</strong><small>participantes divulgados</small></span>
+    <span class="edition-expand" aria-hidden="true"></span>
+   </summary>
+   <div class="edition-content">
+    <div class="edition-intro"><div class="edition-body"><span class="edition-label">Sobre esta edição</span><p>O primeiro Circuito AABB de Corrida de Rua em Vilhena reuniu a comunidade esportiva em um evento da AABB/FENABB, com atuação da AEEC e da Polaco no planejamento e na organização.</p></div>
+     <dl class="edition-facts"><div><dt>Data</dt><dd>3 de agosto de 2025</dd></div><div><dt>Local</dt><dd>AABB Vilhena</dd></div><div><dt>Referência de público</dt><dd>Cerca de 860 participantes</dd></div><div><dt>Realização</dt><dd>AABB / FENABB</dd></div></dl></div>
+    <div class="edition-gallery single"><figure><img src="assets/fotos/aabb-2025-largada.jpg" alt="Atletas do 1º Circuito AABB reunidos no pórtico de largada" loading="lazy"><figcaption>Foto: Wellington Vilela · 2025</figcaption></figure></div>
+    <div class="edition-links"><a href="https://banlek.com/album/133610" target="_blank" rel="noopener noreferrer">Ver galeria do 1º Circuito AABB <span aria-hidden="true">↗</span></a></div>
+   </div>
+  </details>
+<details class="edition" name="edicoes" id="edicao-3">
+   <summary class="edition-summary" aria-label="Detalhes de 2ª Corrida de Rua Portal da Amazônia">
+    <span class="edition-year">2025</span>
+    <span class="edition-main"><span class="edition-title">2ª Corrida de Rua Portal da Amazônia</span><span class="edition-subtitle">22 de novembro · Organização Polaco Cycling</span></span>
+    <span class="edition-metric"><strong>660</strong><small>inscrições confirmadas</small></span>
+    <span class="edition-expand" aria-hidden="true"></span>
+   </summary>
+   <div class="edition-content">
+    <div class="edition-intro"><div class="edition-body"><span class="edition-label">Sobre esta edição</span><p>A segunda edição ampliou a trajetória da Portal da Amazônia. O painel administrativo da Agito registra 766 inscrições no sistema, das quais 660 estavam confirmadas. Esses números não devem ser confundidos com concluintes.</p></div>
+     <dl class="edition-facts"><div><dt>Data</dt><dd>22 de novembro de 2025</dd></div><div><dt>Inscrições registradas</dt><dd>766</dd></div><div><dt>Inscrições confirmadas</dt><dd>660</dd></div><div><dt>Cidade</dt><dd>Vilhena · Rondônia</dd></div></dl></div>
+    <div class="edition-gallery "><figure><img src="assets/fotos/portal-2025-largada.jpg" alt="Atletas alinhados sob o pórtico na largada noturna da 2ª Corrida Portal da Amazônia" loading="lazy"><figcaption>Foto: Wellington Vilela · 2025</figcaption></figure><figure><img src="assets/fotos/portal-2025-atletas.jpg" alt="Registro real de atletas durante corrida noturna em 2025" loading="lazy"><figcaption>Acervo de novembro de 2025</figcaption></figure></div>
+    <div class="edition-links"><a href="https://banlek.com/album/184919-2a-corrida-de-rua-portal-da-amazonia" target="_blank" rel="noopener noreferrer">Ver álbum da 2ª Portal <span aria-hidden="true">↗</span></a></div>
+   </div>
+  </details>
+<details class="edition" name="edicoes" id="edicao-4">
+   <summary class="edition-summary" aria-label="Detalhes de 2º Circuito AABB de Corrida de Rua">
+    <span class="edition-year">2026</span>
+    <span class="edition-main"><span class="edition-title">2º Circuito AABB de Corrida de Rua</span><span class="edition-subtitle">26 de julho · Evento AABB/FENABB · organização AEEC e Polaco</span></span>
+    <span class="edition-metric"><strong>925</strong><small>inscrições confirmadas divulgadas</small></span>
+    <span class="edition-expand" aria-hidden="true"></span>
+   </summary>
+   <div class="edition-content">
+    <div class="edition-intro"><div class="edition-body"><span class="edition-label">Sobre esta edição</span><p>A segunda edição reuniu percursos de 5 km e 10 km, categoria infantil e participação de atletas PcD. A reportagem publicada após a prova registrou 925 inscrições confirmadas, incluindo 40 vagas gratuitas para estudantes da rede estadual.</p></div>
+     <dl class="edition-facts"><div><dt>5 km</dt><dd>561 inscrições</dd></div><div><dt>10 km</dt><dd>207 inscrições</dd></div><div><dt>Kids</dt><dd>145 inscrições</dd></div><div><dt>PcD</dt><dd>12 inscrições</dd></div><div><dt>Total divulgado</dt><dd>925 inscrições</dd></div><div><dt>Vagas escolares gratuitas</dt><dd>40</dd></div></dl></div>
+    <div class="edition-gallery single"><figure><img src="assets/fotos/aabb-2026-capa-fotto.jpg" alt="Capa do acervo fotográfico do 2º Circuito AABB 2026" loading="lazy"><figcaption>Capa da galeria Fotto · Wellington Vilela</figcaption></figure></div>
+    <div class="edition-links"><a href="https://www.fotto.com.br/2-circuito-aabb-corrida-de-rua/e/387052" target="_blank" rel="noopener noreferrer">Explorar fotos do Circuito AABB 2026 <span aria-hidden="true">↗</span></a><a href="https://extraderondonia.com.br/2026/07/29/2o-circuito-aabb-reune-quase-mil-atletas-e-movimenta-vilhena-com-corrida-de-rua-veja-fotos/" target="_blank" rel="noopener noreferrer">Ver reportagem e números divulgados <span aria-hidden="true">↗</span></a></div>
+   </div>
+  </details>
+<details class="edition" name="edicoes" id="edicao-5">
+   <summary class="edition-summary" aria-label="Detalhes de 3ª Corrida de Rua Portal da Amazônia">
+    <span class="edition-year">2026</span>
+    <span class="edition-main"><span class="edition-title">3ª Corrida de Rua Portal da Amazônia</span><span class="edition-subtitle">15 de novembro · Vilhena · organização e comunicação integradas</span></span>
+    <span class="edition-metric"><strong>3ª edição</strong><small>resultados disponíveis para consulta</small></span>
+    <span class="edition-expand" aria-hidden="true"></span>
+   </summary>
+   <div class="edition-content">
+    <div class="edition-intro"><div class="edition-body"><span class="edition-label">Sobre esta edição</span><p>A terceira edição contou com corrida adulta, Kids, categoria PcD e modalidade escolar. A comunicação foi concentrada em uma Central do Atleta, com informações, regulamento, consulta de inscritos e outros serviços online.</p></div>
+     <dl class="edition-facts"><div><dt>Data</dt><dd>15 de novembro de 2026</dd></div><div><dt>Local</dt><dd>Vilhena · Rondônia</dd></div><div><dt>Modalidades</dt><dd>5 km, Kids, Escolar e PcD</dd></div><div><dt>Informações ao público</dt><dd>Central do Atleta</dd></div></dl></div>
+    <div class="edition-gallery single"><figure><img src="assets/fotos/portal-2026-largada.jpg" alt="Largada da 3ª Corrida Portal da Amazônia de 2026, com participantes passando sob o pórtico" loading="lazy"><figcaption>Foto: Wellington Vilela · 2026</figcaption></figure></div>
+    <div class="edition-links"><a href="https://banlek.com/album/2b1d28" target="_blank" rel="noopener noreferrer">Ver álbum fotográfico de 2026 <span aria-hidden="true">↗</span></a><a href="../central/" >Conhecer a Central do Atleta <span aria-hidden="true">↗</span></a></div>
+   </div>
+  </details>
  </div>
- <div class="photo-pair" aria-label="Fotografias reais dos eventos realizados">
- <figure><img src="assets/fotos/aabb-2025-largada.jpg" alt="Atletas reunidos sob o pórtico do primeiro Circuito AABB em Vilhena, 2025" loading="lazy"><figcaption><b>2025 · Circuito AABB</b><span>Wellington Vilela</span></figcaption></figure>
- <figure><img src="assets/fotos/portal-2025-largada.jpg" alt="Atletas alinhados na largada noturna da 2ª Corrida Portal da Amazônia em 2025" loading="lazy"><figcaption><b>2025 · Portal da Amazônia</b><span>Wellington Vilela</span></figcaption></figure>
- </div>
- <p class="footnote">A sequência atual da Corrida Portal da Amazônia começou em 2024. Eventos de outras organizações com nome semelhante não integram essa contagem.</p>
+  <p class="footnote">A sequência atual da Corrida Portal da Amazônia começou em 2024. Eventos de outras organizações com nome semelhante não integram essa contagem.</p>
 </div></section>
 <div class="stats-strip"><div class="outer stats-inner">
  <div class="stat"><p class="value">2024</p><p class="detail"><strong>Início da série atual</strong>Portal da Amazônia</p></div>
