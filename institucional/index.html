@@ -1,240 +1,211 @@
 <!doctype html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Apresentação institucional da Associação de Educação, Esporte e Consciência (AEEC) e Polaco Cycling Team Eventos. Trajetória, organização esportiva, ações sociais e calendário 2027.">
-<meta name="theme-color" content="#16384b">
-<title>AEEC + Polaco | Projeto Institucional 2027</title>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="AEEC e Polaco Cycling Team Eventos. História, estrutura e realização de eventos esportivos em Vilhena, Rondônia.">
+<title>AEEC & Polaco Cycling Team Eventos | Portfólio institucional</title>
 <style>
-:root{--ink:#153848;--ink2:#395261;--navy:#0c293c;--orange:#ed8d22;--lime:#a8e525;--paper:#faf8f3;--white:#fff;--line:#dbe3e0;--muted:#61717a}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;color:var(--ink);background:var(--paper);font-family:Arial,Helvetica,sans-serif;line-height:1.55}
-a{color:inherit}
-img{display:block;max-width:100%}
-button{font:inherit}
-.skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:12px;z-index:99;background:#fff;padding:9px}
-.wrap{width:min(1120px,calc(100% - 48px));margin-inline:auto}
-.topbar{position:sticky;top:0;z-index:20;background:rgba(250,248,243,.95);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
-.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:76px}
-.wordmark{display:flex;gap:9px;align-items:center;letter-spacing:.035em;font-size:14px;font-weight:900;text-decoration:none;color:var(--navy);white-space:nowrap}
-.wordmark b{color:var(--orange)}.wordmark i{font-style:normal;color:#87939a;font-weight:400}
-.nav{display:flex;gap:23px;align-items:center;font-size:13px;font-weight:700}
-.nav a{text-decoration:none}.nav a:hover{color:#be6b17}
-.print-btn,.action{border:0;border-radius:50px;padding:10px 16px;font-size:12px;font-weight:800;cursor:pointer;color:#fff;background:var(--navy)}
-.print-btn:hover,.action:hover{background:#294f62}
-.hero{background:var(--navy);color:#fff;position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:auto -140px -215px auto;width:570px;height:570px;border:70px solid rgba(168,229,37,.09);border-radius:50%}
-.hero::after{content:"";position:absolute;inset:0 auto 0 49%;width:1px;background:rgba(255,255,255,.12);transform:rotate(18deg)}
-.hero-inner{padding:98px 0 108px;position:relative;z-index:1}
-.eyebrow{color:var(--lime);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.19em}
-.hero h1{max-width:940px;margin:16px 0 22px;font-size:clamp(38px,6.6vw,85px);line-height:.99;letter-spacing:-.05em;font-weight:900}
-.hero h1 em{color:var(--orange);font-style:normal}
-.hero-lead{max-width:715px;color:#dae6e9;font-size:clamp(16px,1.8vw,21px);line-height:1.5;margin:0 0 42px}
-.hero-tags{display:flex;flex-wrap:wrap;gap:8px}.hero-tags span{border:1px solid #557282;border-radius:30px;padding:8px 12px;font-size:12px;font-weight:700}
-.hero-number{position:absolute;right:0;bottom:12px;font-size:132px;letter-spacing:-.06em;font-weight:900;opacity:.06;pointer-events:none}
-.signature{background:#fff;border-bottom:1px solid var(--line)}.signature-inner{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;padding:24px 0}
-.identity{display:flex;align-items:center;gap:17px;min-width:0}.identity img{max-width:112px;max-height:84px;object-fit:contain}.identity[data-brand="polaco"] img{max-width:196px}
-.identity h2{font-size:15px;line-height:1.3;margin:0 0 4px}.identity p{margin:0;font-size:12px;color:var(--muted)}
-.identity .logo-fallback{display:none;font-size:12px;letter-spacing:.03em;max-width:112px}.identity img:not([src]){display:none}
-.section{padding:82px 0}.section.compact{padding:60px 0}
-.section-header{display:grid;grid-template-columns:210px 1fr;gap:30px;margin-bottom:32px}
-.kicker{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:#a3651b}
-.section-title{font-size:clamp(30px,4vw,51px);line-height:1.06;letter-spacing:-.04em;margin:0 0 15px;font-weight:900}
-.section-desc{margin:0;font-size:16px;color:#526672;max-width:710px}
-.hr{height:1px;background:var(--line)}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.surface{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px}
-.surface h3{margin:7px 0 10px;font-size:20px;line-height:1.2}
-.surface p{margin:0;color:var(--ink2);font-size:14px}
-.count{font-size:12px;font-weight:900;letter-spacing:.16em;color:#c77720}
-.statement{font-size:25px;line-height:1.35;letter-spacing:-.02em;font-weight:750;margin:0 0 18px}
-.pill{display:inline-block;font-size:11px;border-radius:50px;padding:7px 11px;background:#ebf2ee;font-weight:850;color:#335a48}
-.timeline{display:grid;gap:12px}
-.event{display:grid;grid-template-columns:110px 1fr 205px;gap:22px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 26px}
-.event .year{font-size:30px;font-weight:900;color:var(--orange);letter-spacing:-.05em}
-.event h3{margin:0 0 6px;font-size:19px;line-height:1.25}.event p{margin:0;color:#677780;font-size:12px}.event .metric{text-align:right;color:var(--ink);font-size:13px;font-weight:800}.event .metric strong{display:block;font-size:28px;line-height:1.12}.event .metric small{display:block;color:#667984;font-size:11px;font-weight:400;line-height:1.4}
-.band{background:#153849;color:#fff}.band .section-desc{color:#c1d1d8}.band .kicker{color:var(--lime)}
-.band .surface{background:#214a5c;border-color:#3d6474;color:#fff}.band .surface p{color:#c7d8dd}.band .count{color:var(--lime)}
-.stripe{border-left:5px solid var(--orange);padding-left:17px}
-.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
-.cap{padding:21px;border:1px solid #d7e0dc;border-radius:12px;background:#fff}
-.cap h3{margin:0 0 7px;font-size:17px}.cap p{margin:0;font-size:13px;color:var(--ink2)}
-.cap i{display:block;font-style:normal;color:#b16f2a;font-size:11px;font-weight:900;margin-bottom:11px}
-.stages{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;counter-reset:steps}
-.stage{padding:15px 12px;border-top:4px solid var(--orange);background:#fff;border-radius:5px}
-.stage b{display:block;font-size:13px}.stage p{font-size:12px;color:var(--ink2);margin:7px 0 0}
-.social .surface{border-top:4px solid var(--orange)}.social .surface:nth-child(2){border-top-color:var(--lime)}.social .surface:nth-child(3){border-top-color:#3871aa}
-.social h3{font-size:19px}
-.feature{padding:34px;border-radius:17px;background:#f4ebdc;border:1px solid #eadfcf}
-.feature p{margin:0;color:#5f6060}
-.feature h3{font-size:27px;letter-spacing:-.03em;line-height:1.16;margin:5px 0 13px}
-.next{display:grid;grid-template-columns:1fr 1fr;gap:19px}
-.next article{padding:33px;background:#fff;border:1px solid var(--line);border-radius:17px;min-height:245px}
-.next .month{font-size:12px;font-weight:900;color:#ae6b1e;letter-spacing:.1em;text-transform:uppercase}
-.next h3{font-size:27px;line-height:1.12;margin:20px 0 14px;letter-spacing:-.035em}
-.next p{font-size:14px;color:#506571;margin:0}
-.linkcard{border:1px solid var(--line);background:#fff;border-radius:15px;padding:23px;text-decoration:none;display:block;min-height:140px}
-.linkcard:hover{border-color:#a5afac;box-shadow:0 9px 25px rgba(0,0,0,.06)}.linkcard h3{margin:0 0 9px;font-size:17px}.linkcard p{font-size:13px;color:var(--muted);margin:0}.linkcard small{display:block;margin-top:18px;color:#ad6b1e;font-weight:900}
-.caption{font-size:12px;color:#667983;line-height:1.55}
-.sources{font-size:12px;color:#637580}.sources a{word-break:break-word;color:#1f5b72}
-.sources li{margin:6px 0}
-.foot{padding:40px 0 55px;border-top:1px solid var(--line);background:#f0efe9}
-.foot-inner{display:flex;justify-content:space-between;gap:20px;align-items:start}
-.foot strong{font-size:17px}.foot p{margin:5px 0;font-size:12px;color:#5c7079}
-.foot a{color:#154c63}
-.print-only{display:none}
-@media(max-width:900px){.nav{gap:11px}.section-header{grid-template-columns:1fr;gap:12px}.event{grid-template-columns:75px 1fr}.event .metric{grid-column:2;text-align:left}.grid3,.cap-grid{grid-template-columns:repeat(2,1fr)}.stages{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:650px){.wrap{width:calc(100% - 30px)}.topbar-inner{min-height:62px}.nav a{display:none}.hero-inner{padding:68px 0 76px}.hero-number{font-size:75px}.signature-inner{grid-template-columns:1fr;gap:20px}.section{padding:57px 0}.section.compact{padding:46px 0}.grid2,.grid3,.cap-grid,.next{grid-template-columns:1fr}.event{padding:17px;grid-template-columns:60px 1fr;gap:12px}.event .year{font-size:23px}.event h3{font-size:17px}.event .metric strong{font-size:22px}.stages{grid-template-columns:1fr 1fr}.foot-inner{display:block}}
-@page{size:A4;margin:14mm 13mm 16mm}
-@media print{html,body{background:#fff!important;color:#152c37;font-size:10pt;line-height:1.42;print-color-adjust:exact;-webkit-print-color-adjust:exact}.topbar,.print-btn,.no-print{display:none!important}.print-only{display:block}.wrap{width:100%;max-width:none}.hero{background:#0c293c!important;color:#fff!important}.hero-inner{padding:17mm 0 17mm}.hero h1{font-size:40pt}.hero-lead{font-size:13pt}.hero-tags span{font-size:8pt}.hero-number{display:none}.signature-inner{padding:6mm 0}.section{padding:11mm 0 8mm}.section.compact{padding:7mm 0}.section-header{grid-template-columns:37mm 1fr;gap:7mm;margin-bottom:6mm}.section-title{font-size:25pt;margin-bottom:4mm}.section-desc{font-size:10pt}.grid3,.grid2,.cap-grid{gap:3mm}.surface{border-radius:3mm;padding:5mm}.surface h3{font-size:13pt}.surface p{font-size:9pt}.event{padding:4mm 5mm;gap:4mm;grid-template-columns:20mm 1fr 38mm;border-radius:2mm;break-inside:avoid}.event .year{font-size:17pt}.event h3{font-size:11pt}.event .metric{grid-column:auto;text-align:right}.event .metric strong{font-size:17pt}.band{background:#153849!important;color:#fff!important;margin:0 -13mm;padding:0 13mm}.cap{padding:4mm;break-inside:avoid}.cap h3{font-size:11pt}.cap p{font-size:9pt}.social .surface{break-inside:avoid}.stages{grid-template-columns:repeat(5,1fr);gap:2mm}.stage{padding:3mm}.stage p{font-size:8pt}.next article{padding:5mm;min-height:0;break-inside:avoid}.next h3{font-size:17pt}.linkcard{min-height:0;break-inside:avoid}.section,.surface,.feature,.event,.next article{break-inside:avoid-page}.cover-break{break-after:page}.new-page{break-before:page}.foot{padding:7mm 0}.foot-inner{display:block}.sources{font-size:8pt}.caption{font-size:8pt}.hide-print{display:none!important}}
+:root{--paper:#f3f0e8;--cream:#fffdf7;--ink:#183344;--ink-soft:#46606b;--night:#122c39;--line:#c9ccc3;--accent:#b45f30;--lime:#d4de93}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;font-size:17px;line-height:1.58}
+a{color:inherit}img{max-width:100%;display:block}h1,h2,h3,p{margin-top:0}h1,h2,h3{line-height:1.12}h1,h2{font-family:Georgia,"Times New Roman",serif;letter-spacing:-.028em;font-weight:normal}
+button{font:inherit;cursor:pointer}
+.site-header{position:sticky;top:0;background:rgba(243,240,232,.96);z-index:40;border-bottom:1px solid #bdc3bd;backdrop-filter:blur(10px)}
+.top{width:min(1240px,calc(100% - 64px));min-height:77px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{text-decoration:none;font-weight:800;letter-spacing:.02em;font-size:16px;line-height:1.12}.brand small{display:block;font-size:11px;letter-spacing:.11em;color:#647783;font-weight:600;text-transform:uppercase;margin-top:5px}
+.topnav{display:flex;align-items:center;gap:25px}.topnav a{text-decoration:none;font-size:14px;font-weight:600}.topnav a:hover{text-decoration:underline;text-underline-offset:5px}
+.print{background:var(--night);border:0;color:#fff;padding:10px 17px;font-size:13px;border-radius:3px;font-weight:700}
+.outer{width:min(1240px,calc(100% - 64px));margin:auto}
+.eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:.14em;font-weight:800;color:var(--accent)}
+.cover{display:grid;grid-template-columns:43% 57%;min-height:600px;border-bottom:1px solid var(--line)}
+.cover-copy{padding:84px 60px 68px max(32px,calc((100vw - 1240px)/2));background:var(--cream);display:flex;flex-direction:column;align-items:start;justify-content:center}
+.cover-copy .eyebrow{margin-bottom:29px}
+.cover h1{font-size:clamp(48px,5.6vw,84px);line-height:1.02;margin-bottom:29px}
+.cover .lead{font-size:20px;line-height:1.52;max-width:520px;color:var(--ink-soft)}
+.cover .tagline{font-size:13px;font-weight:bold;letter-spacing:.07em;color:#596e74;border-top:1px solid var(--line);width:100%;margin-top:26px;padding-top:19px}
+.cover-media{position:relative;min-height:570px;background:#243c42;overflow:hidden}
+.cover-media img{height:100%;width:100%;object-fit:cover;position:absolute;inset:0;object-position:center}
+.cover-media::after{content:"";position:absolute;inset:60% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.75))}
+.photo-note{position:absolute;right:34px;bottom:23px;z-index:1;color:white;font-size:14px;letter-spacing:.01em;text-align:right;line-height:1.3}
+.photo-note strong{display:block;font-size:22px;line-height:1.1}
+.signatures{border-bottom:1px solid var(--line);background:#eae8df}
+.signatures-inner{display:flex;align-items:center;gap:55px;padding:23px 0}
+.signature{display:flex;align-items:center;gap:16px;flex:1;min-width:0}
+.signature img{width:100px;height:73px;object-fit:contain}
+.signature .polaco-logo{width:180px;object-fit:contain}
+.signature b{font-size:15px;line-height:1.2;display:block}.signature span{font-size:13px;color:#536b75;display:block;margin-top:3px}
+.signature .logo-placeholder{display:none;font-family:Georgia,serif;font-size:23px;font-weight:bold;color:#24404c}
+.section{padding:93px 0}
+.head{display:grid;grid-template-columns:30% 1fr;gap:40px;align-items:start;margin-bottom:42px}
+.head h2{font-size:clamp(35px,4.3vw,57px);max-width:830px;margin-bottom:15px}
+.head p{color:var(--ink-soft);max-width:710px;font-size:18px}
+.chapter{font-size:13px;letter-spacing:.11em;text-transform:uppercase;font-weight:800;color:var(--accent);padding-top:11px}
+.intro{display:grid;grid-template-columns:1.07fr .93fr;gap:8vw;align-items:start}
+.intro .mission{font-family:Georgia,serif;font-size:clamp(27px,3.3vw,43px);line-height:1.25;letter-spacing:-.018em}
+.intro .bodycopy{font-size:18px;color:var(--ink-soft)}
+.intro .bodycopy strong{color:var(--ink)}
+.rule{height:1px;background:var(--line)}
+.visual-story{display:grid;grid-template-columns:1.17fr .83fr;gap:36px;align-items:stretch;margin:46px 0 0}
+.visual-story img{height:100%;width:100%;object-fit:cover;min-height:380px}
+.visual-story figure{margin:0}
+.visual-story figcaption{margin-top:8px;font-size:13px;color:#59717e}
+.visual-story .aside{align-self:center;border-top:3px solid var(--accent);padding-top:29px}
+.visual-story h3{font-family:Georgia,serif;font-size:36px;font-weight:normal;letter-spacing:-.02em}
+.visual-story p{font-size:18px;color:var(--ink-soft)}
+.stats-strip{background:var(--night);color:var(--cream);padding:38px 0}
+.stats-inner{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:38px}
+.stat{border-left:1px solid #8ca1aa;padding-left:22px}
+.stat .value{font-family:Georgia,serif;line-height:1;font-size:43px;margin:0 0 10px}
+.stat .detail{font-size:14px;line-height:1.4;color:#cfdbda}
+.stat .detail strong{color:#fff;display:block;margin-bottom:2px;font-size:16px}
+.section-events{background:#fbfaf5}
+.eventlist{border-top:1px solid var(--line)}
+.event{display:grid;grid-template-columns:95px minmax(0,1fr) 210px;gap:23px;align-items:start;border-bottom:1px solid var(--line);padding:24px 0}
+.year{color:var(--accent);font-size:16px;font-weight:bold;padding-top:5px}
+.event h3{font-family:Georgia,serif;font-size:28px;font-weight:normal;margin:0 0 5px;letter-spacing:-.02em}
+.event p{font-size:15px;color:#5d727a;line-height:1.45;margin:0}
+.metric{text-align:right;padding-top:7px}
+.metric strong{display:block;font-size:27px;font-family:Georgia,serif;font-weight:normal;line-height:1.05}
+.metric span{display:block;color:#60757b;font-size:13px;line-height:1.35;margin-top:6px}
+.footnote{font-size:13px;color:#62747b;margin-top:20px}
+.photo-pair{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:38px 0 0}
+.photo-pair figure{margin:0}.photo-pair img{width:100%;aspect-ratio:1.45;object-fit:cover}.photo-pair figcaption{font-size:14px;line-height:1.4;margin-top:9px;color:#50636c}
+.dark{background:var(--night);color:var(--cream)}
+.dark .head p{color:#d6dfdc}.dark .chapter{color:#e3a97a}
+.service-list{display:grid;grid-template-columns:1fr 1fr;column-gap:74px}
+.service{border-top:1px solid #687d85;padding:21px 0 25px;display:grid;grid-template-columns:55px 1fr;gap:15px}
+.service .num{color:#edcba4;font-size:15px}.service h3{margin:0 0 6px;font-family:Georgia,serif;font-size:25px;font-weight:normal}.service p{font-size:16px;line-height:1.52;margin:0;color:#d3dfdf}
+.provider{margin-top:28px;border-top:1px solid #566f79;padding-top:19px;color:#d6dfdc;font-size:15px}
+.social-stories{display:grid;grid-template-columns:1.1fr .9fr;gap:58px}
+.social-stories h3{font-family:Georgia,serif;font-size:30px;font-weight:normal;margin:0 0 11px}.social-stories p{font-size:17px;color:var(--ink-soft);margin-bottom:28px}
+.social-stories .highlight{background:#e5e7d6;padding:32px;align-self:start}
+.social-stories .highlight p:last-child{margin-bottom:0}
+.timeline-label{font-size:12px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.social-row{border-top:1px solid var(--line);padding:20px 0}
+.editorial{background:#ebe9e0}
+.editorial-figure{display:grid;grid-template-columns:52% 1fr;gap:42px;align-items:center}
+.editorial-figure img{width:100%;aspect-ratio:1.55;object-fit:cover}.editorial-figure h3{font-family:Georgia,serif;font-size:38px;font-weight:normal}.editorial-figure p{font-size:19px;color:var(--ink-soft)}
+.next-events{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.next-events article{padding:42px 34px 45px 0}
+.next-events article+article{border-left:1px solid var(--line);padding:42px 0 45px 34px}
+.next-events .month{font-size:14px;font-weight:700;letter-spacing:.06em;color:var(--accent)}
+.next-events h3{font-family:Georgia,serif;font-weight:normal;font-size:35px;margin:22px 0}
+.next-events p{font-size:17px;color:var(--ink-soft)}
+.references{background:#fffdf7;padding:66px 0}
+.ref-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.ref-grid a{text-decoration:none;border-top:2px solid var(--ink);padding-top:15px}
+.ref-grid strong{display:block;font-size:17px;margin-bottom:8px}
+.ref-grid span{display:block;color:#5b6e78;font-size:15px}
+.ref-grid a:hover strong{text-decoration:underline}
+.closing{padding:70px 0;background:#dfe5de}
+.closing-inner{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:end}
+.closing h2{font-family:Georgia,serif;font-size:48px;font-weight:normal;margin:0}
+.closing p{font-size:18px;margin:0;color:var(--ink-soft)}
+.footer{background:#122c39;color:#ecf0ed;padding:26px 0}
+.footer-inner{display:flex;justify-content:space-between;gap:15px;align-items:start}
+.footer p{font-size:13px;color:#c5d2cf;margin:4px 0}
+.footer small{color:#c5d2cf;font-size:12px}
+.footer a{color:#f1e7d0}
+@media(max-width:980px){.cover{grid-template-columns:1fr 1fr}.cover-copy{padding:65px 32px}.cover h1{font-size:53px}.head{grid-template-columns:22% 1fr}.stats-inner{gap:12px}.event{grid-template-columns:65px 1fr 155px}.event h3{font-size:24px}.social-stories{gap:28px}.topnav{gap:13px}}
+@media(max-width:700px){body{font-size:16px}.outer,.top{width:calc(100% - 34px)}.top{min-height:67px}.topnav a{display:none}.brand{font-size:14px}.print{font-size:12px;padding:9px 11px}.cover{grid-template-columns:1fr}.cover-copy{padding:56px 22px 40px}.cover-media{min-height:340px}.cover h1{font-size:54px}.cover .lead{font-size:18px}.signatures-inner{gap:17px;flex-direction:column;align-items:stretch}.signature img{height:70px}.section{padding:59px 0}.head{grid-template-columns:1fr;gap:9px;margin-bottom:24px}.head h2{font-size:40px}.head p{font-size:17px}.intro,.visual-story,.social-stories,.editorial-figure,.closing-inner{grid-template-columns:1fr;gap:24px}.visual-story img{min-height:260px}.photo-pair{grid-template-columns:1fr}.stats-inner{grid-template-columns:1fr 1fr;row-gap:24px}.stat .value{font-size:36px}.event{grid-template-columns:52px 1fr;gap:12px}.event .metric{grid-column:2;text-align:left;padding-top:0}.event h3{font-size:24px}.service-list{grid-template-columns:1fr}.social-stories .highlight{padding:22px}.next-events{grid-template-columns:1fr}.next-events article,.next-events article+article{padding:28px 0;border-left:none}.next-events article+article{border-top:1px solid var(--line)}.ref-grid{grid-template-columns:1fr}.closing h2{font-size:37px}.footer-inner{flex-direction:column}}
+@page{size:A4;margin:14mm 13mm 15mm}
+@media print{body{background:white;font-size:11pt;color:#183344;line-height:1.4;-webkit-print-color-adjust:exact;print-color-adjust:exact}.site-header,.print{display:none!important}.outer{width:100%;max-width:none}.cover{grid-template-columns:42% 58%;min-height:235mm;break-after:page}.cover-copy{padding:10mm 6mm 10mm 0}.cover h1{font-size:35pt}.cover .lead{font-size:11pt}.cover-media{min-height:230mm}.cover-media img{object-fit:cover}.photo-note{font-size:9pt}.signatures{margin:0 -13mm;padding:0 13mm}.signatures-inner{padding:5mm 0}.section{padding:11mm 0 7mm}.head{grid-template-columns:27% 1fr;gap:7mm;margin-bottom:6mm}.head h2{font-size:28pt}.head p,.intro .bodycopy,.visual-story p,.social-stories p,.editorial-figure p,.next-events p{font-size:10pt}.intro .mission{font-size:23pt}.stats-strip,.dark,.footer{margin:0 -13mm;padding-left:13mm;padding-right:13mm;print-color-adjust:exact;-webkit-print-color-adjust:exact}.stats-inner{gap:6mm}.stat .value{font-size:29pt}.event{grid-template-columns:15mm 1fr 32mm;gap:4mm;padding:4mm 0;break-inside:avoid}.event h3{font-size:15pt}.metric strong{font-size:17pt}.photo-pair img{height:55mm}.service{padding:4mm 0;break-inside:avoid}.service h3{font-size:15pt}.social-row,.next-events article,.ref-grid a{break-inside:avoid}.editorial-figure img{max-height:75mm}.section-events{break-before:page}.social-section{break-before:page}.references{break-before:page}.closing{padding:12mm 0}.footer{padding-top:5mm;padding-bottom:5mm}.footnote,.ref-grid span{font-size:9pt}a{text-decoration:none!important}}
 </style>
-</head>
-<body>
-<a href="#principal" class="skip">Ir para o conteúdo</a>
-<header class="topbar no-print">
- <div class="wrap topbar-inner">
-  <a class="wordmark" href="#inicio" aria-label="Início"><b>AEEC</b><i>×</i>POLACO <span style="color:#849199;font-size:10px">EVENTOS</span></a>
-  <nav class="nav" aria-label="Navegação"><a href="#sobre">Quem somos</a><a href="#trajetoria">Trajetória</a><a href="#atuacao">Atuação</a><a href="#calendario">2027</a><button class="print-btn" type="button" onclick="window.print()">Imprimir / PDF</button></nav>
+</head><body>
+<header class="site-header"><div class="top">
+<a class="brand" href="#inicio">AEEC &amp; Polaco Cycling Team <small>Eventos · Vilhena / RO</small></a>
+<nav class="topnav" aria-label="Navegação principal"><a href="#historia">História</a><a href="#experiencia">Experiência</a><a href="#comunidade">Comunidade</a><a href="#proximos">2027</a><button class="print" type="button" onclick="window.print()">Salvar em PDF</button></nav>
+</div></header>
+<main>
+<section class="cover" id="inicio">
+ <div class="cover-copy"><div class="eyebrow">Portfólio institucional · 2027</div>
+ <h1>Organizar é transformar movimento em encontro.</h1>
+ <p class="lead">A trajetória de duas organizações de Vilhena que unem esporte, educação e compromisso comunitário.</p>
+ <div class="tagline">AEEC &amp; Polaco Cycling Team Eventos</div>
  </div>
-</header>
-<main id="principal">
-<section class="hero cover-break" id="inicio" aria-labelledby="titulo-principal">
- <div class="wrap hero-inner">
-  <div class="eyebrow">Vilhena · Rondônia · Brasil</div>
-  <h1 id="titulo-principal">Esporte que <em>mobiliza.</em><br>Organização que realiza.</h1>
-  <p class="hero-lead">Portfólio institucional da Associação de Educação, Esporte e Consciência e da Polaco Cycling Team Eventos. Uma trajetória de iniciativas esportivas, formação, inclusão e impacto comunitário.</p>
-  <div class="hero-tags"><span>Projeto institucional</span><span>Trajetória 2024–2026</span><span>Perspectivas 2027</span></div>
-  <div class="hero-number" aria-hidden="true">2027</div>
- </div>
+ <div class="cover-media"><img src="https://d2hk32cswy6zx7.cloudfront.net/7d38b9e76914df439b0e8f8987987c7d/v2_7d262720-c29e-45ae-a74a-90f1f0f5b4c8.jpg" alt="Largada real da 3ª Corrida Portal da Amazônia de 2026, com atletas e pórtico oficial" fetchpriority="high">
+ <div class="photo-note"><strong>Vilhena, 2026</strong> 3ª Corrida Portal da Amazônia<br>Foto: Wellington Vilela</div></div>
 </section>
-<section class="signature" aria-label="Identificação das organizações">
- <div class="wrap signature-inner">
-  <div class="identity" data-brand="aeec">
-   <img src="assets/associacao-eec.png" alt="Logotipo oficial da Associação de Educação, Esporte e Consciência" loading="lazy" onerror="this.hidden=true">
-   <div><h2>AEEC</h2><p>Associação de Educação, Esporte e Consciência<br>CNPJ 57.641.739/0001-08</p></div>
-  </div>
-  <div class="identity" data-brand="polaco">
-   <img src="assets/legado-polaco.png" alt="Logotipo oficial Polaco Cycling Team Eventos" loading="lazy" onerror="this.hidden=true">
-   <div><h2>Polaco Cycling Team Eventos</h2><p>Equipe e marca de organização esportiva<br>Coordenação de Alessandro Gomes</p></div>
-  </div>
+<section class="signatures"><div class="outer signatures-inner">
+ <div class="signature"><img src="assets/associacao-eec.png" alt="Marca oficial da Associação de Educação, Esporte e Consciência" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-placeholder">AEEC</span><div><b>Associação de Educação, Esporte e Consciência</b><span>CNPJ 57.641.739/0001-08</span></div></div>
+ <div class="signature"><img class="polaco-logo" src="assets/legado-polaco.png" alt="Marca oficial Polaco Cycling Team Eventos" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-placeholder">Polaco Cycling</span><div><b>Polaco Cycling Team Eventos</b><span>Organização esportiva · Alessandro Gomes</span></div></div>
+</div></section>
+<section class="section" id="historia"><div class="outer">
+ <div class="head"><div class="chapter">Quem somos</div><div><h2>Nosso trabalho começa antes da largada.</h2><p>Planejar, reunir pessoas, transformar ideias em experiências reais. É assim que construímos competições e ações de impacto local.</p></div></div>
+ <div class="intro"><p class="mission">A boa organização não aparece apenas no pórtico. Ela está em cada detalhe que faz o evento acontecer.</p><div class="bodycopy"><p><strong>A AEEC</strong> atua em esporte, educação, inclusão e projetos comunitários. <strong>A Polaco Cycling Team Eventos</strong> reúne experiência operacional em competições e produção esportiva, com origem no ciclismo e consolidação nas corridas de rua.</p><p>Juntas, desenvolvem projetos próprios e colaboram com entidades, escolas, instituições e empresas na organização de eventos.</p></div></div>
+</div></section>
+<div class="outer"><div class="rule"></div></div>
+<section class="section section-events" id="trajetoria"><div class="outer">
+ <div class="head"><div class="chapter">Percurso · 2024–2026</div><div><h2>Cinco corridas. Uma história em construção.</h2><p>Os registros a seguir mostram a evolução do trabalho. Cada indicador mantém seu significado original: inscritos, participantes divulgados ou concluintes.</p></div></div>
+ <div class="eventlist">
+  <article class="event"><div class="year">2024</div><div><h3>1ª Corrida de Rua Cidade de Vilhena — Portal da Amazônia</h3><p>17 de novembro · Organização Polaco · início da série atual</p></div><div class="metric"><strong>209</strong><span>concluintes de 5 km · 305 registros na modalidade</span></div></article>
+  <article class="event"><div class="year">2025</div><div><h3>1º Circuito AABB de Corrida de Rua</h3><p>3 de agosto · Realização AABB/FENABB · planejamento e organização AEEC e Polaco</p></div><div class="metric"><strong>≈ 860</strong><span>participantes divulgados institucionalmente</span></div></article>
+  <article class="event"><div class="year">2025</div><div><h3>2ª Corrida de Rua Portal da Amazônia</h3><p>22 de novembro · Organização Polaco Cycling</p></div><div class="metric"><strong>660</strong><span>inscrições confirmadas no sistema · 766 registros totais</span></div></article>
+  <article class="event"><div class="year">2026</div><div><h3>2º Circuito AABB de Corrida de Rua</h3><p>26 de julho · Realização AABB/FENABB · planejamento e organização AEEC e Polaco</p></div><div class="metric"><strong>925</strong><span>inscrições divulgadas</span></div></article>
+  <article class="event"><div class="year">2026</div><div><h3>3ª Corrida de Rua Portal da Amazônia</h3><p>15 de novembro · Vilhena · comunicação digital integrada e Central do Atleta</p></div><div class="metric"><strong>3ª edição</strong><span>resultados e inscrições disponíveis para consolidação</span></div></article>
  </div>
-</section>
-
-<section class="section" id="sobre">
- <div class="wrap">
-  <div class="section-header"><span class="kicker">01 · Quem somos</span><div><h2 class="section-title">Experiência na prática.<br>Compromisso com pessoas.</h2><p class="section-desc">Atuamos na concepção, planejamento e coordenação de projetos esportivos. Reunimos atuação associativa, conhecimento operacional e uma rede de serviços especializados para viabilizar eventos de diferentes dimensões.</p></div></div>
-  <div class="grid2">
-   <article class="surface"><span class="count">ASSOCIAÇÃO</span><h3>AEEC</h3><p>Instituição de Vilhena voltada ao estímulo ao esporte, à educação e à consciência social. Participa da organização de competições, ações comunitárias e projetos de acesso à prática esportiva.</p></article>
-   <article class="surface"><span class="count">ORGANIZAÇÃO ESPORTIVA</span><h3>Polaco Cycling Team Eventos</h3><p>Marca e equipe com experiência na execução de eventos esportivos. Sua trajetória parte do ciclismo e se amplia para corridas de rua e diferentes formatos de competição.</p></article>
-  </div>
+ <div class="photo-pair">
+ <figure><img src="https://d2hk32cswy6zx7.cloudfront.net/a2be091d4a84a9a830ee60cd93509df7/v2_02891f33-bced-42ea-a86d-74b1bd1b3f61.jpg" alt="Atletas reunidos sob o pórtico do primeiro Circuito AABB em Vilhena, 2025" loading="lazy"><figcaption>1º Circuito AABB · 2025 <br>Fotografia: Wellington Vilela</figcaption></figure>
+ <figure><img src="https://d2hk32cswy6zx7.cloudfront.net/8a693040b362cab9fd3f8a6f18498f24/v2_79045db2-96de-4ef1-a330-cd078c7abfeb.jpg" alt="Atletas alinhados na largada noturna da 2ª Corrida Portal da Amazônia em 2025" loading="lazy"><figcaption>2ª Portal da Amazônia · 2025 <br>Fotografia: Wellington Vilela</figcaption></figure>
  </div>
-</section>
-<div class="wrap"><div class="hr"></div></div>
-
-<section class="section" id="trajetoria">
- <div class="wrap">
-  <div class="section-header"><span class="kicker">02 · Nossa trajetória</span><div><h2 class="section-title">Eventos realizados.<br>Experiência comprovada.</h2><p class="section-desc">As edições abaixo integram a trajetória recente da organização. Os indicadores são identificados pela natureza dos dados disponíveis; inscrições e concluintes não são medidas equivalentes.</p></div></div>
-  <div class="timeline">
-   <article class="event"><div class="year">2024</div><div><h3>1ª Corrida de Rua Cidade de Vilhena — Portal da Amazônia</h3><p>17 de novembro · Vilhena/RO · início da sequência atual do evento</p></div><div class="metric"><strong>209</strong><small>concluintes dos 5 km; 305 registros da modalidade na apuração</small></div></article>
-   <article class="event"><div class="year">2025</div><div><h3>1º Circuito AABB de Corrida de Rua</h3><p>3 de agosto · Evento AABB/FENABB, com planejamento e organização de AEEC e Polaco</p></div><div class="metric"><strong>≈ 860</strong><small>participantes divulgados institucionalmente; a confirmar em relatório final</small></div></article>
-   <article class="event"><div class="year">2025</div><div><h3>2ª Corrida de Rua Portal da Amazônia</h3><p>22 de novembro · Vilhena/RO · organização Polaco Cycling</p></div><div class="metric"><strong>660</strong><small>inscrições confirmadas no dashboard da Agito; 766 registros totais</small></div></article>
-   <article class="event"><div class="year">2026</div><div><h3>2º Circuito AABB de Corrida de Rua</h3><p>26 de julho · Evento AABB/FENABB, com planejamento e organização de AEEC e Polaco</p></div><div class="metric"><strong>925</strong><small>inscrições divulgadas, distribuídas entre 5 km, 10 km, Kids e PcD</small></div></article>
-   <article class="event"><div class="year">2026</div><div><h3>3ª Corrida de Rua Portal da Amazônia</h3><p>15 de novembro · Vilhena/RO · edição com Central do Atleta e recursos digitais próprios do evento</p></div><div class="metric"><strong>3ª edição</strong><small>relatórios de inscrições e resultados disponíveis para consolidação final</small></div></article>
-  </div>
-  <p class="caption" style="margin-top:16px">Esta sequência de corridas de rua começa em 2024. Eventos anteriores de outras organizações que utilizaram o nome Portal da Amazônia não integram a contagem das edições acima.</p>
+ <p class="footnote">A sequência atual da Corrida Portal da Amazônia começou em 2024. Eventos de outras organizações com nome semelhante não integram essa contagem.</p>
+</div></section>
+<div class="stats-strip"><div class="outer stats-inner">
+ <div class="stat"><p class="value">2024</p><p class="detail"><strong>Início da série atual</strong>Portal da Amazônia</p></div>
+ <div class="stat"><p class="value">5</p><p class="detail"><strong>Corridas de rua</strong>edições identificadas até 2026</p></div>
+ <div class="stat"><p class="value">2</p><p class="detail"><strong>Eventos previstos</strong>no calendário de 2027</p></div>
+ <div class="stat"><p class="value">1</p><p class="detail"><strong>Compromisso constante</strong>valorizar pessoas por meio do esporte</p></div>
+</div></div>
+<section class="section dark" id="experiencia"><div class="outer">
+ <div class="head"><div class="chapter">Experiência de organização</div><div><h2>Da primeira reunião ao último atleta.</h2><p>Estrutura de trabalho pensada para entregar o evento completo. As atividades especializadas são organizadas e contratadas conforme o escopo.</p></div></div>
+ <div class="service-list">
+  <article class="service"><div class="num">01</div><div><h3>Concepção e planejamento</h3><p>Objetivos, formato, orçamento, regulamentos, percursos e cronogramas.</p></div></article>
+  <article class="service"><div class="num">02</div><div><h3>Produção e logística</h3><p>Estrutura, sinalização, kits, fluxos operacionais e equipes de apoio.</p></div></article>
+  <article class="service"><div class="num">03</div><div><h3>Inscrições e comunicação</h3><p>Informações ao público, soluções online, peças gráficas e atendimento aos atletas.</p></div></article>
+  <article class="service"><div class="num">04</div><div><h3>Coordenação de fornecedores</h3><p>Contratação e acompanhamento de cronometragem, saúde, segurança e demais serviços necessários.</p></div></article>
+  <article class="service"><div class="num">05</div><div><h3>Operação do evento</h3><p>Montagem, alinhamento das equipes, gestão do percurso e execução no dia.</p></div></article>
+  <article class="service"><div class="num">06</div><div><h3>Encerramento e memória</h3><p>Resultados, fotografias, registros e avaliação das entregas.</p></div></article>
  </div>
-</section>
-
-<section class="section band" id="atuacao">
- <div class="wrap">
-  <div class="section-header"><span class="kicker">03 · Capacidade operacional</span><div><h2 class="section-title">Do planejamento<br>à linha de chegada.</h2><p class="section-desc">Podemos coordenar o ciclo completo de realização de eventos, conforme a necessidade da instituição contratante. Serviços técnicos específicos são executados por profissionais e empresas especializadas contratadas para cada projeto.</p></div></div>
-  <div class="grid3">
-   <article class="surface"><span class="count">01</span><h3>Projeto e planejamento</h3><p>Formato do evento, cronograma, orçamento, regulamento, percurso, estrutura, públicos e articulação com entidades envolvidas.</p></article>
-   <article class="surface"><span class="count">02</span><h3>Operação e fornecedores</h3><p>Coordenação de infraestrutura, inscrições, kits, montagem, equipes de apoio, sinalização e fornecedores contratados.</p></article>
-   <article class="surface"><span class="count">03</span><h3>Comunicação e resultados</h3><p>Artes, materiais informativos, cobertura digital, orientação aos participantes, suporte à apuração e consolidação pós-evento.</p></article>
+ <div class="provider">O modelo de atuação e contratação é adaptado às necessidades de cada instituição ou empresa. Serviços de cronometragem, assistência médica e segurança podem ser executados por fornecedores especializados.</div>
+</div></section>
+<section class="section social-section" id="comunidade"><div class="outer">
+ <div class="head"><div class="chapter">Esporte e comunidade</div><div><h2>Quando o esporte chega mais longe.</h2><p>A atuação das organizações não termina na premiação. Ações comunitárias e projetos educativos fazem parte dessa trajetória.</p></div></div>
+ <div class="social-stories">
+  <div>
+   <div class="social-row"><div class="timeline-label">Solidariedade</div><h3>Brinquedos para aldeias indígenas</h3><p>Arrecadação e entregas realizadas com participação de atletas, voluntários e comunidade.</p></div>
+   <div class="social-row"><div class="timeline-label">Ações comunitárias</div><h3>Alimentos para famílias</h3><p>Mobilizações de arrecadação e distribuição de alimentos. Relatórios e quantitativos poderão integrar futuras atualizações.</p></div>
+   <div class="social-row"><div class="timeline-label">Inclusão esportiva</div><h3>Equipamentos adaptados</h3><p>Cadeiras esportivas adaptadas disponíveis para uso por atletas e organizações, mediante articulação prévia.</p></div>
   </div>
-  <p style="font-size:12px;color:#c6d8df;margin:19px 0 0">Cronometragem, segurança e atendimento médico são serviços de terceiros planejados, contratados e coordenados conforme o evento e a legislação aplicável.</p>
+  <aside class="highlight"><div class="timeline-label">Educação e artes marciais</div>
+   <h3>O jiu-jítsu também faz parte dessa história.</h3>
+   <p><strong>2025 · 1º Campeonato Interno de Jiu-Jítsu</strong><br>Realizado com o Colégio Militar Dom Pedro II, com participação da AEEC.</p>
+   <p><strong>19 de novembro de 2026 · 2º Campeonato Interno</strong><br>Reuniu alunos do Colégio Militar Dom Pedro II (CMDP) e do Colégio Tiradentes da Polícia Militar (CTPM).</p>
+  </aside>
  </div>
-</section>
-
-<section class="section compact">
- <div class="wrap">
-  <div class="section-header"><span class="kicker">04 · Fluxo de trabalho</span><div><h2 class="section-title">Organização em etapas.</h2><p class="section-desc">Um processo de trabalho que oferece previsibilidade e facilita a participação de instituições, empresas, parceiros e equipes técnicas.</p></div></div>
-  <div class="stages">
-   <div class="stage"><b>01 · Diagnóstico</b><p>Objetivos, público e escopo</p></div>
-   <div class="stage"><b>02 · Planejamento</b><p>Regulamento, orçamento e fornecedores</p></div>
-   <div class="stage"><b>03 · Mobilização</b><p>Divulgação, inscrições e preparação</p></div>
-   <div class="stage"><b>04 · Execução</b><p>Operação, percurso e apoio</p></div>
-   <div class="stage"><b>05 · Encerramento</b><p>Resultados, registros e avaliação</p></div>
-  </div>
+</div></section>
+<section class="section editorial"><div class="outer">
+ <div class="editorial-figure"><img src="https://d2hk32cswy6zx7.cloudfront.net/7d38b9e76914df439b0e8f8987987c7d/v2_7d262720-c29e-45ae-a74a-90f1f0f5b4c8.jpg" alt="Largada da 3ª Corrida Portal da Amazônia, mostrando a montagem do pórtico e os atletas" loading="lazy">
+ <div><div class="chapter">Memória de 2026</div><h3>Uma corrida é feita de pessoas, estrutura e planejamento.</h3><p>Do primeiro comunicado ao encerramento, cada edição reúne trabalho de bastidores, apoio comunitário e atenção aos atletas.</p><p class="footnote">Registro real da 3ª Corrida de Rua Portal da Amazônia · Foto: Wellington Vilela.</p></div></div>
+</div></section>
+<section class="section" id="proximos"><div class="outer">
+ <div class="head"><div class="chapter">Perspectivas 2027</div><div><h2>Os próximos capítulos já estão no calendário.</h2><p>Previsões de realização. Datas exatas e formatos ainda serão confirmados com as instituições envolvidas.</p></div></div>
+ <div class="next-events">
+  <article><div class="month">Junho · data a confirmar</div><h3>3º Circuito AABB de Corrida de Rua</h3><p>Local previsto: AABB de Vilhena. Evento da AABB/FENABB, com planejamento e organização de AEEC e Polaco.</p></article>
+  <article><div class="month">Novembro · data a confirmar</div><h3>4ª Corrida de Rua Portal da Amazônia</h3><p>Nova edição da sequência iniciada em 2024. Local, modalidades e estrutura em definição.</p></article>
  </div>
-</section>
-<div class="wrap"><div class="hr"></div></div>
-
-<section class="section social new-page" id="impacto">
- <div class="wrap">
-  <div class="section-header"><span class="kicker">05 · Esporte e comunidade</span><div><h2 class="section-title">O impacto vai além<br>da competição.</h2><p class="section-desc">A atuação institucional contempla solidariedade, acesso ao esporte e fortalecimento comunitário. Os quantitativos de cada ação serão acrescentados após conferência documental.</p></div></div>
-  <div class="grid3">
-   <article class="surface"><span class="count">SOLIDARIEDADE</span><h3>Entrega de brinquedos</h3><p>Ações de arrecadação e entrega de brinquedos em aldeias indígenas da região, com participação de atletas e apoiadores.</p></article>
-   <article class="surface"><span class="count">ASSISTÊNCIA COMUNITÁRIA</span><h3>Distribuição de alimentos</h3><p>Mobilização e distribuição de alimentos a famílias em situação de vulnerabilidade. Histórico e números serão documentados em versão posterior.</p></article>
-   <article class="surface"><span class="count">ACESSIBILIDADE</span><h3>Equipamentos adaptados</h3><p>Disponibilização de cadeiras esportivas adaptadas para atletismo e participação em atividades inclusivas, mediante articulação com atletas ou organizações.</p></article>
-  </div>
-  <div class="grid2" style="margin-top:18px">
-   <article class="feature"><span class="count">FORMAÇÃO ESPORTIVA</span><h3>Experiência também no jiu-jítsu.</h3><p>A AEEC participou da realização do primeiro campeonato interno de jiu-jítsu do Colégio Militar Dom Pedro II, em dezembro de 2025.</p></article>
-   <article class="feature" style="background:#eaf1e9;border-color:#d5e3d4"><span class="count">TRAJETÓRIA MULTIESPORTIVA</span><h3>Raízes no ciclismo.</h3><p>A história da Polaco inclui a Skalada ConeSul e atividades de ciclismo. Essa experiência integra o repertório da equipe, embora o portfólio tenha foco principal nas corridas de rua.</p></article>
-  </div>
+</div></section>
+<section class="references"><div class="outer">
+ <div class="head"><div class="chapter">Registros</div><div><h2>Os eventos estão documentados.</h2><p>Galerias reais, resultados e canais de informação para consulta. Novos registros serão incorporados à apresentação com autorização.</p></div></div>
+ <div class="ref-grid">
+  <a href="https://banlek.com/album/2b1d28" target="_blank" rel="noopener noreferrer"><strong>Portal da Amazônia · 2026</strong><span>Galeria de pódio e registros gerais · Wellington Vilela</span></a>
+  <a href="https://banlek.com/album/133610" target="_blank" rel="noopener noreferrer"><strong>Circuito AABB · 2025</strong><span>Registros fotográficos da primeira edição</span></a>
+  <a href="https://www.fotto.com.br/2-circuito-aabb-corrida-de-rua/e/387052" target="_blank" rel="noopener noreferrer"><strong>Circuito AABB · 2026</strong><span>Galeria da segunda edição</span></a>
  </div>
-</section>
-
-<section class="section" id="competencias">
- <div class="wrap">
-  <div class="section-header"><span class="kicker">06 · Competências entregues</span><div><h2 class="section-title">Estrutura para eventos<br>de diferentes formatos.</h2><p class="section-desc">A combinação de planejamento, gestão local e apoio especializado permite adaptar o projeto às necessidades da instituição responsável pelo evento.</p></div></div>
-  <div class="cap-grid">
-   <div class="cap"><i>01 / TÉCNICO</i><h3>Regulamentos e categorias</h3><p>Definição de regras, modalidades, critérios, documentos e orientações.</p></div>
-   <div class="cap"><i>02 / DIGITAL</i><h3>Soluções online</h3><p>Informações ao atleta, avisos, consultas, formulários e páginas digitais.</p></div>
-   <div class="cap"><i>03 / LOGÍSTICO</i><h3>Percurso e montagem</h3><p>Fluxos, sinalização, estrutura, hidratação, kits e operações de campo.</p></div>
-   <div class="cap"><i>04 / PRODUÇÃO</i><h3>Equipes e contratos</h3><p>Articulação de profissionais, fornecedores e serviços especializados.</p></div>
-   <div class="cap"><i>05 / COMUNICAÇÃO</i><h3>Identidade e divulgação</h3><p>Materiais gráficos, informação pública, cobertura e comunicação com participantes.</p></div>
-   <div class="cap"><i>06 / INSTITUCIONAL</i><h3>Relacionamento comunitário</h3><p>Interlocução com entidades, projetos sociais, famílias e grupos esportivos.</p></div>
-  </div>
- </div>
-</section>
-
-<section class="section band" id="calendario">
- <div class="wrap">
-  <div class="section-header"><span class="kicker">07 · Perspectivas 2027</span><div><h2 class="section-title">Um novo ciclo<br>em planejamento.</h2><p class="section-desc">O calendário abaixo apresenta previsões de realização. Datas exatas, formatos, percursos e demais definições dependem do planejamento das instituições envolvidas.</p></div></div>
-  <div class="next" style="color:var(--ink)">
-   <article><span class="month">Junho de 2027 · previsão</span><h3>3º Circuito AABB<br>de Corrida de Rua</h3><p>Local previsto: AABB de Vilhena. Evento da AABB/FENABB, com planejamento e organização por AEEC e Polaco, sujeito a confirmação de escopo e calendário.</p></article>
-   <article><span class="month">Novembro de 2027 · previsão</span><h3>4ª Corrida de Rua<br>Portal da Amazônia</h3><p>Continuidade do projeto iniciado em 2024. Local, data, categorias e formato a confirmar.</p></article>
-  </div>
- </div>
-</section>
-
-<section class="section compact" id="registros">
- <div class="wrap">
-  <div class="section-header"><span class="kicker">08 · Registros e evidências</span><div><h2 class="section-title">Histórias registradas.<br>Fontes consultáveis.</h2><p class="section-desc">As galerias e os resultados são referências de acervo. O álbum fotográfico final do portfólio será montado com arquivos em alta resolução e autorizados para publicação.</p></div></div>
-  <div class="grid3">
-   <a class="linkcard" href="https://banlek.com/album/2b1d28?pagina=2" target="_blank" rel="noopener noreferrer"><h3>Portal da Amazônia 2026</h3><p>Fotografias do pódio e registros gerais por Wellington Vilela.</p><small>Consultar acervo ↗</small></a>
-   <a class="linkcard" href="https://www.fotto.com.br/2-circuito-aabb-corrida-de-rua/e/387052" target="_blank" rel="noopener noreferrer"><h3>Circuito AABB 2026</h3><p>Galeria de fotografias do evento em Vilhena.</p><small>Consultar acervo ↗</small></a>
-   <a class="linkcard" href="../central/" target="_blank" rel="noopener noreferrer"><h3>Central do Atleta 2026</h3><p>Exemplo implementado de comunicação, avisos, regulamento e serviços ao participante.</p><small>Ver solução do evento ↗</small></a>
-  </div>
-  <p class="caption" style="margin-top:15px">Créditos fotográficos e autorizações serão observados na publicação de imagens. Não são utilizados retratos gerados por inteligência artificial.</p>
- </div>
-</section>
-
-<section class="section compact" id="contato">
- <div class="wrap">
-  <div class="section-header"><span class="kicker">09 · Diálogo institucional</span><div><h2 class="section-title">Projetos começam<br>com uma conversa.</h2><p class="section-desc">Instituições públicas, entidades, escolas e empresas podem discutir iniciativas esportivas, organização de eventos, ações inclusivas e projetos comunitários. A forma de contratação e as responsabilidades são definidas conforme cada demanda.</p></div></div>
-  <div class="surface stripe"><p class="statement">AEEC &amp; Polaco Cycling Team Eventos<br>Vilhena — Rondônia</p><p>Contato institucional e canais oficiais: informações a inserir após validação da organização. Este material apresenta capacidades e histórico, sem constituir oferta contratual ou orçamento.</p></div>
- </div>
-</section>
+</div></section>
+<section class="closing"><div class="outer closing-inner">
+ <h2>Projetos diferentes.<br>O mesmo cuidado em realizar.</h2><p>AEEC &amp; Polaco Cycling Team Eventos<br>Vilhena · Rondônia<br><br>Apresentação institucional destinada a entidades públicas, empresas, instituições e organizações esportivas.</p>
+</div></section>
 </main>
-
-<footer class="foot">
- <div class="wrap foot-inner"><div><strong>AEEC × Polaco Cycling Team Eventos</strong><p>Projeto institucional · versão inicial · novembro de 2026</p><p>Portfólio em evolução, com dados históricos sujeitos a atualização documental.</p></div><div><p><strong style="font-size:12px">Fontes e registros</strong></p><ul class="sources"><li>Agito Esportes — relatórios de inscrições e resultados de 2024–2026.</li><li>Registros públicos da AABB/FENABB e imprensa local, 2025–2026.</li><li>Documentação institucional e informações fornecidas pela organização.</li><li><a href="https://sapl.vilhena.ro.leg.br/" target="_blank" rel="noopener noreferrer">Câmara Municipal de Vilhena</a> — registros da associação.</li></ul></div></div>
-</footer>
-</body>
-</html>
+<footer class="footer"><div class="outer footer-inner">
+ <div><strong>AEEC &amp; Polaco Cycling Team Eventos</strong><p>Portfólio institucional · edição de novembro de 2026</p></div>
+ <div><small>Fotografias: Wellington Vilela · Créditos técnicos: Izaeltec — soluções digitais, design e comunicação.</small><p>Dados de edições anteriores extraídos de registros da organização, Agito e comunicações institucionais.</p></div>
+</div></footer>
+</body></html>
