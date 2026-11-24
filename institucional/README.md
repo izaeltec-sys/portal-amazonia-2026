@@ -64,3 +64,22 @@ As galerias não devem ser tratadas como autorização automática para todos os
 - Histórico do evento: https://old.agitoesportes.com.br/resultados/g-live.html?f=eventos/2024/1o-CORRIDA-CIDADE-DE-VILHENA-PORTAL-DA-AMAZONIA/evento.clax
 - Fotos Portal 2026: https://banlek.com/album/2b1d28?pagina=2
 - Fotos AABB 2026: https://www.fotto.com.br/2-circuito-aabb-corrida-de-rua/e/387052
+
+## Revisão fotográfica — 24 de novembro de 2026
+
+A organização autorizou a utilização de imagens da Banlek no álbum `2b1d28` da 3ª Corrida Portal da Amazônia. A consulta à galeria individual retornou **1.972 imagens nesse álbum**, número que não representa o acervo total da corrida, pois podem existir outros álbuns e fotógrafos. Não publicar 1.972 como total geral.
+
+Foram selecionados seis registros de Wellington Vilela, obtidos das URLs originais autorizadas, exportados para web (JPEG 1800 px, sem alterar conteúdo, sem remover marca d'água):
+
+| Arquivo | ID da foto na Banlek | Uso no portfólio |
+| --- | --- | --- |
+| `2026-chegada.jpg` | 2648116591 | Estrutura do pórtico de largada/chegada |
+| `2026-percurso.jpg` | 2648154256 | Concentração com equipamento adaptado |
+| `2026-atividade-publico.jpg` | 2657965562 | Atividade de pintura facial infantil |
+| `2026-publico.jpg` | 2648178453 | Concentração dos atletas |
+| `2026-podio.jpg` | 2648050714 | Premiação e troféus |
+| `2026-estrutura-premiacao.jpg` | 2648109136 | Operação da premiação |
+
+As imagens são registros do evento de corrida, **não** registros comprobatórios das ações de doação. Os arquivos originais permaneceram na fonte Banlek; as cópias web estão em `institucional/assets/fotos/`.
+
+**Pendente:** fotografias específicas das entregas de brinquedos, alimentos, jiu-jítsu e demais ações. O PC Escritório, mencionado como fonte de arquivos locais da Portal 2026, estava offline durante esta revisão.

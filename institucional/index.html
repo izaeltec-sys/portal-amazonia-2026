@@ -274,6 +274,28 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
 /* PDF terá acabamento final após fechamento das fotografias e logotipos. */
 @media print{.cover{grid-template-columns:48% 52%}.cover h1{font-size:43pt}.cover-copy{padding:12mm 6mm 12mm 0}.cover .lead{font-size:12pt}.head h2{font-size:31pt}.intro .mission{font-size:25pt}.event h3{font-size:18pt}.event .metric strong{font-size:23pt}.photo-pair figure:nth-child(2){padding-top:0}.social-stories h3,.service h3{font-size:21pt}}
 
+
+/* 2026: documentação fotográfica real, sem imagens geradas e sem repetição artificial. */
+.edition-gallery.edition-gallery-three{grid-template-columns:repeat(3,minmax(0,1fr));max-width:none}
+.edition-gallery.edition-gallery-three img{aspect-ratio:4/3}
+.edition-gallery.edition-gallery-three figcaption{font-size:13px}
+.service-photos{display:grid;grid-template-columns:1fr 1fr;gap:17px;margin:-4px 0 34px}
+.service-photos figure{margin:0;min-width:0}
+.service-photos img{display:block;width:100%;height:300px;object-fit:cover;object-position:center}
+.service-photos figure:first-child img{object-position:center 30%}
+.service-photos figcaption{font-size:14px;line-height:1.4;color:#cbd8d8;margin-top:10px}
+.community-photos{display:grid;grid-template-columns:1.07fr .93fr;gap:16px;margin-top:27px}
+.community-photos figure{margin:0;min-width:0}
+.community-photos img{display:block;width:100%;height:330px;object-fit:cover}
+.community-photos figure:first-child img{object-position:center 53%}
+.community-photos figure:last-child img{object-position:center 35%}
+.community-photos figcaption{font-size:14px;color:#51666c;line-height:1.45;margin-top:10px}
+.community-photo-note{margin:17px 0 0;font-size:14px;line-height:1.6;color:#607077;max-width:940px}
+@media(max-width:900px){.edition-gallery.edition-gallery-three{grid-template-columns:repeat(2,minmax(0,1fr))}.service-photos img{height:240px}.community-photos img{height:280px}}
+@media(max-width:700px){.edition-gallery.edition-gallery-three,.service-photos,.community-photos{grid-template-columns:1fr}.service-photos{gap:23px}.service-photos img{height:250px}.community-photos img{height:245px}.community-photo-note{font-size:13px}}
+/* Ajustes de paginação A4 ficam para o encerramento do acervo. */
+@media print{.edition-gallery.edition-gallery-three{grid-template-columns:repeat(3,1fr)}.edition-gallery.edition-gallery-three img{height:39mm}.service-photos img{height:49mm}.community-photos img{height:50mm}.service-photos,.community-photos{break-inside:avoid}}
+
 </style>
 </head><body>
 <header class="site-header"><div class="top">
@@ -374,7 +396,11 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
    <div class="edition-content">
     <div class="edition-intro"><div class="edition-body"><span class="edition-label">Sobre esta edição</span><p>A terceira edição contou com corrida adulta, Kids, categoria PcD e modalidade escolar. A comunicação foi concentrada em uma Central do Atleta, com informações, regulamento, consulta de inscritos e outros serviços online.</p></div>
      <dl class="edition-facts"><div><dt>Data</dt><dd>15 de novembro de 2026</dd></div><div><dt>Local</dt><dd>Vilhena · Rondônia</dd></div><div><dt>Modalidades</dt><dd>5 km, Kids, Escolar e PcD</dd></div><div><dt>Informações ao público</dt><dd>Central do Atleta</dd></div></dl></div>
-    <div class="edition-gallery single"><figure><img src="assets/fotos/portal-2026-largada.jpg" alt="Largada da 3ª Corrida Portal da Amazônia de 2026, com participantes passando sob o pórtico" loading="lazy"><figcaption>Foto: Wellington Vilela · 2026</figcaption></figure></div>
+    <div class="edition-gallery edition-gallery-three">
+ <figure><img src="assets/fotos/portal-2026-largada.jpg" alt="Largada da 3ª Corrida Portal da Amazônia de 2026" loading="lazy"><figcaption>Largada · Wellington Vilela</figcaption></figure>
+ <figure><img src="assets/fotos/2026-publico.jpg" alt="Concentração de participantes antes da largada da 3ª Portal da Amazônia" loading="lazy"><figcaption>Concentração · Wellington Vilela · Foto 2648178453</figcaption></figure>
+ <figure><img src="assets/fotos/2026-podio.jpg" alt="Atletas medalhadas e premiadas no pódio feminino da 3ª Portal da Amazônia" loading="lazy"><figcaption>Premiação · Wellington Vilela · Foto 2648050714</figcaption></figure>
+ </div>
     <div class="edition-links"><a href="https://banlek.com/album/2b1d28" target="_blank" rel="noopener noreferrer">Ver álbum fotográfico de 2026 <span aria-hidden="true">↗</span></a><a href="../central/" >Conhecer a Central do Atleta <span aria-hidden="true">↗</span></a></div>
    </div>
   </details>
@@ -389,6 +415,10 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
 </div></div>
 <section class="section dark" id="experiencia"><div class="outer">
  <div class="head"><div class="chapter">Experiência de organização</div><div><h2>Organização é o que acontece nos bastidores.</h2><p>Estrutura de trabalho pensada para entregar o evento completo. As atividades especializadas são organizadas e contratadas conforme o escopo.</p></div></div>
+ <div class="service-photos" aria-label="Registros da estrutura e da premiação">
+  <figure><img src="assets/fotos/2026-chegada.jpg" alt="Pórtico oficial de largada e chegada, com estrutura e apoiadores da 3ª Portal da Amazônia" loading="lazy"><figcaption>Estrutura de largada e chegada · Portal 2026 · Wellington Vilela</figcaption></figure>
+  <figure><img src="assets/fotos/2026-estrutura-premiacao.jpg" alt="Ambiente de premiação no SEST SENAT, com palco, equipe e participantes" loading="lazy"><figcaption>Estrutura e operação da premiação · Portal 2026 · Wellington Vilela</figcaption></figure>
+ </div>
  <div class="service-list">
   <article class="service"><div class="num">01</div><div><h3>Concepção e planejamento</h3><p>Objetivos, formato, orçamento, regulamentos, percursos e cronogramas.</p></div></article>
   <article class="service"><div class="num">02</div><div><h3>Produção e logística</h3><p>Estrutura, sinalização, kits, fluxos operacionais e equipes de apoio.</p></div></article>
@@ -413,6 +443,11 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
    <p><strong>19 de novembro de 2026 · 2º Campeonato Interno</strong><br>Reuniu alunos do Colégio Militar Dom Pedro II (CMDP) e do Colégio Tiradentes da Polícia Militar (CTPM).</p>
   </aside>
  </div>
+ <div class="community-photos" aria-label="Registros de participação inclusiva e atividades no evento">
+  <figure><img src="assets/fotos/2026-percurso.jpg" alt="Atletas e famílias reunidos na concentração, com participação de criança em cadeira adaptada de corrida" loading="lazy"><figcaption>Esporte e inclusão: concentração antes da prova · Portal 2026 · Wellington Vilela</figcaption></figure>
+  <figure><img src="assets/fotos/2026-atividade-publico.jpg" alt="Atividade de pintura facial de uma criança durante a programação da Portal da Amazônia" loading="lazy"><figcaption>Participação infantil e atividades para a comunidade · Portal 2026 · Wellington Vilela</figcaption></figure>
+ </div>
+ <p class="community-photo-note">Estes são registros de atividades na corrida de 2026. Fotografias das entregas de brinquedos, distribuição de alimentos e campeonatos escolares serão incorporadas a partir dos respectivos acervos, sem atribuições indevidas.</p>
 </div></section>
 <section class="section editorial"><div class="outer">
  <div class="editorial-figure"><img src="assets/fotos/portal-2025-atletas.jpg" alt="Atletas correndo em prova noturna, registro do acervo esportivo de novembro de 2025" loading="lazy">
