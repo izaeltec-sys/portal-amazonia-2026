@@ -448,7 +448,195 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
 }
 
 </style>
-</head><body>
+<style>/* Revisao editorial A4 - 25/11/2026 */
+@media print {
+  .edition {break-inside:avoid-page;}
+  .edition-summary {min-height:0;grid-template-columns:16mm minmax(0,1fr) 31mm;gap:3mm;}
+  .edition-content {break-inside:avoid-page;padding:3mm 4mm;}
+  .edition-intro {margin-bottom:3mm;}
+  .edition-gallery {margin-bottom:0;break-inside:avoid-page;}
+  .edition-gallery img,.edition-gallery.single img {height:44mm;max-height:44mm;}
+  .edition-gallery.edition-gallery-three img {height:35mm;max-height:35mm;}
+  .edition-facts {gap:2mm 3mm;}
+  .edition-facts div {padding-top:2mm;}
+  .stats-strip {padding-top:5mm;padding-bottom:5mm;break-before:page;break-after:avoid-page;}
+  .stats-inner {gap:4mm;}
+  #experiencia {padding-top:6mm;padding-bottom:6mm;break-inside:avoid-page;}
+  #experiencia .head {margin-bottom:4mm;}
+  .service-photos {margin:0 0 4mm;gap:3mm;}
+  .service-photos img {height:36mm;}
+  .service-photos figcaption {font-size:9pt;margin-top:1.5mm;}
+  .service-list {column-gap:5mm;}
+  .service {grid-template-columns:9mm 1fr;gap:2mm;padding:3mm 0;}
+  .service h3 {font-size:18pt;margin-bottom:1.5mm;}
+  .service .num {font-size:15pt;}
+  .service p,.provider {font-size:10pt;line-height:1.35;}
+  .provider {margin-top:3mm;padding-top:3mm;}
+  .jiu-historia {break-before:auto;break-inside:avoid-page;}
+  .social-stories {gap:5mm;}
+  .social-stories h3 {font-size:22pt;}
+  .social-stories p {margin-bottom:3mm;font-size:10pt;line-height:1.35;}
+  .social-stories .highlight {padding:4mm;}
+  .impact-story {break-before:page;margin-top:0;padding-top:4mm;break-inside:avoid-page;}
+  .impact-heading {break-after:avoid-page;}
+  .impact-source {break-before:avoid-page;}
+  .event-community {break-inside:avoid-page;}
+  .editorial {break-inside:avoid-page;}
+  .editorial-figure {gap:5mm;break-inside:avoid-page;}
+  .editorial-figure h3 {font-size:28pt;}
+  .editorial-figure p {font-size:10pt;line-height:1.4;}
+  .editorial-figure .footnote {font-size:9pt;}
+  #proximos {break-inside:avoid-page;}
+  .closing {break-inside:avoid-page;padding:8mm 0;}
+  .closing h2 {font-size:33pt;}
+  .footer {break-inside:avoid-page;}
+}
+
+
+/* Ajustes de impressão: margens internas, capa e fotos integrais */
+@media print {
+  html,body,main {width:auto;max-width:100%;margin:0;}
+  .outer {width:100%;max-width:100%;min-width:0;margin-left:auto;margin-right:auto;}
+  .cover {display:flex;flex-direction:column;min-height:0;max-height:none;break-after:auto;break-inside:avoid-page;border-bottom:3mm solid var(--accent);}
+  .cover-copy {display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:3mm 7mm;padding:7mm 8mm;}
+  .cover-copy .eyebrow {grid-column:1/-1;margin:0;font-size:10pt;}
+  .cover h1 {font-size:38pt;line-height:.93;margin:0;}
+  .cover .lead {font-size:11pt;line-height:1.45;margin:0;}
+  .cover .tagline {grid-column:1/-1;font-size:9pt;margin:0;padding-top:2mm;}
+  .cover-media {height:103mm;min-height:0;overflow:hidden;background:var(--night);}
+  .cover-media img {object-fit:contain;object-position:center;}
+  .cover-media::after {display:none;}
+  .photo-note {bottom:3mm;right:3mm;padding:2mm 3mm;}
+  .signatures {margin:3mm 0 0;padding:0 4mm;break-after:page;break-inside:avoid-page;}
+  .signatures-inner {padding:4mm 0;gap:4mm;display:grid;grid-template-columns:1fr 1fr;}
+  .signature {gap:3mm;min-width:0;}
+  .signature img:not(.polaco-logo) {width:22mm;height:19mm;}
+  .signature .polaco-logo {width:37mm;height:19mm;padding:2mm;}
+  .signature b {font-size:10pt;overflow-wrap:normal;}
+  .signature span {font-size:8pt;}
+  .section.dark,.stats-strip,.footer {margin-left:0;margin-right:0;padding-left:5mm;padding-right:5mm;}
+  .section.dark .outer,.stats-strip .outer,.footer .outer {width:auto;max-width:none;}
+  #experiencia .head {grid-template-columns:22% minmax(0,1fr);gap:4mm;}
+  #experiencia .head h2 {font-size:25pt;}
+  .service-list {gap:0 4mm;}
+  .service {min-width:0;grid-template-columns:7mm minmax(0,1fr);gap:2mm;padding:3mm 0;}
+  .service h3 {font-size:16pt;}
+  .service p,.provider {font-size:10pt;}
+  .edition-summary {padding-left:2mm;padding-right:2mm;}
+  .edition-gallery img,.edition-gallery.single img,.service-photos img,.jiu-evento img,.jiu-action-dupla figure img,.event-community-gallery img,.impact-double-images img,.impact-duo-item>figure img,.editorial-figure img {object-fit:contain!important;object-position:center!important;background:#f1f0e9;}
+  .service-photos img {background:#122c39;}
+  .memory-spread .memory-image img {object-fit:contain;object-position:center;background:#14333f;}
+  .impact-images img {object-fit:contain;object-position:center!important;}
+  .impact-images figcaption {padding:2mm;background:#173540;font-size:8pt;}
+  .impact-images figure {display:flex;flex-direction:column;}
+  .impact-images figure img {min-height:0;flex:1;}
+  .impact-images figcaption {position:static;}
+  .editorial-figure {break-inside:avoid-page;}
+  .closing {padding:5mm 0;}
+  .closing-inner {gap:4mm;}
+  .closing h2 {font-size:27pt;}
+  .closing p {font-size:10pt;}
+  .footer {padding-top:3mm;padding-bottom:3mm;}
+  .footer strong {font-size:13pt;}
+  .footer p,.footer small {font-size:8.5pt;line-height:1.3;}
+  .references {padding:4mm 0;}
+  .references .head {margin-bottom:3mm;}
+  .reference-category {margin-top:3mm;padding-top:2mm;}
+  .reference-category h3 {font-size:17pt;margin-bottom:2mm;}
+  .reference-links a {padding:1.5mm 0;}
+  .reference-copy small {margin-top:1mm;}
+  .social-section .head {margin-bottom:4mm;}
+  .social-stories h3 {font-size:20pt;}
+  .social-stories p {font-size:10pt;margin-bottom:3mm;}
+  .jiu-historia {margin-top:4mm;padding-top:3mm;break-inside:avoid-page;}
+  .event-community {margin-top:4mm;padding-top:3mm;}
+  .editorial {padding:4mm 0;}
+  .editorial-figure img {max-height:45mm;}
+  #proximos {padding:5mm 0;}
+  #proximos .head {margin-bottom:3mm;}
+  #proximos .next-events article {padding:3mm;}
+  #proximos .next-events h3 {font-size:22pt;margin:3mm 0;}
+}
+
+
+/* Acabamento A4 - densidade editorial e consistência */
+@media print {
+  #trajetoria {padding:5mm 0 3mm;}
+  #trajetoria .head {margin-bottom:3mm;}
+  #trajetoria .head p {margin-bottom:0;}
+  .edition-summary {padding:2.5mm 2mm;gap:2mm;}
+  .edition-content {padding:2.5mm 3mm;}
+  .edition-intro {gap:3mm;margin-bottom:2mm;}
+  .edition-body p {font-size:10pt;line-height:1.33;}
+  .edition-label {font-size:8.5pt;margin-bottom:1.5mm;}
+  .edition-facts {gap:1.5mm 2mm;}
+  .edition-facts div {padding-top:1.2mm;}
+  .edition-facts dd {font-size:12pt;margin-top:1mm;}
+  .edition-gallery {gap:2mm;margin-bottom:0;}
+  .edition-gallery.single {max-width:none;}
+  .edition-gallery img,.edition-gallery.single img {height:40mm;max-height:40mm;background:transparent;}
+  .edition-gallery figcaption {margin-top:1mm;}
+  #edicao-5 .edition-gallery img {height:46mm;max-height:46mm;}
+  .impact-story {margin:0;padding-top:3mm;}
+  .impact-heading {margin-bottom:3mm;}
+  .impact-duo {margin-top:5mm;gap:4mm;}
+  .impact-duo-copy {margin-top:2mm;padding-top:2mm;}
+  .impact-duo-copy h3 {font-size:21pt;margin:2mm 0;}
+  .impact-duo-copy p {font-size:10pt;line-height:1.35;}
+  .impact-duo-item figcaption {font-size:8.5pt;margin-top:1mm;}
+  .impact-images {grid-template-rows:35mm 35mm;}
+  .impact-duo-item>figure img,.impact-double-images img {height:35mm;}
+  .impact-duo-item>figure img,.impact-double-images img,.event-community-gallery img,.jiu-evento img {background:transparent;}
+  .event-community-intro {margin-bottom:3mm;}
+  .event-community-gallery {gap:2mm;}
+  .event-community-gallery img {height:28mm;}
+  .event-community-gallery figcaption {font-size:8.5pt;margin-top:1mm;}
+  .footer-inner {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.4fr);gap:4mm;}
+  .footer-inner > div {min-width:0;}
+  .footer p {margin:1mm 0 0;}
+  .closing {padding:3mm 0;}
+  .closing h2 {font-size:24pt;}
+  .references .head h2 {font-size:25pt;}
+  .references .head p {margin-bottom:0;}
+  .reference-category {margin-top:2mm;padding-top:1.5mm;}
+  .reference-category h3 {margin-bottom:1.5mm;}
+  .reference-links a {padding:1mm 0;}
+  .reference-copy small {margin-top:.5mm;}
+  .references {padding:3mm 0;}
+}
+
+
+/* Equilibrio visual: fotos maiores, paginas tematicas e capa */
+@media print {
+  .cover-media {height:119mm;}
+  .cover-copy {padding:8mm 8mm;}
+  .photo-note strong {font-size:18pt;}
+  .edition-gallery img,.edition-gallery.single img {height:44mm;max-height:44mm;}
+  .edition-gallery figcaption {text-align:center;}
+  #edicao-5 .edition-gallery img {height:58mm;max-height:58mm;}
+  .service-photos img {height:41mm;}
+  .social-stories h3 {font-size:24pt;}
+  .social-stories p {font-size:11pt;line-height:1.45;margin-bottom:5mm;}
+  .social-stories .highlight {padding:6mm;}
+  .jiu-evento>figure img {height:60mm;max-height:60mm;}
+  .jiu-evento .jiu-luta img {height:49mm;max-height:49mm;}
+  .jiu-action-dupla figure img {height:43mm;max-height:43mm;}
+  .jiu-evento figcaption {font-size:8.5pt;}
+  .event-community-gallery {grid-template-columns:repeat(2,minmax(0,1fr));gap:4mm;}
+  .event-community-gallery img {height:57mm;}
+  .event-community-gallery figcaption {font-size:9pt;text-align:center;}
+  .event-community-intro {margin-bottom:5mm;}
+  .editorial {break-before:page;padding:7mm 0;}
+  .editorial-figure img {max-height:72mm;}
+  .editorial-figure h3 {font-size:28pt;}
+  .editorial-figure p {font-size:11pt;}
+  #proximos {padding:9mm 0;}
+  #proximos .head {margin-bottom:5mm;}
+  #proximos .next-events article {padding:6mm 3mm;}
+  #proximos .next-events h3 {font-size:26pt;}
+}
+
+</style></head><body>
 <header class="site-header"><div class="top">
 <a class="brand" href="#inicio">AEEC &amp; Polaco Cycling Team <small>Eventos · Vilhena / RO</small></a>
 <nav class="topnav" aria-label="Navegação principal"><a href="#historia">História</a><a href="#experiencia">Experiência</a><a href="#comunidade">Comunidade</a><a href="#proximos">2027</a><button class="print" type="button" onclick="window.print()">Salvar em PDF</button></nav>
