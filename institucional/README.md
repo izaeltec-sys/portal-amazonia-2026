@@ -83,3 +83,11 @@ Foram selecionados seis registros de Wellington Vilela, obtidos das URLs origina
 As imagens são registros do evento de corrida, **não** registros comprobatórios das ações de doação. Os arquivos originais permaneceram na fonte Banlek; as cópias web estão em `institucional/assets/fotos/`.
 
 **Pendente:** fotografias específicas das entregas de brinquedos, alimentos, jiu-jítsu e demais ações. O PC Escritório, mencionado como fonte de arquivos locais da Portal 2026, estava offline durante esta revisão.
+
+## Revisão institucional — 24/11/2026 (acervo local)
+
+- A organização confirmou **895 inscrições confirmadas** na 3ª Portal da Amazônia de 2026. Este é o indicador apresentado no histórico da edição; não se informa total de concluintes.
+- Acrescentada uma fotografia aérea do SEST SENAT na seção de bastidores, em substituição à imagem da corrida noturna (que permanece no histórico expansível da Portal 2025).
+- Incorporados onze registros fotográficos do PC Escritório, incluindo longão de entrega de brinquedos (17/10/2026), doação de alimentos à Casa de Apoio Amor e Vida, cadeiras esportivas, equipamento Adapt Run/handbike, pula-pula, integração e fotos aéreas do evento de 15/11/2026. As cópias web foram redimensionadas sem alteração de conteúdo e as originais permanecem no computador.
+- Ampliado o catálogo de fontes com todas as cinco edições de corridas, ações sociais, álbum do longão e registro público do projeto de jiu-jítsu.
+- Fotos específicas do 2º Campeonato Interno de Jiu-Jítsu ainda não foram identificadas nesta seleção. Não atribuir fotos de outros eventos ao campeonato.
