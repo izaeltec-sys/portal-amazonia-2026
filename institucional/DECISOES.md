@@ -16,3 +16,6 @@ O resultado R7 passou pela inspeção visual em mosaico e verificações program
 
 ## R8 — 25/11/2026
 Conforme feedback do usuário, o botão deve aguardar todas as fotografias antes da impressão. Mantém-se carregamento antecipado após a carga inicial, preparação explícita no clique, mensagem de erro se imagem indisponível ou timeout de 45 s. O usuário prefere fotos maiores com enquadramento integral, e para eventos de foto única, texto/dados à esquerda e foto à direita. Ajustar respiro da última página sem aumentar a contagem de páginas. Layout web preservado, salvo comportamento do botão e carregamento antecipado das imagens. Não alterar conteúdo editorial nem assets.
+
+## R9 — 25/11/2026
+Organização solicitou refinamentos nas páginas 9 e 11 e confirmou Wellington Vilela como autor da foto portal-2025-atletas.jpg. Na impressão, ampliar fotos sem cortar; favorecer a proporção original e colocar vista aérea acima do texto. Preservar R8, assets e botão de preparação. Aplicar diretamente no Git, sem usar o PC Escritório indisponível.

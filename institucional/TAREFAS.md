@@ -30,3 +30,10 @@ Ler README.md, DECISOES.md e VALIDACAO.md; confirmar HEAD em main antes de alter
 - [x] Teste local R8 com cache desativado e rede limitada; 12 páginas completas, sem palavras fora dos limites geométricos verificados. Teste de falha de imagem aprovado.
 - [ ] Confirmar novo deploy público e teste da URL (primeira tentativa falhou por HTTP 500 no GitHub Pages).
 - [ ] Aprovação visual e direitos de imagem continuam pendentes.
+
+## R9 — 25/11/2026
+- [x] Ajustar composição e dimensões das fotos das páginas 9 e 11.
+- [x] Corrigir crédito da foto das atletas da Portal 2025.
+- [x] Verificar estaticamente 31 referências de imagem, cinco edições e script R8 intactos.
+- [ ] Confirmar deploy público; os dois anteriores da R8 falharam.
+- [ ] Renderizar R9 e confirmar paginação e margens quando houver ambiente disponível; não confundir R8 local com R9.

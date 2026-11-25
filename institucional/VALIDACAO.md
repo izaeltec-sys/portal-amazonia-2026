@@ -38,3 +38,6 @@ Feedback do usuário: PDF gerado imediatamente pelo botão perdeu fotos; aumenta
 - Inspeção do mosaico das 12 páginas e página 12 em resolução ampliada; zero palavras extraídas fora do intervalo x=30–565 pt. Áreas das fotos na p.2: 4799→8520 mm²; p.3: 2580→6334 e 2905→6048 mm²; p.4 foto única: 3021→5822 mm². Páginas 9 e 10 também ganharam área fotográfica; algumas fotos já limitadas pela largura permaneceram do mesmo tamanho.
 - Primeira execução Pages (45648772693): build bem-sucedido; deploy falhou HTTP 500 ao criar deployment. Aguardar/verificar novo deploy; não confundir commit com publicação.
 - Impressão pelo atalho nativo Ctrl+P não pode aguardar assincronamente todas as imagens; preferir botão Salvar em PDF. Fontes externas seguem com fallback local. PDF continua prévia.
+
+## R9 — 25/11/2026
+Commit 6929a777ecd6e9cdcd543db407da22761f1192d1. Validação estática: 31 referências img src idênticas à R8, cinco details de edições, script integralmente preservado; novo CSS exclusivamente @media print, legenda de Wellington Vilela corrigida. Capturas da R8 sustentam os ajustes das páginas 9 e 11. Sem nova renderização, teste visual ou confirmação de 12 páginas: PC Escritório indisponível. As duas publicações R8 (45648772693 e 45648934872) falharam. Conferir novo workflow.

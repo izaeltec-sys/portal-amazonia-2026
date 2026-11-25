@@ -503,3 +503,7 @@ Este repositório também hospeda o **Portfólio Institucional AEEC & Polaco Cyc
 ### Atualização institucional — 25/11/2026
 
 Revisão A4 implementada em `institucional/index.html` no commit `8fee910dca77114b2cc5a91703e00fc25ffc74d9`: R7 de 12 páginas, card dos logos na capa, margens internas, enquadramento integral das fotografias, histórico de cinco edições sem quebra e rodapé integrado. Prévia ainda não aprovada pelo usuário; direitos jornalísticos pendentes. Ler `institucional/DECISOES.md`, `institucional/TAREFAS.md` e `institucional/VALIDACAO.md` para retomar sem repetir as iterações rejeitadas.
+
+
+### Atualização institucional — R9 (25/11/2026)
+R8 implementou espera de imagens/fontes e passou em testes 31/31; R9 (6929a77) aprimorou fotos das páginas 9 e 11 e corrigiu crédito de Wellington Vilela na foto das atletas da Portal 2025. Alteração direta ao Git autorizada; PC Escritório indisponível, PDF R9 não renderizado. Dois deploys R8 falharam; verificar publicação atual. Consultar institucional/README.md, DECISOES.md, TAREFAS.md e VALIDACAO.md.

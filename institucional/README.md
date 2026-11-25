@@ -33,7 +33,7 @@ As imagens foram incluídas em `institucional/assets/fotos/`, para evitar depend
 - `portal-2024-acervo.jpg`: foto fornecida pela organização, original de 17/11/2024 (versão web reduzida para publicação).
 - `aabb-2025-largada.jpg`: capa fotográfica do álbum do 1º Circuito AABB 2025; Wellington Vilela.
 - `portal-2025-largada.jpg`: capa fotográfica do álbum da 2ª Portal da Amazônia 2025; Wellington Vilela.
-- `portal-2025-atletas.jpg`: foto real do acervo, com data de novembro de 2025; sem atribuir autoria sem comprovação.
+- `portal-2025-atletas.jpg`: foto de Wellington Vilela, de novembro de 2025; autoria confirmada pela organização em 25/11/2026.
 - `portal-2026-largada.jpg`: fotografia de largada da 3ª Portal da Amazônia 2026; Wellington Vilela, com liberação da organização.
 
 As galerias não devem ser tratadas como autorização automática para todos os usos: a organização confirmou o direito de publicação das fotos de Wellington e autorizou expressamente o álbum Banlek de 2026. Para outras imagens, confirmar a liberação antes de acrescentar.
@@ -131,3 +131,6 @@ A prévia selecionada encontra-se no PC Escritório em `Downloads/Previa_Institu
 
 ## R8 — revisão solicitada em 25/11/2026
 Commit de implementação: `44e4d7077094b30da04cb95e144d1b79eccf80c5`. Corrigido botão de exportação com preparação de imagens e fontes, fotos ampliadas e composição lateral nos eventos de foto única; margens finais ajustadas. Prévia local de 12 páginas validada; primeira publicação Pages falhou HTTP 500. Consultar VALIDACAO.md para testes e status de publicação.
+
+## R9 — 25/11/2026
+Commit de implementação: 6929a777ecd6e9cdcd543db407da22761f1192d1. Página 9: redistribuição das colunas, ampliação das fotografias de ações sociais e equipamentos adaptados, mantendo enquadramento integral. Página 11: foto aérea panorâmica acima e texto em duas colunas abaixo. Crédito da foto das atletas da Portal 2025 confirmado pela organização: Wellington Vilela. Aplicação direta ao Git autorizada; PC Escritório indisponível. Não foi renderizado PDF R9; meta de 12 páginas a confirmar. Duas tentativas de deploy da R8 terminaram com falha. Verificar publicação R9.
