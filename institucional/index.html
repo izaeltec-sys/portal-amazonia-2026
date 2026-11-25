@@ -636,10 +636,37 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
   #proximos .next-events h3 {font-size:26pt;}
 }
 
+</style><style>/* Revisão A4 R8: fotos e margens solicitadas em 25/11/2026 */
+@media print {
+  .memory-spread {grid-template-columns:62% 38%;margin:4mm 0 5mm;}
+  .memory-spread .memory-image img {height:80mm;min-height:0;}
+  .memory-spread .memory-words {padding:5mm;}
+  #historia {padding-bottom:3mm;}
+  #edicao-1 .edition-content,#edicao-2 .edition-content,#edicao-4 .edition-content {
+    display:grid;grid-template-columns:minmax(0,46fr) minmax(0,54fr);gap:4mm;align-items:center;
+  }
+  #edicao-1 .edition-intro,#edicao-2 .edition-intro,#edicao-4 .edition-intro {
+    display:block;margin:0;
+  }
+  #edicao-1 .edition-facts,#edicao-2 .edition-facts,#edicao-4 .edition-facts {margin-top:3mm;}
+  #edicao-1 .edition-gallery.single,#edicao-2 .edition-gallery.single,#edicao-4 .edition-gallery.single {margin:0;}
+  #edicao-1 .edition-gallery.single img,#edicao-2 .edition-gallery.single img,#edicao-4 .edition-gallery.single img {
+    height:69mm;max-height:69mm;object-fit:contain!important;
+  }
+  .impact-images {grid-template-rows:44mm 44mm;}
+  .impact-duo-item>figure img,.impact-double-images img {height:47mm;}
+  .event-community-gallery img {height:72mm;}
+  .references {padding-left:5mm;padding-right:5mm;}
+  .closing {padding:5mm;}
+  .closing .outer {width:100%;max-width:100%;}
+  .closing h2 {overflow-wrap:normal;}
+  .footer {padding:4mm 5mm;}
+}
+
 </style></head><body>
 <header class="site-header"><div class="top">
 <a class="brand" href="#inicio">AEEC &amp; Polaco Cycling Team <small>Eventos · Vilhena / RO</small></a>
-<nav class="topnav" aria-label="Navegação principal"><a href="#historia">História</a><a href="#experiencia">Experiência</a><a href="#comunidade">Comunidade</a><a href="#proximos">2027</a><button class="print" type="button" onclick="window.print()">Salvar em PDF</button></nav>
+<nav class="topnav" aria-label="Navegação principal"><a href="#historia">História</a><a href="#experiencia">Experiência</a><a href="#comunidade">Comunidade</a><a href="#proximos">2027</a><button class="print" type="button" >Salvar em PDF</button></nav>
 </div></header>
 <main>
 <section class="cover" id="inicio">
@@ -876,9 +903,11 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
  <div><small>Fotografias: Wellington Vilela, acervo da organização e registros publicados pelo Extra de Rondônia e Rondônia em Pauta · Créditos técnicos: Izaeltec — soluções digitais, design e comunicação.</small><p>Dados de edições anteriores extraídos de registros da organização, Agito e comunicações institucionais.</p></div>
 </div></footer>
 <script>
-/* Incluir todas as edições do histórico na impressão sem alterar o comportamento da página. */
+/* Preparar imagens e fontes ANTES de abrir a impressão. */
 (function () {
-  let saved = null;
+  let saved = null, busy = false;
+  const button = document.querySelector('button.print');
+  const originalLabel = button.textContent;
   function openHistoryForPrint() {
     if (saved) return;
     const details = Array.from(document.querySelectorAll('details.edition'));
@@ -896,12 +925,68 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
     prior.forEach(item => { item.el.open = item.open; });
     document.documentElement.classList.remove('is-printing');
   }
-  window.addEventListener('beforeprint', openHistoryForPrint);
-  window.addEventListener('afterprint', restoreHistoryAfterPrint);
+  function resetButton() {
+    busy = false;
+    button.disabled = false;
+    button.textContent = originalLabel;
+    button.removeAttribute('aria-busy');
+  }
+  function eagerImages() {
+    const images = Array.from(document.querySelectorAll('main img'));
+    images.forEach(img => { img.loading = 'eager'; });
+    return images;
+  }
+  async function loadImage(img) {
+    if (!img.complete) {
+      await new Promise((resolve, reject) => {
+        img.addEventListener('load', resolve, {once:true});
+        img.addEventListener('error', reject, {once:true});
+        if (img.complete) img.naturalWidth ? resolve() : reject();
+      });
+    }
+    if (!img.naturalWidth) throw new Error(img.getAttribute('src'));
+    if (img.decode) await img.decode();
+  }
+  async function savePdf() {
+    if (busy) return;
+    busy = true;
+    button.disabled = true;
+    button.setAttribute('aria-busy','true');
+    button.textContent = 'Preparando PDF…';
+    openHistoryForPrint();
+    let timer;
+    try {
+      const images = eagerImages();
+      const ready = Promise.all([
+        ...images.map(loadImage),
+        ...(document.fonts ? [document.fonts.ready] : [])
+      ]);
+      await Promise.race([ready, new Promise((_, reject) => {
+        timer = setTimeout(() => reject(new Error('Tempo de carregamento excedido')), 45000);
+      })]);
+      await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+      window.print();
+    } catch (error) {
+      restoreHistoryAfterPrint();
+      resetButton();
+      alert('Não foi possível carregar todas as fotografias para o PDF. Verifique a conexão e tente novamente.');
+    } finally { clearTimeout(timer); }
+  }
+  button.addEventListener('click', savePdf);
+  window.addEventListener('beforeprint', () => { openHistoryForPrint(); eagerImages(); });
+  window.addEventListener('afterprint', () => { restoreHistoryAfterPrint(); resetButton(); });
   const media = window.matchMedia('print');
   if (media.addEventListener) {
-    media.addEventListener('change', event => event.matches ? openHistoryForPrint() : restoreHistoryAfterPrint());
+    media.addEventListener('change', event => {
+      if (event.matches) { openHistoryForPrint(); eagerImages(); }
+      else { restoreHistoryAfterPrint(); resetButton(); }
+    });
   }
+  /* Também iniciar o carregamento fora da tela após a carga inicial,
+     para reduzir a espera e favorecer a impressão nativa do navegador. */
+  if (document.readyState === 'complete') eagerImages();
+  else window.addEventListener('load', eagerImages, {once:true});
 })();
+
 </script>
 </body></html>
