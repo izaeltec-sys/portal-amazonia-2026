@@ -11,7 +11,7 @@ Portfólio institucional das organizações, destinado a apresentar experiência
 ## Conteúdo e manutenção
 
 - Página única: `institucional/index.html`.
-- HTML e CSS integrados, sem dependências externas; compatível com impressão pelo navegador em A4.
+- HTML e CSS integrados; fontes web opcionais via Google Fonts (com alternativas locais); compatível com impressão pelo navegador em A4.
 - Seções: capa, identidades institucionais, quem somos, eventos realizados (2024–2026), capacidade de organização, etapas de trabalho, impacto comunitário, competências, calendário 2027, registros e contatos.
 - Editar o arquivo diretamente no GitHub ou no editor de preferência e publicar commit na branch `main`.
 - Links e referências externas são materiais de consulta, não fotografias incorporadas automaticamente.
@@ -99,3 +99,25 @@ As imagens são registros do evento de corrida, **não** registros comprobatóri
 - Fontes: [Extra de Rondônia — Circuito AABB 2026](https://extraderondonia.com.br/2026/07/29/2o-circuito-aabb-reune-quase-mil-atletas-e-movimenta-vilhena-com-corrida-de-rua-veja-fotos/), [Rondônia em Pauta — primeiro jiu-jítsu](https://rondoniaempauta.com.br/1o-campeonato-de-jiu-jitsu-do-colegio-militar-dom-pedro-ii-unidade-ii-marca-avanco-de-projeto-esportivo-em-vilhena/), [Rondônia em Pauta — segundo jiu-jítsu](https://rondoniaempauta.com.br/2o-campeonato-interno-da-aeec-reune-estudantes-dos-colegios-militares-em-vilhena/), [Rondônia ao Vivo — primeiro jiu-jítsu](https://www.rondoniaovivo.com/noticia/interior/2025/12/15/1o-campeonato-de-jiu-jitsu-colegio-militar-dom-pedro-ii-fortalece-projeto-esportivo-em-vilhena.html).
 - **Direitos de imagem**: créditos e links não substituem licença de republicação. Confirmar com os autores/veículos a autorização para republicar os registros jornalísticos antes da versão institucional final distribuída externamente.
 - A impressão A4 foi revisada com margens próprias, rodapé de numeração, fontes maiores, disposição de fotos por evento e rotina `beforeprint/afterprint` que abre temporariamente os cinco painéis da trajetória; ao terminar, restaura a interação da tela.
+
+
+## Handoff de retomada — 24/11/2026 (prévia A4)
+
+**Ponto de partida verificado em GitHub:** commit `72697ba84797a57a5463c4ff8b53468176572e75` na branch `main`. O estado vivo do repositório sempre prevalece sobre esta anotação; conferir o HEAD em novas sessões.
+
+**Estado do HTML:** `institucional/index.html` contém o portfólio publicado, as fotografias do diretório `institucional/assets/fotos/`, os dois campeonatos de jiu-jítsu separados por ano e os cinco históricos de corridas. As regras `@page` e `@media print` fazem o ajuste de impressão A4. O script de `beforeprint/afterprint` abre as cinco seções `details.edition` para impressão e restaura o comportamento da página depois.
+
+**Prévia de PDF (relato do chat anterior, não incluída no repositório):**
+- Nome: `Previa_Institucional_AEEC_Polaco_2026.pdf`.
+- Local informado: pasta `Downloads` do **PC Escritório**.
+- Prévia informada: **14 páginas A4**, aproximadamente **15,3 MB**.
+- Situação: **rascunho de avaliação, não versão aprovada**. O arquivo não foi reaberto ou validado nesta retomada; os números acima são os relatados na sessão anterior.
+
+**Próxima revisão antes de aprovar/distribuir:**
+1. Abrir o PDF real no PC Escritório, inspecionar todas as 14 páginas, verificar distribuição visual, quebras de capítulo, cabeçalhos/rodapés, margens, legendas, fotografias, cortes e páginas vazias. Se necessário, ajustar o CSS e gerar outra prévia.
+2. Conferir legibilidade em tamanho A4 real e opções do navegador para impressão dos fundos/gráficos; testar se todos os cinco eventos entram integralmente na exportação.
+3. **Confirmar por escrito a autorização de republicação das fotos jornalísticas** dos veículos Rondônia em Pauta, Rondônia ao Vivo e Extra de Rondônia. Créditos e links, por si só, não concedem licença. A presença pública provisória no repositório não equivale a autorização para distribuição institucional definitiva; substituir/remover qualquer arquivo sem liberação adequada.
+4. Conferir nomes, datas, indicadores de cada evento, títulos e atribuições antes de carimbar a versão final. Não converter inscrições em concluintes sem evidência.
+5. Só então produzir o PDF definitivo e registrar a versão, a data e o local do artefato aprovado. Não publicar automaticamente a prévia local.
+
+**Dependência técnica a observar:** o HTML/CSS estão no mesmo arquivo, mas as fontes Barlow Condensed e IBM Plex Sans são importadas de **Google Fonts** por `@import`; há fontes alternativas locais. Para uma impressão totalmente reproduzível offline, considerar incorporar/disponibilizar as fontes por método autorizado ou selecionar fontes locais equivalentes, após validação visual. Não há imagens remotas em tags `img src` no estado deste commit.
