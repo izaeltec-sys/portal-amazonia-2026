@@ -489,3 +489,12 @@ A interface agora oferece filtros completos **Todos / Masculino / Feminino** em 
 **ATENÇÃO:** o RaceTagPro está servindo uma listagem **de resultados/inscritos** em `results.json`; esse conteúdo pode mudar depois da realização do evento. A sincronização já tem data limite 17/11/2026; acompanhe qualquer alteração de estrutura ou possível exposição de resultados não homologados. Nunca usar o painel para classificação de resultados.
 
 **Histórico:** o texto anterior sobre "705 com sexo não informado" refere-se apenas à API nova. Ele foi superado pela descoberta do RaceTagPro e não descreve o status atual do painel.
+
+
+---
+
+## Retomada do portfólio institucional AEEC & Polaco — 24/11/2026
+
+Este repositório também hospeda o **Portfólio Institucional AEEC & Polaco Cycling Team Eventos** em `institucional/index.html`, separado do Regulamento e da Central do Atleta. O histórico, as fotos autorizadas pela organização, as referências jornalísticas, o escopo da identidade e a situação da prévia A4 estão documentados em **`institucional/README.md`**; consulte esse arquivo antes de alterar o portfólio.
+
+Último estado confirmado na retomada: `main` em `72697ba84797a57a5463c4ff8b53468176572e75` (24/11 no horário de Vilhena), com fotos jornalísticas locais e CSS para impressão A4. O chat anterior relatou a geração de `Downloads/Previa_Institucional_AEEC_Polaco_2026.pdf` no PC Escritório (14 páginas, ~15,3 MB). **O PDF não está no GitHub, não foi validado nesta retomada e ainda não é versão final.** Permissões de republicação de fotos de imprensa continuam pendentes. Verificar HEAD e detalhes atuais antes de trabalhar.
