@@ -128,3 +128,6 @@ As imagens são registros do evento de corrida, **não** registros comprobatóri
 O estado da prévia de 14 páginas descrito acima foi superado pela revisão R7 de **12 páginas**, publicada no commit `8fee910dca77114b2cc5a91703e00fc25ffc74d9`. O card das marcas está na capa impressa; os textos têm margens internas e as fotos foram ajustadas para preservar o enquadramento integral. A revisão R7 passou pela inspeção em mosaico e comparação de renderização. Consulte [DECISOES.md](DECISOES.md), [TAREFAS.md](TAREFAS.md) e [VALIDACAO.md](VALIDACAO.md) antes de retomar. **Ainda é prévia, não versão final aprovada.**
 
 A prévia selecionada encontra-se no PC Escritório em `Downloads/Previa_Institucional_AEEC_Polaco_2026_Revisada.pdf`. A impressão da URL publicada foi comparada e resultou nas mesmas 12 páginas. Foram eliminadas as iterações rejeitadas e arquivos temporários; preservada a prévia original como referência. Detalhes em VALIDACAO.md.
+
+## R8 — revisão solicitada em 25/11/2026
+Commit de implementação: `44e4d7077094b30da04cb95e144d1b79eccf80c5`. Corrigido botão de exportação com preparação de imagens e fontes, fotos ampliadas e composição lateral nos eventos de foto única; margens finais ajustadas. Prévia local de 12 páginas validada; primeira publicação Pages falhou HTTP 500. Consultar VALIDACAO.md para testes e status de publicação.

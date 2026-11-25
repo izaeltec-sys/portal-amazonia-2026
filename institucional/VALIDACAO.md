@@ -29,3 +29,12 @@ Abrir o portfólio, aguardar fontes/imagens e selecionar Salvar em PDF; papel A4
 ## Confirmação após publicação e limpeza
 - URL pública respondeu HTTP 200 e contém CSS R7. Nova impressão diretamente da URL publicada, sem modificar HTML nem forçar details, retornou 12 páginas. Comparação das 12 páginas com a prévia selecionada: textos idênticos, número de imagens idêntico e renderização pixel a pixel idêntica em escala 0,4. Teste manual do botão não executado nesta sessão.
 - Arquivo selecionado no PC Escritório: Downloads/Previa_Institucional_AEEC_Polaco_2026_Revisada.pdf (15.209.091 bytes). Original de 14 páginas preservado como referência. Removidas as prévias intermediárias R2–R6, a cópia duplicada R7 e os 7 mosaicos; 13 arquivos, 93.821.192 bytes. Diretórios temporários de revisão e de verificação removidos. Não foram removidos assets ou documentos pessoais.
+
+## R8 — 25/11/2026
+Feedback do usuário: PDF gerado imediatamente pelo botão perdeu fotos; aumentar imagens nas páginas 2, 9, 10; margens da página 12 e duas colunas nos eventos com foto única (páginas 3–4). Código no commit 44e4d7077094b30da04cb95e144d1b79eccf80c5.
+- PDF enviado: 12 páginas, 9 ocorrências de imagens; R8: 12 páginas, 31 ocorrências (incluindo logos e fotos repetidas).
+- Edge headless via CDP, cache desativado, latência simulada 180 ms, 1,8 MB/s. Clique automatizado quando apenas 3/31 imagens carregadas. Interceptação de window.print confirmou que a chamada só ocorreu com 31/31 imagens decodificáveis; exportação CDP gerou PDF completo. Ao concluir, botão habilitado e histórico voltou ao estado inicial (0 abertos).
+- Falha simulada bloqueando jiu-2025-luta-1.webp: zero chamadas de impressão, aviso exibido, botão e histórico restaurados.
+- Inspeção do mosaico das 12 páginas e página 12 em resolução ampliada; zero palavras extraídas fora do intervalo x=30–565 pt. Áreas das fotos na p.2: 4799→8520 mm²; p.3: 2580→6334 e 2905→6048 mm²; p.4 foto única: 3021→5822 mm². Páginas 9 e 10 também ganharam área fotográfica; algumas fotos já limitadas pela largura permaneceram do mesmo tamanho.
+- Primeira execução Pages (45648772693): build bem-sucedido; deploy falhou HTTP 500 ao criar deployment. Aguardar/verificar novo deploy; não confundir commit com publicação.
+- Impressão pelo atalho nativo Ctrl+P não pode aguardar assincronamente todas as imagens; preferir botão Salvar em PDF. Fontes externas seguem com fallback local. PDF continua prévia.

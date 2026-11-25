@@ -22,3 +22,11 @@ Atualização: 25/11/2026. Base funcional da revisão: commit 8fee910dca77114b2c
 
 ## Retomada
 Ler README.md, DECISOES.md e VALIDACAO.md; confirmar HEAD em main antes de alterar. Não recriar a identidade nem reiniciar a paginação a partir do PDF antigo. A fonte é institucional/index.html.
+
+## Revisão R8 — 25/11/2026
+- [x] Reproduzir perda de imagens no PDF enviado pelo usuário (9 ocorrências de imagens em vez de 31).
+- [x] Botão Salvar em PDF aguarda carregamento e decodificação das imagens e document.fonts.ready; bloqueia impressão incompleta, informa falha e restaura o estado.
+- [x] Aumentar fotografias nas páginas 2, 9 e 10 e margens internas da página 12; diagramação em duas colunas para eventos com foto única nas páginas 3 e 4.
+- [x] Teste local R8 com cache desativado e rede limitada; 12 páginas completas, sem palavras fora dos limites geométricos verificados. Teste de falha de imagem aprovado.
+- [ ] Confirmar novo deploy público e teste da URL (primeira tentativa falhou por HTTP 500 no GitHub Pages).
+- [ ] Aprovação visual e direitos de imagem continuam pendentes.
