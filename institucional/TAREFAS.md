@@ -12,7 +12,9 @@ Atualização: 25/11/2026. Base funcional da revisão: commit 8fee910dca77114b2c
 
 ## Pendentes
 - [ ] Aprovação visual do usuário da prévia revisada em A4; conferir também uma impressão física, se necessária.
-- [ ] Verificar deployment GitHub Pages e reprodução pelo botão Salvar em PDF na interface.
+- [x] Verificar deployment GitHub Pages e reprodução por impressão headless diretamente da URL pública; 12 páginas idênticas à R7.
+- [x] Limpar prévias rejeitadas, mosaicos e diretórios temporários (13 arquivos, 93.821.192 bytes liberados); preservar o original como referência e a R7 revisada.
+- [ ] Teste manual pelo botão Salvar em PDF na interface, se necessário, e aprovação do usuário.
 - [ ] Confirmar autorizações de republicação das fotos jornalísticas e direito de imagem aplicável, particularmente de crianças e adolescentes. Remover/substituir imagens sem liberação adequada.
 - [ ] Conferir datas, nomes, números e créditos para distribuição institucional definitiva.
 - [ ] Após aprovação, registrar e gerar versão final (não chamar a prévia de final).

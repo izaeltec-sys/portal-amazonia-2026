@@ -24,3 +24,8 @@ PC Escritório (Windows), Microsoft Edge headless com A4 definido no CSS, cabeç
 
 ## Reprodução
 Abrir o portfólio, aguardar fontes/imagens e selecionar Salvar em PDF; papel A4, escala padrão, desativar cabeçalhos e rodapés automáticos do navegador, manter gráficos de fundo. Conferir as 12 páginas. O script beforeprint/afterprint expande o histórico e restaura o estado de navegação.
+
+
+## Confirmação após publicação e limpeza
+- URL pública respondeu HTTP 200 e contém CSS R7. Nova impressão diretamente da URL publicada, sem modificar HTML nem forçar details, retornou 12 páginas. Comparação das 12 páginas com a prévia selecionada: textos idênticos, número de imagens idêntico e renderização pixel a pixel idêntica em escala 0,4. Teste manual do botão não executado nesta sessão.
+- Arquivo selecionado no PC Escritório: Downloads/Previa_Institucional_AEEC_Polaco_2026_Revisada.pdf (15.209.091 bytes). Original de 14 páginas preservado como referência. Removidas as prévias intermediárias R2–R6, a cópia duplicada R7 e os 7 mosaicos; 13 arquivos, 93.821.192 bytes. Diretórios temporários de revisão e de verificação removidos. Não foram removidos assets ou documentos pessoais.
