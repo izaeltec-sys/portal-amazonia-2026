@@ -134,3 +134,6 @@ Commit de implementação: `44e4d7077094b30da04cb95e144d1b79eccf80c5`. Corrigido
 
 ## R9 — 25/11/2026
 Commit de implementação: 6929a777ecd6e9cdcd543db407da22761f1192d1. Página 9: redistribuição das colunas, ampliação das fotografias de ações sociais e equipamentos adaptados, mantendo enquadramento integral. Página 11: foto aérea panorâmica acima e texto em duas colunas abaixo. Crédito da foto das atletas da Portal 2025 confirmado pela organização: Wellington Vilela. Aplicação direta ao Git autorizada; PC Escritório indisponível. Não foi renderizado PDF R9; meta de 12 páginas a confirmar. Duas tentativas de deploy da R8 terminaram com falha. Verificar publicação R9.
+
+## R10 — 25/11/2026
+A R9 gerou 14 páginas e foi rejeitada por quebras nas ações sociais e perspectivas de 2027. R10 (commit de implementação de9abbe5368cbc60b035f679c699eeca10292ced) preserva crédito Vilela, nova composição, imagens integrais e script R8, recuperando 12 páginas. PDF testado no PC IFRO E39992, em Downloads/Previa_Institucional_AEEC_Polaco_2026_R10.pdf (15.206.847 bytes). R9 rejeitada e temporários removidos nesse PC. Nova confirmação do deploy e aprovação do usuário pendentes.

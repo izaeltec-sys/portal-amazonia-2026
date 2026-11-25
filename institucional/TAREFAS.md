@@ -37,3 +37,10 @@ Ler README.md, DECISOES.md e VALIDACAO.md; confirmar HEAD em main antes de alter
 - [x] Verificar estaticamente 31 referências de imagem, cinco edições e script R8 intactos.
 - [ ] Confirmar deploy público; os dois anteriores da R8 falharam.
 - [ ] Renderizar R9 e confirmar paginação e margens quando houver ambiente disponível; não confundir R8 local com R9.
+
+## R10 — 25/11/2026
+- [x] Inspecionar todas as 14 páginas da R9 e localizar regressões.
+- [x] Corrigir CSS e renderizar R10 no PC IFRO: 12 páginas.
+- [x] Conferir mosaico de todas as páginas e páginas 9 e 11 ampliadas; seções reunidas.
+- [x] Salvar prévia R10 em Downloads do PC IFRO e remover R9 rejeitada e temporários.
+- [ ] Confirmar deploy e teste da impressão pela URL pública R10; obter aprovação do usuário e autorizações pendentes.

@@ -507,3 +507,7 @@ Revisão A4 implementada em `institucional/index.html` no commit `8fee910dca7711
 
 ### Atualização institucional — R9 (25/11/2026)
 R8 implementou espera de imagens/fontes e passou em testes 31/31; R9 (6929a77) aprimorou fotos das páginas 9 e 11 e corrigiu crédito de Wellington Vilela na foto das atletas da Portal 2025. Alteração direta ao Git autorizada; PC Escritório indisponível, PDF R9 não renderizado. Dois deploys R8 falharam; verificar publicação atual. Consultar institucional/README.md, DECISOES.md, TAREFAS.md e VALIDACAO.md.
+
+
+### R10 — 25/11/2026
+R9 rejeitada por regressão de 14 páginas. R10 (de9abbe) recuperou 12 páginas, validada visualmente no PC IFRO E39992, com ações sociais e perspectivas sem as quebras R9. Prévia R10 em Downloads desse PC; R9 e temporários removidos. Confirmar deploy público e aprovação do usuário. Consultar institucional/VALIDACAO.md.

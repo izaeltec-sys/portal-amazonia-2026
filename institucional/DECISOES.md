@@ -19,3 +19,6 @@ Conforme feedback do usuário, o botão deve aguardar todas as fotografias antes
 
 ## R9 — 25/11/2026
 Organização solicitou refinamentos nas páginas 9 e 11 e confirmou Wellington Vilela como autor da foto portal-2025-atletas.jpg. Na impressão, ampliar fotos sem cortar; favorecer a proporção original e colocar vista aérea acima do texto. Preservar R8, assets e botão de preparação. Aplicar diretamente no Git, sem usar o PC Escritório indisponível.
+
+## R10 — 25/11/2026
+R9 não aceita: 14 páginas com duas quebras desnecessárias. Preservar 12 páginas da R8, compor as ações sociais em uma página e manter bastidores e calendário juntos. Redimensionamento moderado das fotografias, mantendo proporção e crédito R9. Validar render real antes de entregar, não apenas contagem de páginas.
