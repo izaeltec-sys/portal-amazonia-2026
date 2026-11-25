@@ -686,6 +686,29 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
   #bastidores .footnote {font-size:9pt;}
   #proximos {padding-top:6mm;}
 }
+</style><style>/* R10 - ajuste de densidade nas paginas sociais e perspectivas */
+@media print {
+  .impact-images {grid-template-rows:45mm 45mm;}
+  .impact-duo {grid-template-columns:minmax(0,42fr) minmax(0,58fr);margin-top:3mm;align-items:start;}
+  .impact-duo-item {display:block;}
+  .impact-duo-item>figure img,.impact-double-images img {height:49mm;}
+  .impact-duo-item figcaption {min-height:6mm;}
+  .impact-duo-copy h3 {font-size:20pt;}
+  .editorial {padding:4mm;}
+  #bastidores {gap:3mm;}
+  #bastidores>img {height:67mm;max-height:67mm;}
+  #bastidores>div {gap:1.5mm 4mm;}
+  #bastidores h3 {font-size:25pt;}
+  #bastidores p {font-size:10pt;}
+  #proximos {padding:4mm 0;}
+  #proximos .head {margin-bottom:3mm;}
+  #proximos .head h2 {font-size:26pt;}
+  #proximos .next-events {break-inside:avoid-page;}
+  #proximos .next-events article {padding:3mm;}
+  #proximos .next-events h3 {font-size:24pt;margin:2mm 0;}
+  #proximos .next-events p {font-size:10pt;line-height:1.35;margin-bottom:0;}
+}
+
 </style></head><body>
 <header class="site-header"><div class="top">
 <a class="brand" href="#inicio">AEEC &amp; Polaco Cycling Team <small>Eventos · Vilhena / RO</small></a>
