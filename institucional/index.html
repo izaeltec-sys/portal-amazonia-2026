@@ -368,7 +368,7 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
 .jiu-evento figcaption{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 12px;color:#4c656e;font-size:13px;line-height:1.45;margin-top:8px}
 .jiu-evento figcaption strong{color:#123742}
 .jiu-evento figcaption a{color:#31596c;text-underline-offset:3px}
-@media(max-width:720px){.jiu-historia{margin-top:46px}.jiu-historia-head,.jiu-historia-grid{grid-template-columns:1fr;gap:16px}.jiu-historia-head h3{font-size:48px}.jiu-historia-head p{font-size:16px}.jiu-evento{padding:17px}.jiu-evento-copy{min-height:0}.jiu-evento img{height:240px}}
+@media screen and (max-width:720px){.jiu-historia{margin-top:46px}.jiu-historia-head,.jiu-historia-grid{grid-template-columns:1fr;gap:16px}.jiu-historia-head h3{font-size:48px}.jiu-historia-head p{font-size:16px}.jiu-evento{padding:17px}.jiu-evento-copy{min-height:0}.jiu-evento img{height:240px}}
 @media print{.jiu-historia{break-before:page}.jiu-historia-head h3{font-size:28pt}.jiu-evento{padding:4mm;break-inside:avoid}.jiu-evento-copy{min-height:0}.jiu-evento h4{font-size:19pt}.jiu-evento img{height:50mm}.jiu-evento .jiu-luta img{height:35mm}}
 
 
@@ -377,7 +377,7 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
 .jiu-action-dupla figure{min-width:0}
 .jiu-action-dupla figure img{height:195px;object-fit:cover;object-position:center;aspect-ratio:auto}
 .jiu-action-dupla figcaption{font-size:12px}
-@media(max-width:700px){.jiu-action-dupla{gap:9px}.jiu-action-dupla figure img{height:170px}.jiu-action-dupla figcaption{display:block}}
+@media screen and (max-width:700px){.jiu-action-dupla{gap:9px}.jiu-action-dupla figure img{height:170px}.jiu-action-dupla figcaption{display:block}}
 @page{size:A4;margin:14mm 12mm 16mm;
  @bottom-right{content:"AEEC & POLACO  ·  " counter(page);font:500 8pt 'IBM Plex Sans',Arial,sans-serif;color:#65787e}
 }
@@ -722,6 +722,13 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
   #proximos {padding:4mm 0;}
 }
 
+</style><style>/* R12 - impressao do jiu-jitsu independente da largura da tela */
+@media print {
+  .jiu-historia-head {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:7mm;align-items:end;}
+  .jiu-historia-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4mm;align-items:start;break-inside:avoid-page;}
+  .jiu-evento figcaption {display:flex;justify-content:space-between;flex-wrap:wrap;}
+  .jiu-action-dupla {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2mm;}
+}
 </style></head><body>
 <header class="site-header"><div class="top">
 <a class="brand" href="#inicio">AEEC &amp; Polaco Cycling Team <small>Eventos · Vilhena / RO</small></a>

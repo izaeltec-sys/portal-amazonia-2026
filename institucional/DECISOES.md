@@ -25,3 +25,6 @@ R9 não aceita: 14 páginas com duas quebras desnecessárias. Preservar 12 pági
 
 ## R11 — 25/11/2026
 Organização solicitou título acima, foto aérea maior em seguida, descrição abaixo; trocar foto da cadeira pela imagem enviada. Preservar calendário 2027 e total de 12 páginas. Foto real do arquivo correspondente em Downloads do IFRO (mesmo nome e imagem conferida), sem edição por IA. Não atribuir fotógrafo sem informação. Eager para todas as imagens desde HTML, além do bloqueio do botão R8.
+
+## R12 — 25/11/2026
+Usuário aprovou visual da R11, com ressalva da impressão do jiu-jítsu no celular. Corrigir somente CSS do jiu-jítsu, preservando navegação responsiva e restante do documento. Duas colunas em impressão independentemente da largura da tela. Não confundir emulação Edge com teste de Android físico.

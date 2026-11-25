@@ -55,3 +55,11 @@ Ler README.md, DECISOES.md e VALIDACAO.md; confirmar HEAD em main antes de alter
 - [x] Confirmar deploy R11 e testar URL pública: 31/31 imagens e 12 páginas, inspeção visual concluída.
 - [x] Salvar prévia R11 no IFRO e limpar temporários da revisão.
 - [ ] Aprovação visual do usuário.
+
+## R12 — 25/11/2026
+- [x] Comparar os PDFs enviados: Windows 12 páginas, Android 13; cinco fotos de jiu-jítsu presentes em ambos.
+- [x] Isolar regras responsivas do jiu-jítsu e explicitar grade no modo impressão.
+- [x] Testar CSS estreito em emulação Edge (390 px): antes uma coluna no modo print; depois duas, e uma no modo screen.
+- [x] Renderizar candidatos mobile e desktop (12 páginas cada) e conferir página 8, com cinco fotos e dois campeonatos.
+- [ ] Confirmar publicação R12 e repetir exportação em Android físico.
+- [ ] Autorizações de imagem para distribuição institucional definitiva permanecem pendentes.

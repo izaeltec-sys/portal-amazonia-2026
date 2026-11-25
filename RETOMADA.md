@@ -517,3 +517,7 @@ R9 rejeitada por regressão de 14 páginas. R10 (de9abbe) recuperou 12 páginas,
 Título → foto aérea ampliada → descrição na p.11; p.9 foto Adapt Run em uso, enviada pela organização. R11 local validada: 12 páginas e 31/31 imagens antes da impressão. R10 pública confirmada, guard funcionou 31/31. Conferir deploy R11 e aprovação do usuário. Ver institucional/VALIDACAO.md.
 
 R11 pública confirmada (workflow 45679595539): 31/31 imagens antes da impressão, 12 páginas, mosaico e p.9/11 inspecionados. Prévia R11 em Downloads do IFRO E39992; temporários removidos. Aguarda aprovação visual do usuário.
+
+
+### R12 — 25/11/2026
+R11 aprovada visualmente com exceção de impressão Android: campeonato de jiu-jítsu dividido em duas páginas. R12 restringe regras móveis à tela e fixa duas colunas na impressão. Edge emulado estreito e desktop: 12 páginas, página 8 conferida. Confirmar Pages e Android físico. Ver institucional/VALIDACAO.md.
