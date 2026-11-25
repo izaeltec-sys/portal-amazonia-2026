@@ -511,3 +511,7 @@ R8 implementou espera de imagens/fontes e passou em testes 31/31; R9 (6929a77) a
 
 ### R10 — 25/11/2026
 R9 rejeitada por regressão de 14 páginas. R10 (de9abbe) recuperou 12 páginas, validada visualmente no PC IFRO E39992, com ações sociais e perspectivas sem as quebras R9. Prévia R10 em Downloads desse PC; R9 e temporários removidos. Confirmar deploy público e aprovação do usuário. Consultar institucional/VALIDACAO.md.
+
+
+### R11 — 25/11/2026
+Título → foto aérea ampliada → descrição na p.11; p.9 foto Adapt Run em uso, enviada pela organização. R11 local validada: 12 páginas e 31/31 imagens antes da impressão. R10 pública confirmada, guard funcionou 31/31. Conferir deploy R11 e aprovação do usuário. Ver institucional/VALIDACAO.md.

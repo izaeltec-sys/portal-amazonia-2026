@@ -44,3 +44,10 @@ Ler README.md, DECISOES.md e VALIDACAO.md; confirmar HEAD em main antes de alter
 - [x] Conferir mosaico de todas as páginas e páginas 9 e 11 ampliadas; seções reunidas.
 - [x] Salvar prévia R10 em Downloads do PC IFRO e remover R9 rejeitada e temporários.
 - [ ] Confirmar deploy e teste da impressão pela URL pública R10; obter aprovação do usuário e autorizações pendentes.
+
+## R11 — 25/11/2026
+- [x] Reorganizar bastidores (p.11) e trocar foto de inclusão (p.9).
+- [x] Gerar e renderizar prévia R11 no IFRO: 12 páginas; revisar mosaico e p.9/11 ampliadas.
+- [x] Validar botão na R10 pública: cache desabilitado, 3/31 imagens inicialmente, 31/31 na chamada de impressão; restaurou histórico.
+- [x] Validar botão no candidato R11: 1/31 inicialmente, 31/31 na chamada de impressão; histórico restaurado.
+- [ ] Confirmar deploy público R11, teste da URL e aprovação da prévia.

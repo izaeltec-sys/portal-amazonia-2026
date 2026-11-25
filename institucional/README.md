@@ -137,3 +137,6 @@ Commit de implementação: 6929a777ecd6e9cdcd543db407da22761f1192d1. Página 9: 
 
 ## R10 — 25/11/2026
 A R9 gerou 14 páginas e foi rejeitada por quebras nas ações sociais e perspectivas de 2027. R10 (commit de implementação de9abbe5368cbc60b035f679c699eeca10292ced) preserva crédito Vilela, nova composição, imagens integrais e script R8, recuperando 12 páginas. PDF testado no PC IFRO E39992, em Downloads/Previa_Institucional_AEEC_Polaco_2026_R10.pdf (15.206.847 bytes). R9 rejeitada e temporários removidos nesse PC. Nova confirmação do deploy e aprovação do usuário pendentes.
+
+## R11 — 25/11/2026
+Página 11: título, foto aérea ampliada (67→87 mm de altura), descrição e calendário completo. Página 9: substituição da foto das cadeiras paradas pelo registro de inclusão em movimento enviado pela organização (inclusao-adapt-run-portal-2026.jpg); autoria não atribuída sem confirmação. Imagens agora eager desde o HTML; permanece a espera de carregamento e decodificação do botão. PDF de teste no IFRO: 12 páginas, conferidas visualmente. R10 pública confirmada e testada 31/31 imagens. Verificar deploy R11 e teste público.
