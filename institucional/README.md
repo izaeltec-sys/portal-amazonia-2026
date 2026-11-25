@@ -140,3 +140,5 @@ A R9 gerou 14 páginas e foi rejeitada por quebras nas ações sociais e perspec
 
 ## R11 — 25/11/2026
 Página 11: título, foto aérea ampliada (67→87 mm de altura), descrição e calendário completo. Página 9: substituição da foto das cadeiras paradas pelo registro de inclusão em movimento enviado pela organização (inclusao-adapt-run-portal-2026.jpg); autoria não atribuída sem confirmação. Imagens agora eager desde o HTML; permanece a espera de carregamento e decodificação do botão. PDF de teste no IFRO: 12 páginas, conferidas visualmente. R10 pública confirmada e testada 31/31 imagens. Verificar deploy R11 e teste público.
+
+Validação pública R11: workflow 45679595539 concluído com sucesso; URL pública serviu o CSS R11 e a nova fotografia. Impressão CDP com cache vazio: 1/31 imagens no clique, 31/31 antes da impressão, 12 páginas; mosaico e páginas 9 e 11 conferidos visualmente. Prévia no IFRO: Downloads/Previa_Institucional_AEEC_Polaco_2026_R11.pdf (16.352.568 bytes). Temporários removidos.

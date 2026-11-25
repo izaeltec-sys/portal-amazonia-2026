@@ -51,3 +51,7 @@ Ler README.md, DECISOES.md e VALIDACAO.md; confirmar HEAD em main antes de alter
 - [x] Validar botão na R10 pública: cache desabilitado, 3/31 imagens inicialmente, 31/31 na chamada de impressão; restaurou histórico.
 - [x] Validar botão no candidato R11: 1/31 inicialmente, 31/31 na chamada de impressão; histórico restaurado.
 - [ ] Confirmar deploy público R11, teste da URL e aprovação da prévia.
+
+- [x] Confirmar deploy R11 e testar URL pública: 31/31 imagens e 12 páginas, inspeção visual concluída.
+- [x] Salvar prévia R11 no IFRO e limpar temporários da revisão.
+- [ ] Aprovação visual do usuário.

@@ -515,3 +515,5 @@ R9 rejeitada por regressão de 14 páginas. R10 (de9abbe) recuperou 12 páginas,
 
 ### R11 — 25/11/2026
 Título → foto aérea ampliada → descrição na p.11; p.9 foto Adapt Run em uso, enviada pela organização. R11 local validada: 12 páginas e 31/31 imagens antes da impressão. R10 pública confirmada, guard funcionou 31/31. Conferir deploy R11 e aprovação do usuário. Ver institucional/VALIDACAO.md.
+
+R11 pública confirmada (workflow 45679595539): 31/31 imagens antes da impressão, 12 páginas, mosaico e p.9/11 inspecionados. Prévia R11 em Downloads do IFRO E39992; temporários removidos. Aguarda aprovação visual do usuário.
