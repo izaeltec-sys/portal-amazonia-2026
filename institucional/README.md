@@ -121,3 +121,8 @@ As imagens são registros do evento de corrida, **não** registros comprobatóri
 5. Só então produzir o PDF definitivo e registrar a versão, a data e o local do artefato aprovado. Não publicar automaticamente a prévia local.
 
 **Dependência técnica a observar:** o HTML/CSS estão no mesmo arquivo, mas as fontes Barlow Condensed e IBM Plex Sans são importadas de **Google Fonts** por `@import`; há fontes alternativas locais. Para uma impressão totalmente reproduzível offline, considerar incorporar/disponibilizar as fontes por método autorizado ou selecionar fontes locais equivalentes, após validação visual. Não há imagens remotas em tags `img src` no estado deste commit.
+
+
+## Estado atual — revisão A4 de 25/11/2026
+
+O estado da prévia de 14 páginas descrito acima foi superado pela revisão R7 de **12 páginas**, publicada no commit `8fee910dca77114b2cc5a91703e00fc25ffc74d9`. O card das marcas está na capa impressa; os textos têm margens internas e as fotos foram ajustadas para preservar o enquadramento integral. A revisão R7 passou pela inspeção em mosaico e comparação de renderização. Consulte [DECISOES.md](DECISOES.md), [TAREFAS.md](TAREFAS.md) e [VALIDACAO.md](VALIDACAO.md) antes de retomar. **Ainda é prévia, não versão final aprovada.**

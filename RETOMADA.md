@@ -498,3 +498,8 @@ A interface agora oferece filtros completos **Todos / Masculino / Feminino** em 
 Este repositório também hospeda o **Portfólio Institucional AEEC & Polaco Cycling Team Eventos** em `institucional/index.html`, separado do Regulamento e da Central do Atleta. O histórico, as fotos autorizadas pela organização, as referências jornalísticas, o escopo da identidade e a situação da prévia A4 estão documentados em **`institucional/README.md`**; consulte esse arquivo antes de alterar o portfólio.
 
 Último estado confirmado na retomada: `main` em `72697ba84797a57a5463c4ff8b53468176572e75` (24/11 no horário de Vilhena), com fotos jornalísticas locais e CSS para impressão A4. O chat anterior relatou a geração de `Downloads/Previa_Institucional_AEEC_Polaco_2026.pdf` no PC Escritório (14 páginas, ~15,3 MB). **O PDF não está no GitHub, não foi validado nesta retomada e ainda não é versão final.** Permissões de republicação de fotos de imprensa continuam pendentes. Verificar HEAD e detalhes atuais antes de trabalhar.
+
+
+### Atualização institucional — 25/11/2026
+
+Revisão A4 implementada em `institucional/index.html` no commit `8fee910dca77114b2cc5a91703e00fc25ffc74d9`: R7 de 12 páginas, card dos logos na capa, margens internas, enquadramento integral das fotografias, histórico de cinco edições sem quebra e rodapé integrado. Prévia ainda não aprovada pelo usuário; direitos jornalísticos pendentes. Ler `institucional/DECISOES.md`, `institucional/TAREFAS.md` e `institucional/VALIDACAO.md` para retomar sem repetir as iterações rejeitadas.
