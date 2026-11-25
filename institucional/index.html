@@ -371,6 +371,82 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
 @media(max-width:720px){.jiu-historia{margin-top:46px}.jiu-historia-head,.jiu-historia-grid{grid-template-columns:1fr;gap:16px}.jiu-historia-head h3{font-size:48px}.jiu-historia-head p{font-size:16px}.jiu-evento{padding:17px}.jiu-evento-copy{min-height:0}.jiu-evento img{height:240px}}
 @media print{.jiu-historia{break-before:page}.jiu-historia-head h3{font-size:28pt}.jiu-evento{padding:4mm;break-inside:avoid}.jiu-evento-copy{min-height:0}.jiu-evento h4{font-size:19pt}.jiu-evento img{height:50mm}.jiu-evento .jiu-luta img{height:35mm}}
 
+
+/* Edição para impressão A4 — revisão de paginação e legibilidade (novembro/2026) */
+.jiu-action-dupla{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.jiu-action-dupla figure{min-width:0}
+.jiu-action-dupla figure img{height:195px;object-fit:cover;object-position:center;aspect-ratio:auto}
+.jiu-action-dupla figcaption{font-size:12px}
+@media(max-width:700px){.jiu-action-dupla{gap:9px}.jiu-action-dupla figure img{height:170px}.jiu-action-dupla figcaption{display:block}}
+@page{size:A4;margin:14mm 12mm 16mm;
+ @bottom-right{content:"AEEC & POLACO  ·  " counter(page);font:500 8pt 'IBM Plex Sans',Arial,sans-serif;color:#65787e}
+}
+@media print{
+ html{scroll-behavior:auto}
+ body{font-size:11pt;line-height:1.48;background:#fff;color:#15323c}
+ .site-header,.topnav,.print,.trajectory-hint{display:none!important}
+ .cover{grid-template-columns:48% 52%;min-height:230mm;max-height:240mm;break-after:page}
+ .cover-copy{padding:8mm 6mm 8mm 0}
+ .cover h1{font-size:43pt;line-height:.88}
+ .cover .lead{font-size:12pt;line-height:1.43}
+ .cover-media{min-height:225mm}
+ .cover-media img{height:100%;object-fit:cover}
+ .signatures{margin-left:-12mm;margin-right:-12mm;padding-left:12mm;padding-right:12mm}
+ .section{padding:9mm 0 7mm}
+ .head{gap:6mm;margin-bottom:6mm}
+ .head h2{font-size:28pt;line-height:1}
+ .head p{font-size:11pt;line-height:1.52}
+ .chapter,.timeline-label{font-size:9pt;letter-spacing:.055em}
+ h2,h3,h4,.head,.edition-summary,.impact-heading,.reference-category h3{break-after:avoid-page}
+ p{orphans:3;widows:3}
+ figure{break-inside:avoid-page}
+ .edition-summary{padding:3.8mm 0;grid-template-columns:16mm minmax(0,1fr) 32mm 9mm;gap:3mm}
+ .edition-title{font-size:17pt;line-height:1.02}
+ .edition-subtitle{font-size:9pt;line-height:1.25}
+ .edition-metric strong{font-size:20pt}
+ .edition-metric small{font-size:8.7pt}
+ .edition-year{font-size:16pt}
+ .edition-expand{display:none}
+ .edition-content{padding:4mm 5mm;break-inside:auto;box-shadow:none}
+ .edition-intro{grid-template-columns:1.08fr .92fr;gap:5mm;margin-bottom:4mm;break-inside:avoid-page}
+ .edition-body p{font-size:10pt;line-height:1.43}
+ .edition-facts dt{font-size:8.7pt}
+ .edition-facts dd{font-size:13pt}
+ .edition-gallery img,.edition-gallery.single img{height:53mm;max-height:53mm;object-fit:cover}
+ .edition-gallery.edition-gallery-three img{height:39mm;max-height:39mm}
+ .edition-gallery figcaption{font-size:8.5pt}
+ .edition-links{display:none}
+ .jiu-historia{break-before:page;margin-top:0;padding-top:0}
+ .jiu-historia-head{gap:7mm;margin-bottom:6mm}
+ .jiu-historia-head h3{font-size:27pt}
+ .jiu-historia-head p{font-size:10pt}
+ .jiu-historia-grid{gap:4mm;align-items:start}
+ .jiu-evento{padding:4mm;break-inside:avoid-page}
+ .jiu-evento-copy{min-height:0}
+ .jiu-evento h4{font-size:18pt}
+ .jiu-evento p{font-size:9.7pt;line-height:1.43}
+ .jiu-stamp{font-size:8pt}
+ .jiu-evento>figure img{height:50mm;max-height:50mm}
+ .jiu-evento .jiu-luta img{height:36mm;max-height:36mm}
+ .jiu-action-dupla{gap:2mm}
+ .jiu-action-dupla figure img{height:33mm;max-height:33mm;object-fit:cover}
+ .jiu-evento figcaption{font-size:7.8pt;line-height:1.32}
+ .impact-story{break-inside:auto}
+ .impact-images,.impact-duo,.event-community-gallery{break-inside:avoid-page}
+ .impact-images{grid-template-rows:38mm 38mm}
+ .impact-duo-item>figure img,.impact-double-images img{height:39mm}
+ .event-community-gallery img{height:30mm}
+ .service-photos img{height:44mm}
+ .references{break-before:page}
+ .reference-category{margin-top:6mm;padding-top:3mm;break-inside:auto}
+ .reference-category h3{font-size:19pt;margin-bottom:4mm}
+ .reference-links{grid-template-columns:1fr 1fr;column-gap:6mm}
+ .reference-links a{padding:2.8mm 0;break-inside:avoid-page}
+ .reference-copy strong{font-size:10pt;line-height:1.3}
+ .reference-copy small{font-size:9pt;line-height:1.3}
+ .footer{margin-left:-12mm;margin-right:-12mm;padding-left:12mm;padding-right:12mm}
+}
+
 </style>
 </head><body>
 <header class="site-header"><div class="top">
@@ -457,7 +533,7 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
    <div class="edition-content">
     <div class="edition-intro"><div class="edition-body"><span class="edition-label">Sobre esta edição</span><p>A segunda edição reuniu percursos de 5 km e 10 km, categoria infantil e participação de atletas PcD. A reportagem publicada após a prova registrou 925 inscrições confirmadas, incluindo 40 vagas gratuitas para estudantes da rede estadual.</p></div>
      <dl class="edition-facts"><div><dt>5 km</dt><dd>561 inscrições</dd></div><div><dt>10 km</dt><dd>207 inscrições</dd></div><div><dt>Kids</dt><dd>145 inscrições</dd></div><div><dt>PcD</dt><dd>12 inscrições</dd></div><div><dt>Total divulgado</dt><dd>925 inscrições</dd></div><div><dt>Vagas escolares gratuitas</dt><dd>40</dd></div></dl></div>
-    <div class="edition-gallery single"><figure><img src="https://extraderondonia.com.br/sistema2/wp-content/uploads/2026/07/WhatsApp-Image-2026-07-29-at-15.09.38-e1785352635292.jpeg" alt="Fotografia da largada do 2º Circuito AABB 2026, atletas alinhados sob o pórtico oficial com o nome do evento" loading="lazy" referrerpolicy="no-referrer"><figcaption>26 de julho de 2026 · Largada oficial do 2º Circuito AABB · <a href="https://extraderondonia.com.br/2026/07/29/2o-circuito-aabb-reune-quase-mil-atletas-e-movimenta-vilhena-com-corrida-de-rua-veja-fotos/" target="_blank" rel="noopener noreferrer">Fotografia: Extra de Rondônia</a></figcaption></figure></div>
+    <div class="edition-gallery single"><figure><img src="assets/fotos/aabb-2026-largada-real.jpeg" alt="Fotografia da largada do 2º Circuito AABB 2026, atletas alinhados sob o pórtico oficial com o nome do evento" loading="lazy" referrerpolicy="no-referrer"><figcaption>26 de julho de 2026 · Largada oficial do 2º Circuito AABB · <a href="https://extraderondonia.com.br/2026/07/29/2o-circuito-aabb-reune-quase-mil-atletas-e-movimenta-vilhena-com-corrida-de-rua-veja-fotos/" target="_blank" rel="noopener noreferrer">Fotografia: Extra de Rondônia</a></figcaption></figure></div>
     <div class="edition-links"><a href="https://www.fotto.com.br/2-circuito-aabb-corrida-de-rua/e/387052" target="_blank" rel="noopener noreferrer">Explorar fotos do Circuito AABB 2026 <span aria-hidden="true">↗</span></a><a href="https://extraderondonia.com.br/2026/07/29/2o-circuito-aabb-reune-quase-mil-atletas-e-movimenta-vilhena-com-corrida-de-rua-veja-fotos/" target="_blank" rel="noopener noreferrer">Ver reportagem e números divulgados <span aria-hidden="true">↗</span></a></div>
    </div>
   </details>
@@ -527,12 +603,16 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
  <div class="jiu-historia-grid">
   <article class="jiu-evento" aria-labelledby="jiu-2025-title">
    <div class="jiu-evento-copy"><span class="jiu-stamp">2025 · 1º campeonato</span><h4 id="jiu-2025-title">1º Campeonato Interno de Jiu-Jítsu</h4><p>12 de dezembro de 2025 · Colégio Militar Dom Pedro II, Unidade II. Atividade ligada ao projeto desenvolvido em parceria com a AEEC.</p></div>
-   <figure><img src="https://rondoniaovivo.com/imagensNoticias/8887b733-415e-4d75-9193-8092551cb946.jpeg" alt="Imagem documental do primeiro Campeonato Interno, realizado em 2025: pódio e participantes com uniformes vermelhos e brancos" loading="lazy" referrerpolicy="no-referrer"><figcaption><strong>Registro do campeonato de 2025</strong><a href="https://www.rondoniaovivo.com/noticia/interior/2025/12/15/1o-campeonato-de-jiu-jitsu-colegio-militar-dom-pedro-ii-fortalece-projeto-esportivo-em-vilhena.html" target="_blank" rel="noopener noreferrer">Fonte: Rondônia ao Vivo</a></figcaption></figure>
+   <figure><img src="assets/fotos/jiu-2025-grupo-rondoniaempauta.webp" alt="Registro documental de 2025: alunos do 1º Campeonato Interno de Jiu-Jítsu e equipe organizadora reunidos com medalhas" loading="lazy"><figcaption><strong>Participantes e medalhas · 2025</strong><a href="https://rondoniaempauta.com.br/1o-campeonato-de-jiu-jitsu-do-colegio-militar-dom-pedro-ii-unidade-ii-marca-avanco-de-projeto-esportivo-em-vilhena/" target="_blank" rel="noopener noreferrer">Fonte: Rondônia em Pauta</a></figcaption></figure>
+   <div class="jiu-action-dupla">
+    <figure><img src="assets/fotos/jiu-2025-luta-1.webp" alt="Competidores com quimonos brancos disputam luta com árbitro no 1º Campeonato Interno de Jiu-Jítsu de 2025" loading="lazy"><figcaption><strong>Disputa no tatame · 2025</strong><a href="https://rondoniaempauta.com.br/1o-campeonato-de-jiu-jitsu-do-colegio-militar-dom-pedro-ii-unidade-ii-marca-avanco-de-projeto-esportivo-em-vilhena/" target="_blank" rel="noopener noreferrer">Fonte: Rondônia em Pauta</a></figcaption></figure>
+    <figure><img src="assets/fotos/jiu-2025-luta-2.webp" alt="Registro de outra disputa entre alunos no tatame durante o campeonato de 2025" loading="lazy"><figcaption><strong>Participação dos alunos · 2025</strong><a href="https://rondoniaempauta.com.br/1o-campeonato-de-jiu-jitsu-do-colegio-militar-dom-pedro-ii-unidade-ii-marca-avanco-de-projeto-esportivo-em-vilhena/" target="_blank" rel="noopener noreferrer">Fonte: Rondônia em Pauta</a></figcaption></figure>
+   </div>
   </article>
   <article class="jiu-evento" aria-labelledby="jiu-2026-title">
    <div class="jiu-evento-copy"><span class="jiu-stamp">2026 · 2º campeonato</span><h4 id="jiu-2026-title">2º Campeonato Interno da AEEC</h4><p>19 de novembro de 2026 · Alunos do Colégio Militar Tiradentes V e do Colégio Militar Dom Pedro II, em Vilhena.</p></div>
-   <figure><img src="https://rondoniaempauta.com.br/wp-content/uploads/2026/11/tp_142img.webp" alt="Registro do segundo Campeonato Interno de 2026, alunos de quimono azul e medalhas reunidos no ginásio" loading="lazy" referrerpolicy="no-referrer"><figcaption><strong>Premiação do campeonato de 2026</strong><a href="https://rondoniaempauta.com.br/2o-campeonato-interno-da-aeec-reune-estudantes-dos-colegios-militares-em-vilhena/" target="_blank" rel="noopener noreferrer">Fonte: Rondônia em Pauta</a></figcaption></figure>
-   <figure class="jiu-luta"><img src="https://rondoniaempauta.com.br/wp-content/uploads/2026/11/tp_143img.webp" alt="Registro do segundo Campeonato Interno de 2026: dois estudantes de quimono azul disputando jiu-jítsu no tatame" loading="lazy" referrerpolicy="no-referrer"><figcaption><strong>Disputa no tatame · 2026</strong><a href="https://rondoniaempauta.com.br/2o-campeonato-interno-da-aeec-reune-estudantes-dos-colegios-militares-em-vilhena/" target="_blank" rel="noopener noreferrer">Fonte: Rondônia em Pauta</a></figcaption></figure>
+   <figure><img src="assets/fotos/jiu-2026-grupo.webp" alt="Registro do segundo Campeonato Interno de 2026, alunos de quimono azul e medalhas reunidos no ginásio" loading="lazy" referrerpolicy="no-referrer"><figcaption><strong>Premiação do campeonato de 2026</strong><a href="https://rondoniaempauta.com.br/2o-campeonato-interno-da-aeec-reune-estudantes-dos-colegios-militares-em-vilhena/" target="_blank" rel="noopener noreferrer">Fonte: Rondônia em Pauta</a></figcaption></figure>
+   <figure class="jiu-luta"><img src="assets/fotos/jiu-2026-luta.webp" alt="Registro do segundo Campeonato Interno de 2026: dois estudantes de quimono azul disputando jiu-jítsu no tatame" loading="lazy" referrerpolicy="no-referrer"><figcaption><strong>Disputa no tatame · 2026</strong><a href="https://rondoniaempauta.com.br/2o-campeonato-interno-da-aeec-reune-estudantes-dos-colegios-militares-em-vilhena/" target="_blank" rel="noopener noreferrer">Fonte: Rondônia em Pauta</a></figcaption></figure>
   </article>
  </div>
  </section>
@@ -594,7 +674,8 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
 <a href="https://agitoesportes.com.br/event/3-corrida-de-rua-portal-da-amazonia" target="_blank" rel="noopener noreferrer"><span class="reference-copy"><strong>3ª Corrida Portal da Amazônia · 2026</strong><small>Página do evento na Agito Esportes</small></span><span class="reference-arrow" aria-hidden="true">↗</span></a></div></div>
 <div class="reference-category"><h3>Solidariedade, inclusão e comunidade</h3><div class="reference-links"><a href="https://photos.app.goo.gl/irVQTaaJ2RFEWXHy9" target="_blank" rel="noopener noreferrer"><span class="reference-copy"><strong>Entrega de brinquedos · 2026</strong><small>Álbum fotográfico do longão solidário</small></span><span class="reference-arrow" aria-hidden="true">↗</span></a>
 </div></div>
-<div class="reference-category"><h3>Formação e trajetória multiesportiva</h3><div class="reference-links"><a href="https://www.rondoniaovivo.com/noticia/interior/2025/12/15/1o-campeonato-de-jiu-jitsu-colegio-militar-dom-pedro-ii-fortalece-projeto-esportivo-em-vilhena.html" target="_blank" rel="noopener noreferrer"><span class="reference-copy"><strong>1º Campeonato Interno de Jiu-Jítsu · 2025</strong><small>Reportagem sobre o projeto com o CMDP</small></span><span class="reference-arrow" aria-hidden="true">↗</span></a>
+<div class="reference-category"><h3>Formação e trajetória multiesportiva</h3><div class="reference-links"><a href="https://rondoniaempauta.com.br/1o-campeonato-de-jiu-jitsu-do-colegio-militar-dom-pedro-ii-unidade-ii-marca-avanco-de-projeto-esportivo-em-vilhena/" target="_blank" rel="noopener noreferrer"><span class="reference-copy"><strong>1º Campeonato Interno de Jiu-Jítsu · 2025</strong><small>Reportagem e fotografias da competição · Rondônia em Pauta</small></span><span class="reference-arrow" aria-hidden="true">↗</span></a>
+<a href="https://www.rondoniaovivo.com/noticia/interior/2025/12/15/1o-campeonato-de-jiu-jitsu-colegio-militar-dom-pedro-ii-fortalece-projeto-esportivo-em-vilhena.html" target="_blank" rel="noopener noreferrer"><span class="reference-copy"><strong>1º Campeonato Interno de Jiu-Jítsu · 2025</strong><small>Reportagem sobre o projeto com o CMDP</small></span><span class="reference-arrow" aria-hidden="true">↗</span></a>
 <a href="https://rondoniaempauta.com.br/2o-campeonato-interno-da-aeec-reune-estudantes-dos-colegios-militares-em-vilhena/" target="_blank" rel="noopener noreferrer"><span class="reference-copy"><strong>2º Campeonato Interno da AEEC · 2026</strong><small>Reportagem com fotografias do CMDP e CTPM</small></span><span class="reference-arrow" aria-hidden="true">↗</span></a>
 <a href="https://banlek.com/album/1896c8-4o-skalada-conesul" target="_blank" rel="noopener noreferrer"><span class="reference-copy"><strong>Skalada ConeSul · 2025</strong><small>Referência à trajetória anterior no ciclismo</small></span><span class="reference-arrow" aria-hidden="true">↗</span></a></div></div>
  </div></section>
@@ -604,6 +685,35 @@ h1,h2,h3,.stat .value,.metric strong,.intro .mission,.closing h2,.editorial-figu
 </main>
 <footer class="footer"><div class="outer footer-inner">
  <div><strong>AEEC &amp; Polaco Cycling Team Eventos</strong><p>Portfólio institucional · edição de novembro de 2026</p></div>
- <div><small>Fotografias: Wellington Vilela e acervo fornecido pela organização · Créditos técnicos: Izaeltec — soluções digitais, design e comunicação.</small><p>Dados de edições anteriores extraídos de registros da organização, Agito e comunicações institucionais.</p></div>
+ <div><small>Fotografias: Wellington Vilela, acervo da organização e registros publicados pelo Extra de Rondônia e Rondônia em Pauta · Créditos técnicos: Izaeltec — soluções digitais, design e comunicação.</small><p>Dados de edições anteriores extraídos de registros da organização, Agito e comunicações institucionais.</p></div>
 </div></footer>
+<script>
+/* Incluir todas as edições do histórico na impressão sem alterar o comportamento da página. */
+(function () {
+  let saved = null;
+  function openHistoryForPrint() {
+    if (saved) return;
+    const details = Array.from(document.querySelectorAll('details.edition'));
+    saved = details.map(el => ({ el, open: el.open, name: el.getAttribute('name') }));
+    saved.forEach(item => item.el.removeAttribute('name'));
+    saved.forEach(item => { item.el.open = true; });
+    document.documentElement.classList.add('is-printing');
+  }
+  function restoreHistoryAfterPrint() {
+    if (!saved) return;
+    const prior = saved;
+    saved = null;
+    prior.forEach(item => { item.el.open = false; item.el.removeAttribute('name'); });
+    prior.forEach(item => { if (item.name !== null) item.el.setAttribute('name', item.name); });
+    prior.forEach(item => { item.el.open = item.open; });
+    document.documentElement.classList.remove('is-printing');
+  }
+  window.addEventListener('beforeprint', openHistoryForPrint);
+  window.addEventListener('afterprint', restoreHistoryAfterPrint);
+  const media = window.matchMedia('print');
+  if (media.addEventListener) {
+    media.addEventListener('change', event => event.matches ? openHistoryForPrint() : restoreHistoryAfterPrint());
+  }
+})();
+</script>
 </body></html>
